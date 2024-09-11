@@ -1,0 +1,4 @@
+C:/Users/henri/OneDrive - Aarhus universitet/2. Semester/Softwarearkitektur/Assignments/Assigment 1/build/CMakeFiles/my_libraries.dir
+C:/Users/henri/OneDrive - Aarhus universitet/2. Semester/Softwarearkitektur/Assignments/Assigment 1/build/CMakeFiles/Assignment_1.dir
+C:/Users/henri/OneDrive - Aarhus universitet/2. Semester/Softwarearkitektur/Assignments/Assigment 1/build/CMakeFiles/edit_cache.dir
+C:/Users/henri/OneDrive - Aarhus universitet/2. Semester/Softwarearkitektur/Assignments/Assigment 1/build/CMakeFiles/rebuild_cache.dir

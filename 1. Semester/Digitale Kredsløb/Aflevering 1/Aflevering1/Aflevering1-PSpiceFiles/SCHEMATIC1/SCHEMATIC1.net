@@ -1,0 +1,12 @@
+* source AFLEVERING1
+V_V1         VDD 0 5Vdc
+R_R1         N14835 N15024  51k TC=0,0 
+R_R2         N15024 0  51k TC=0,0 
+R_R3         N15122 0  100k TC=0,0 
+C_C1         VDD 0  100n  TC=0,0 
+R_R4         N15893 0  300 TC=0,0 
+V_V2         VDD N14835  
++PULSE 0 5 2m 1p 1p 4m 8m
+V_V3         VDD N15122  
++PULSE 0 5 4m 1p 1p 2m 4m
+X_U1         N14835 N15893  $G_DPWR $G_DGND INV

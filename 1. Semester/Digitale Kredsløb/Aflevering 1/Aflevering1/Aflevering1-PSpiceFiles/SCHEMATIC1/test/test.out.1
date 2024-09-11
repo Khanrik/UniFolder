@@ -1,0 +1,51 @@
+
+**** 09/27/23 13:08:23 ***** PSpice 17.4.0 (23 July 2022) ***** ID# 0 ********
+
+ ** Profile: "SCHEMATIC1-test"  [ C:\Users\henri\Desktop\Aflevering1\Aflevering1-PSpiceFiles\SCHEMATIC1\test.sim ] 
+
+
+ ****     CIRCUIT DESCRIPTION
+
+
+******************************************************************************
+
+
+
+
+** Creating circuit file "test.cir" 
+** WARNING: THIS AUTOMATICALLY GENERATED FILE MAY BE OVERWRITTEN BY SUBSEQUENT SIMULATIONS
+
+*Libraries: 
+* Profile Libraries :
+* Local Libraries :
+* From [PSPICE NETLIST] section of C:\Users\henri\AppData\Roaming\SPB_Data\cdssetup\OrCAD_PSpice\17.4.0\PSpice.ini file:
+.lib "nom.lib" 
+
+*Analysis directives: 
+.TRAN  0 1000ms 0 
+.OPTIONS ADVCONV
+.PROBE64 V(alias(*)) I(alias(*)) W(alias(*)) D(alias(*)) NOISE(alias(*)) 
+.INC "..\SCHEMATIC1.net" 
+
+
+
+**** INCLUDING SCHEMATIC1.net ****
+* source AFLEVERING1
+V_V1         VDD 0 5Vdc
+R_R1         N14835 N15024  51k TC=0,0 
+R_R2         N15024 0  51k TC=0,0 
+R_R3         N15122 0  100k TC=0,0 
+X_U1         N14835 N15122 N15893  $G_DPWR $G_DGND AND2
+C_C1         VDD 0  100n  TC=0,0 
+D_D1         N15893 N16026 LED 
+R_R4         N16026 0  300 TC=0,0 
+V_V2         VDD N14835  
++PULSE 0 5 4m 1p 1p 4m 8m
+V_V3         VDD N15122  
++PULSE 0 5 4m 1p 1p 4m 8m
+
+**** RESUMING test.cir ****
+.END
+
+ERROR(ORPSIM-15113): Model LED used by D_D1 is undefined
+

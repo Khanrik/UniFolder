@@ -1,0 +1,70 @@
+
+**** 12/05/23 12:35:18 ***** PSpice 17.4.0 (23 July 2022) ***** ID# 0 ********
+
+ ** Profile: "SCHEMATIC1-Aflevering3"  [ C:\Users\henri\Desktop\aflevering3-pspicefiles\schematic1\aflevering3.sim ] 
+
+
+ ****     CIRCUIT DESCRIPTION
+
+
+******************************************************************************
+
+
+
+
+** Creating circuit file "Aflevering3.cir" 
+** WARNING: THIS AUTOMATICALLY GENERATED FILE MAY BE OVERWRITTEN BY SUBSEQUENT SIMULATIONS
+
+*Libraries: 
+* Profile Libraries :
+* Local Libraries :
+* From [PSPICE NETLIST] section of C:\Users\henri\AppData\Roaming\SPB_Data\cdssetup\OrCAD_PSpice\17.4.0\PSpice.ini file:
+.lib "nom.lib" 
+
+*Analysis directives: 
+.TRAN  0 80u 0 
+.OPTIONS ADVCONV
+.PROBE64 V(alias(*)) I(alias(*)) W(alias(*)) D(alias(*)) NOISE(alias(*)) 
+.INC "..\SCHEMATIC1.net" 
+
+
+
+**** INCLUDING SCHEMATIC1.net ****
+* source AFLEVERING3
+X_U1         Q2 Q3 N00476 $G_DPWR $G_DGND OR2
+X_U2         N00476 Q1 N00555 $G_DPWR $G_DGND OR2
+X_U3         N00555 Q4 N01245 $G_DPWR $G_DGND OR2
+X_U8         N14125 CLK N011372 N01571 M_UN0001 $G_DPWR $G_DGND JKFF
+V_V2         VDD 0 5Vdc
+X_U10         0 0 CLK N14302 N13650 M_UN0002 M_UN0003 M_UN0004 M_UN0005
++  M_UN0006 0 0 0 0 $G_CD4000_VDD $G_CD4000_VSS CD4510B PARAMS:
++ IO_LEVEL=0 MNTYMXDLY=0
+U_DSTM1         STIM(1,1) $G_DPWR $G_DGND CLK IO_STM IO_LEVEL=0 
++ 0 0
++ +10u 5
+-------$
+ERROR(ORPSIM-16260): Invalid value
++REPEAT FOREVER
++ +2u 0
++  +2u 5
++ ENDREPEAT
+-----------$
+ERROR(ORPSIM-16249): Bad state value(s)
+X_U11         Q1 N03864  $G_DPWR $G_DGND INV
+X_U12         N03864 N00476 N04246 $G_DPWR $G_DGND OR2
+X_U13         N08322 N04246 N09925 $G_DPWR $G_DGND OR2
+X_U14         Q4 N08322  $G_DPWR $G_DGND INV
+X_U15         N09925 K  $G_DPWR $G_DGND INV
+X_U16         N01245 J  $G_DPWR $G_DGND INV
+X_U17         N13650 0  $G_DPWR $G_DGND INV
+R_R1         J N14125  1 TC=0,0 
+R_R2         K N011372  1 TC=0,0 
+R_R3         N01571 N14302  1 TC=0,0 
+R_R4         0 Q1  1 TC=0,0 
+R_R5         0 Q2  1 TC=0,0 
+R_R6         0 Q3  1 TC=0,0 
+R_R7         0 Q4  1 TC=0,0 
+
+**** RESUMING Aflevering3.cir ****
+.END
+

@@ -1,0 +1,2 @@
+C:\MinGW\bin\ar.exe qc libmy_libraries.a CMakeFiles/my_libraries.dir/src/array_int_queue.cpp.obj CMakeFiles/my_libraries.dir/src/list_int_queue.cpp.obj CMakeFiles/my_libraries.dir/src/main.cpp.obj
+C:\MinGW\bin\ranlib.exe libmy_libraries.a

@@ -1,0 +1,26 @@
+Direkte
+Viser godt hvad koncepter er
+
+Kunne godt forklare at t er true of f er false
+
+Det gør det forvirrende når der bliver byttet om på p og q
+
+Glemmer at sige at a nødvendigvis er et heltal, før 4a også kan anses for at være et heltal
+
+a er ikke bare et tal (upræcis sprogbrug)
+
+
+
+
+Contradiction
+Er lidt mere forvirrende ved introduktion af konceptet men kommer igennem alligevel
+
+Blander k'er og j'er
+
+For mange tilfældlige bogstaver som tilfældig heltal
+
+For meget rod med matematisk notation
+
+Der var åbenbart en fejl i beregning et eller andet sted
+
+Blev reddet i slutningen, men der stod ikke at x er heltallig, så beviset duer ikke hvis det var et reelt tal

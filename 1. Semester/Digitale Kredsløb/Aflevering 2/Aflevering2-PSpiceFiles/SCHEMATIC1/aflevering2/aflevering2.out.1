@@ -1,0 +1,73 @@
+
+**** 10/31/23 15:16:49 ***** PSpice 17.4.0 (23 July 2022) ***** ID# 0 ********
+
+ ** Profile: "SCHEMATIC1-aflevering2"  [ C:\Users\henri\Desktop\Aflevering2-PSpiceFiles\SCHEMATIC1\aflevering2.sim ] 
+
+
+ ****     CIRCUIT DESCRIPTION
+
+
+******************************************************************************
+
+
+
+
+** Creating circuit file "aflevering2.cir" 
+** WARNING: THIS AUTOMATICALLY GENERATED FILE MAY BE OVERWRITTEN BY SUBSEQUENT SIMULATIONS
+
+*Libraries: 
+* Profile Libraries :
+* Local Libraries :
+* From [PSPICE NETLIST] section of C:\Users\henri\AppData\Roaming\SPB_Data\cdssetup\OrCAD_PSpice\17.4.0\PSpice.ini file:
+.lib "nom.lib" 
+
+*Analysis directives: 
+.TRAN  0 32ms 0 
+.OPTIONS ADVCONV
+.PROBE64 V(alias(*)) I(alias(*)) W(alias(*)) D(alias(*)) NOISE(alias(*)) 
+.INC "..\SCHEMATIC1.net" 
+
+
+
+**** INCLUDING SCHEMATIC1.net ****
+* source AFLEVERING2
+V_V1         VDD 0 5Vdc
+X_U1         N01099 N01116 N04477 $G_DPWR $G_DGND XOR
+X_U2         N00961 N04873 N01527 $G_DPWR $G_DGND XOR
+X_U3         N01387 N01416 N00961 $G_DPWR $G_DGND XOR
+X_U4         N01099 N01116 N04340  $G_DPWR $G_DGND AND2
+X_U5         N01387 N01416 N01071  $G_DPWR $G_DGND AND2
+X_U6         N00961 N04873 N01067  $G_DPWR $G_DGND AND2
+X_U7         N01067 N01071 N01508 $G_DPWR $G_DGND OR2
+D_Output1         N04523 N01544 LED 
+D_Output2         N01527 N01544 LED 
+D_Carry         N01508 N01544 LED 
+R_R1         0 N01544  300 TC=0,0 
+C_C1         VDD 0  100n  TC=0,0 
+C_C2         VDD 0  100n  TC=0,0 
+C_C3         VDD 0  100n  TC=0,0 
+X_U8         0 N04477 N04523 $G_DPWR $G_DGND XOR
+X_U9         0 N04477 N04614  $G_DPWR $G_DGND AND2
+X_U10         N04614 N04340 N04873 $G_DPWR $G_DGND OR2
+R_Input1         0 N01416  110k TC=0,0 
+R_Input2         0 N01387  110k TC=0,0 
+R_Input3         0 N01116  110k TC=0,0 
+R_Input4         0 N01099  110k TC=0,0 
+V_V2         VDD N01416  
++PULSE 0 5 1 1p 1p 4m 8m
+V_V3         VDD N01387  
++PULSE 0 5 2 1p 1p 4m 8m
+V_V4         VDD N01116  
++PULSE 0 5 3 1p 1p 4m 8m
+V_V5         VDD N01099  
++PULSE 0 5 4 1p 1p 4m 8m
+
+**** RESUMING aflevering2.cir ****
+.END
+
+ERROR(ORPSIM-15113): Model LED used by D_Output1 is undefined
+
+ERROR(ORPSIM-15113): Model LED used by D_Output2 is undefined
+
+ERROR(ORPSIM-15113): Model LED used by D_Carry is undefined
+

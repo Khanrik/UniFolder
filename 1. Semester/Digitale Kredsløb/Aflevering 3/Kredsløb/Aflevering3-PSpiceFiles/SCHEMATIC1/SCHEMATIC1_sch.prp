@@ -1,0 +1,163 @@
+("FILE_TYPE"	"PMAP File"
+    ("devices"
+        ("JKFF")
+        ("CD4510B_4")
+        ("DigClock")
+        ("AND2")
+    )
+    ("instances"
+        ("U8"
+            ("device_name"	"JKFF")
+            ("pspice_path"	"X_U8")
+            ("level"	"0")
+            ("model_params"
+                ("PSpice Model Type"
+                    ("value"	"0011")
+                    ("pspice_param"	"PSpice Model Type")
+                )
+                ("IMPL"
+                    ("value"	"PLSYN")
+                    ("pspice_param"	"IMPL")
+                )
+            )
+        )
+        ("U10"
+            ("device_name"	"CD4510B_4")
+            ("pspice_path"	"X_U10")
+            ("level"	"0")
+            ("model_params"
+                ("IO_LEVEL"
+                    ("value"	"0")
+                    ("pspice_param"	"IO_LEVEL")
+                )
+                ("MNTYMXDLY"
+                    ("value"	"0")
+                    ("pspice_param"	"MNTYMXDLY")
+                )
+            )
+        )
+        ("main_clk"
+            ("device_name"	"DigClock")
+            ("pspice_path"	"U_main_clk")
+            ("level"	"0")
+            ("model_params"
+                ("OPPVAL"
+                    ("value"	"1")
+                    ("pspice_param"	"OPPVAL")
+                )
+                ("ONTIME"
+                    ("value"	"1ms")
+                    ("pspice_param"	"ONTIME")
+                )
+                ("DELAY"
+                    ("value"	"0")
+                    ("pspice_param"	"DELAY")
+                )
+                ("OFFTIME"
+                    ("value"	"1ms")
+                    ("pspice_param"	"OFFTIME")
+                )
+                ("IO_LEVEL"
+                    ("value"	"0")
+                    ("pspice_param"	"IO_LEVEL")
+                )
+                ("IO_MODEL"
+                    ("value"	"IO_STM")
+                    ("pspice_param"	"IO_MODEL")
+                )
+                ("STARTVAL"
+                    ("value"	"0")
+                    ("pspice_param"	"STARTVAL")
+                )
+                ("PSpice Model Type"
+                    ("value"	"0011")
+                    ("pspice_param"	"PSpice Model Type")
+                )
+            )
+        )
+        ("init_clk"
+            ("device_name"	"DigClock")
+            ("pspice_path"	"U_init_clk")
+            ("level"	"0")
+            ("model_params"
+                ("OFFTIME"
+                    ("value"	"1000s")
+                    ("pspice_param"	"OFFTIME")
+                )
+                ("DELAY"
+                    ("value"	"0")
+                    ("pspice_param"	"DELAY")
+                )
+                ("ONTIME"
+                    ("value"	"2ms")
+                    ("pspice_param"	"ONTIME")
+                )
+                ("OPPVAL"
+                    ("value"	"1")
+                    ("pspice_param"	"OPPVAL")
+                )
+                ("IO_LEVEL"
+                    ("value"	"0")
+                    ("pspice_param"	"IO_LEVEL")
+                )
+                ("IO_MODEL"
+                    ("value"	"IO_STM")
+                    ("pspice_param"	"IO_MODEL")
+                )
+                ("STARTVAL"
+                    ("value"	"0")
+                    ("pspice_param"	"STARTVAL")
+                )
+                ("PSpice Model Type"
+                    ("value"	"0011")
+                    ("pspice_param"	"PSpice Model Type")
+                )
+            )
+        )
+        ("U11"
+            ("device_name"	"AND2")
+            ("pspice_path"	"X_U11")
+            ("level"	"0")
+            ("model_params"
+                ("PSpice Model Type"
+                    ("value"	"0011")
+                    ("pspice_param"	"PSpice Model Type")
+                )
+                ("IMPL"
+                    ("value"	"PLSYN")
+                    ("pspice_param"	"IMPL")
+                )
+            )
+        )
+        ("U12"
+            ("device_name"	"AND2")
+            ("pspice_path"	"X_U12")
+            ("level"	"0")
+            ("model_params"
+                ("PSpice Model Type"
+                    ("value"	"0011")
+                    ("pspice_param"	"PSpice Model Type")
+                )
+                ("IMPL"
+                    ("value"	"PLSYN")
+                    ("pspice_param"	"IMPL")
+                )
+            )
+        )
+        ("U14"
+            ("device_name"	"AND2")
+            ("pspice_path"	"X_U14")
+            ("level"	"0")
+            ("model_params"
+                ("PSpice Model Type"
+                    ("value"	"0011")
+                    ("pspice_param"	"PSpice Model Type")
+                )
+                ("IMPL"
+                    ("value"	"PLSYN")
+                    ("pspice_param"	"IMPL")
+                )
+            )
+        )
+    )
+)

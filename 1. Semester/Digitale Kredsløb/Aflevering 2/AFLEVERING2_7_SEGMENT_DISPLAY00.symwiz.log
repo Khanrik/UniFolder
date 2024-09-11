@@ -1,0 +1,7 @@
+STATUS: PSpice Model Import Wizard for "Capture" (17.4.0.d001)
+STATUS:  
+   INFO: OLB driven flow
+   INFO: Input File: C:\USERS\HENRI\DESKTOP\AFLEVERING2_7_SEGMENT_DISPLAY00.olb
+   INFO: Symbol Name: 74LS47_0
+  ERROR: Symbol "74LS47_0" not found in symbol library "C:\USERS\HENRI\DESKTOP\AFLEVERING2_7_SEGMENT_DISPLAY00.olb".
+STATUS: 1 Error messages, 0 Warning messages

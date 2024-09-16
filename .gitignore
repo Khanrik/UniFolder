@@ -30,3 +30,7 @@
 *.exe
 *.out
 *.app
+
+# Obsidian
+blacklisted_suggestions.txt
+scanned_words.txt

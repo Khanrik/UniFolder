@@ -32,5 +32,6 @@
 *.app
 
 # Obsidian
+workspace.json
 blacklisted_suggestions.txt
 scanned_words.txt

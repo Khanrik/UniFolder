@@ -1,0 +1,14 @@
+# Opgaver til Uge 5
+
+## Opgave 5.71
+
+![](images/clipboard-1815758953.png)
+
+### (a)
+
+```{r}
+
+
+```
+
+### (b)

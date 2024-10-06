@@ -1,0 +1,15 @@
+# Mission
+Du og dit team er hackere, der forsøger at forhindre en stor server-nedlukning. Systemet er fyldt med sikkerhedsforanstaltninger, og I skal løse en række opgaver for at få adgang til serveren, stoppe virusangrebet, og undslippe inden for 15 minutter.
+
+## Opgave 1
+Instruktion: En vigtig besked er blevet kodet med en simpel Caesar Cipher, hvor hvert bogstav er flyttet med 5 positioner i alfabetet. I skal skrive et program til at dekryptere beskeden og finde adgangskoden til næste opgave.
+Den kodet besked er: "Ymj vznhp gwtbs ktc ozrux tajw ymj qfed itl."
+
+## Opgave 2
+Instruktion: Koden har givet adgang til et system, der har en algoritme til at sortere data, men den indeholder flere fejl. I skal debugge en Quick Sort-algoritme, så den fungerer korrekt. Når I har debugget koden, skal I bruge den til at sortere følgende liste og finde det 7. tal i den sorterede liste, som er adgangskoden til næste opgave.
+
+## Opgave 3
+Instruktion: For at få adgang til den sidste del af systemet, skal I implementere en binær søgningsalgoritme, der kan finde et specifikt nummer i en sorteret liste. Når I finder nummeret, vil det være koden til at stoppe virusangrebet.
+
+## Opgave 4 (finale)
+Instruktion: I har nu adgang til hovedserveren. For at afslutte og stoppe virusangrebet skal I skrive den korrekte kode baseret på de tidligere ledetråde. Indtast de koder, I har fundet, i denne rækkefølge (fra de tidligere opgaver): Hundens navn + quick_sort + binærsøgningsindex.

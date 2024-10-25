@@ -1,0 +1,42 @@
+# Week 7
+
+## **Opgave** om snydesoftware i dieselbiler
+
+I september 2015 blev bilproducenten Volkswagen afsløret i at have installeret et stykke software i mange af deres dieselbiler. Softwaren manipulerede udledningen af de sundhedsskadelige kvælstofoxider, de såkaldte NOx’er, så bilerne kunne bestå den strenge amerikanske miljøtest, selv om de forurenede betydeligt mere i normal trafik. Få dage efter kunne den tyske bilistforening ADAC afsløre, at kun en fjerdedel af 79 testede dieselbiler på det europæiske marked kunne overholde EU grænseværdien på 0.08 g udledt NOx per kørt kilometer. Nogle biler udledte op til 15 gange grænseværdien. På denne baggrund bliver en europæisk bilproducent bekymret og måler i al hemmelighed NOx udledningen i 10 nye personbiler af samme model og med samme type dieselmotor. Resultaterne vises i følgende tabel:
+
+|       |       |       |       |       |
+|-------|-------|-------|-------|-------|
+| 0.089 | 0.077 | 0.082 | 0.092 | 0.081 |
+| 0.083 | 0.085 | 0.080 | 0.081 | 0.091 |
+
+### a. Man ønsker at slå fast med et signifikansniveau på 5 %, om NOx udledningen for bilmodellen er over grænseværdien på 0.08 g/km. Opstil nulhypotese og alternativhypotese for denne hypotesetest.
+
+Alternativhypotesen vil være at bilmodellens gennemsnitsudledning er på eller under grænseværdien, så nul- og alternativhypotesen vil da være
+
+$$
+H_{0}: \mu > 0.08, \qquad H_{1}: \mu \leq 0.08
+$$
+
+### b. Opstil en formel for teststørrelsen. Angiv hvilken fordeling den følger.
+
+Da vi har at gøre med en enkelt stikprøve med en stikprøvestørrelse over 1 og under 30 vil formlen for teststørrelsen være
+
+$$
+t_{0} = \frac{\bar{x} - \mu_{0}}{s / \sqrt{n}}
+$$ Denne formel følger en t-fordeling med n-1
+
+### c. Beregn den kritiske region for testen, beregn teststørrelsens værdi og konkludér på hypotesetesten.
+
+```{r}
+D = c(0.089, 0.077, 0.082, 0.092, 0.081, 0.083, 0.085, 0.080, 0.081, 0.091)
+n = length(D)
+xbar = mean(D)
+s = sqrt(var(D))
+mu0 = 0.08
+a = 0.05
+t_a = qt(1 - a, n - 1)
+t_0 = (xbar - mu0) / (s / sqrt(n))
+cat(t_0, ">", t_a)
+```
+
+Da t0 er større end ta så forkastes nul-hypotesen og alternativhypotesen må passe.

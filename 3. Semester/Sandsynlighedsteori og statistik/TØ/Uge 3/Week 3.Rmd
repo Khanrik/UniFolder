@@ -1,0 +1,100 @@
+# Week 3
+
+## **Eksamensopgave** 2021 1 om kvalitetskontrol af bremseskiver
+
+En fabrik producerer bremseskiver til personbiler. Hver dag udtager man en stikprøve med 30 tilfældigt udvalgte bremseskiver blandt dagens produktion til grundig kvalitetskontrol. Historisk set finder man 1.65 defekte bremseskiver i gennemsnit i den daglige stikprøve.
+
+### a. Hvor stor en procentdel af produktionen må formodes at være defekt?
+
+```{r}
+n = 30
+d = 1.65
+p = d/n
+p
+```
+
+### b. Hvad er sandsynligheden for, at ingen bremseskiver i dagens stikprøve er defekte?
+
+```{r}
+dbinom(0,30,0.055)
+```
+
+### c. Hvad er sandsynligheden for, at der er 3 eller flere defekte i dagens stikprøve?
+
+```{r}
+1 - pbinom(2,30,0.055)
+```
+
+### d. Hvad er middelværdi, varians og standardafvigelse for antal defekte i de daglige stikprøver?
+
+```{r}
+middel = n * p
+varians = n * p * (1 - p)
+std_afvigelse = sqrt(varians)
+cat(middel, varians, std_afvigelse)
+```
+
+## M&F Opgave 3.41 s. 77
+
+If A and B are mutually exclusive events, P(A) = 0.45, and P(B) = 0.30, ﬁnd
+
+### (a) $P(\bar{A})$
+
+```{r}
+PA = 0.45
+PAbar = 1 - PA
+PAbar
+```
+
+### (b) $P(A \cup B)$
+
+```{r}
+PB = 0.30
+PAuB = PA + PB
+PAuB
+```
+
+### (c) $P(A \cap \bar{B})$
+
+```{r}
+PAnBbar = PA
+PAnBbar
+```
+
+### (d) $P(\bar{A} \cap \bar{B})$
+
+```{r}
+PAbarnBbar = 1 - PAuB
+PAbarnBbar
+```
+
+## M&F Opgave 3.79 s.  90
+
+Engineers in charge of maintaining our nuclear ﬂeet must continually check for corrosion inside the pipes that are part of the cooling systems. The inside condition of the pipes cannot be observed directly but a nondestructive test can give an indication of possible corrosion. This test is not infallible. The test has probability 0.7 of detecting corrosion when it is present but it also has probability 0.2 of falsely indicating internal corrosion. Suppose the probability that any section of pipe has internal corrosion is 0.1.
+
+### (a) Determine the probability that a section of pipe has internal corrosion, given that the test indicates its presence.
+
+```{r}
+PC = 0.1
+PCbar = 1 - PC
+PDICbar = 0.2
+PDIC = 0.7
+
+# regel 6
+PD = PDIC * PC + PDICbar * PCbar
+
+# regel 7
+PCID = (PDIC * PC) / PD
+
+PCID
+```
+
+### (b) Determine the probability that a section of pipe has internal corrosion, given that the test is negative.
+
+```{r}
+PDbar = 1 - PD
+
+# omskrevet regel 6
+PCIDbar = (PC - PCID * PD) / PDbar
+PCIDbar
+```

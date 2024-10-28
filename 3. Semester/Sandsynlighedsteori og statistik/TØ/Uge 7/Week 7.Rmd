@@ -14,7 +14,7 @@ I september 2015 blev bilproducenten Volkswagen afsløret i at have installeret 
 Alternativhypotesen vil være at bilmodellens gennemsnitsudledning er på eller under grænseværdien, så nul- og alternativhypotesen vil da være
 
 $$
-H_{0}: \mu > 0.08, \qquad H_{1}: \mu \leq 0.08
+H_{0}: \mu \leq 0.08, \qquad H_{1}: \mu > 0.08
 $$
 
 ### b. Opstil en formel for teststørrelsen. Angiv hvilken fordeling den følger.
@@ -22,8 +22,8 @@ $$
 Da vi har at gøre med en enkelt stikprøve med en stikprøvestørrelse over 1 og under 30 vil formlen for teststørrelsen være
 
 $$
-t_{0} = \frac{\bar{x} - \mu_{0}}{s / \sqrt{n}}
-$$ Denne formel følger en t-fordeling med n-1
+t = \frac{\bar{x} - \mu_{0}}{s / \sqrt{n}}
+$$ Denne formel følger en t-fordeling med 10-1=9 frihedsgrader.
 
 ### c. Beregn den kritiske region for testen, beregn teststørrelsens værdi og konkludér på hypotesetesten.
 
@@ -34,9 +34,9 @@ xbar = mean(D)
 s = sqrt(var(D))
 mu0 = 0.08
 a = 0.05
-t_a = qt(1 - a, n - 1)
-t_0 = (xbar - mu0) / (s / sqrt(n))
-cat(t_0, ">", t_a)
+t_a = qt(a, n - 1, lower.tail = FALSE)
+t = (xbar - mu0) / (s / sqrt(n))
+cat(t, ">", t_a)
 ```
 
-Da t0 er større end ta så forkastes nul-hypotesen og alternativhypotesen må passe.
+Da $t$ er større end $t_{\alpha}$ så forkastes nul-hypotesen og alternativhypotesen må passe.

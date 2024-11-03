@@ -98,3 +98,67 @@ PDbar = 1 - PD
 PCIDbar = (PC - PCID * PD) / PDbar
 PCIDbar
 ```
+
+## M&F Opgave 4.41, s. 117
+
+Find the mean and the standard deviation of the distribution of each of the following random variables (having binomial distributions):
+
+### a. The number of heads obtained in 676 ﬂips of a balanced coin.
+
+```{r}
+n = 676
+p = 0.5
+mu = n * p
+sigma = sqrt(n * p * (1-p))
+cat("The mean of number of heads obtained in 676 coinflips is:", mu, "\nwith a standard deviation of:", sigma)
+```
+
+### b. The number of 4’s obtained in 720 rolls of a balanced die.
+
+```{r}
+n = 720
+p = 1/6
+mu = n * p
+sigma = sqrt(n * p * (1-p))
+cat("The mean of number of 4's obtained in 720 dice rolls is:", mu, "\nwith a standard deviation of:", sigma)
+```
+
+### c. The number of defectives in a sample of 600 parts made by a machine, when the probability is 0.04 that any one of the parts is defective.
+
+```{r}
+n = 600
+p = 0.04
+mu = n * p
+sigma = sqrt(n * p * (1-p))
+cat("The mean of defective parts in a sample of 600 parts is:", mu, "\nwith a standard deviation of:", sigma)
+```
+
+## Opgave 4 i et opgaveark, der findes i L2
+
+En fabrik producerer et bestemt emne på tre forskellige maskiner $M_1$, $M_2$ og $M_3$. Maskinerne har forskellig kapacitet, så de producerer henholdsvis 20%, 30% og 50% af emnerne. Der er også forskel på maskinernes produktionskvalitet, således at henholdsvis 6%, 4% og 2% af emnerne produceret på de tre maskiner er defekte.
+
+### a. Der udtages et tilfældigt emne fra dagens produktion. Hvad er sandsynligheden for, at emnet er defekt?
+
+```{r}
+# bruger regel 6
+PM1 = 0.2
+PDIM1 = 0.06
+PM2 = 0.3
+PDIM2 = 0.04
+PM3 = 0.5
+PDIM3 = 0.02
+
+PD = PM1 * PDIM1 + PM2 * PDIM2 + PM3 * PDIM3
+cat("Sandsynligheden for at emnet er defekt kan findes ved regel 6 som:", PD)
+```
+
+### b. Det viser sig, at emnet er defekt. Hvad er så sandsynlighederne for, at det var produceret på hhv. $M_1$, $M_2$ og $M_3$?
+
+```{r}
+# bruger bayes regel
+PM1ID = PDIM1 * PM1 / PD
+PM2ID = PDIM2 * PM2 / PD
+PM3ID = PDIM3 * PM3 / PD
+
+cat("Sandsynligheden for at det var produceret fra maskine 1, 2 og 3, er hhv.", PM1ID, PM2ID, PM3ID)
+```

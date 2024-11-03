@@ -1,0 +1,84 @@
+# Uge 4
+
+## **Opgave** om en robot til sprøjtemaling af emner
+
+En robot til sprøjtemaling laver utilsigtede ’helligdage’, d.v.s. små pletter, der ikke er blevet dækket af maling. Robotten laver i gennemsnit 0.8 helligdage per malet kvadrat meter. Robotten skal male 70 cirkelformede skiver på forsiden. Hver skive har en diameter på 1.2 m
+
+### a. Hvor mange helligdage må der forventes at være på en tilfældig skive?
+
+```{r}
+A = pi * 0.6^2
+lambda = A*0.8
+cat("Der må forventes at være", lambda, "helligdage på en tilfældig skive")
+```
+
+### b. Hvilken sandsynlighedsfordeling vil du bruge til at beskrive antal helligdage på en skive, og hvad er fordelingens middelværdi, varians og standardafvigelse?
+
+Da der ikke er en grænse for hvor mange pletter som kan være på en skive, og at der enten er eller ikke er en plet, vil antallet af helligdage kunne beskrives med en poisson-fordeling.
+
+```{r}
+mu = lambda
+sigma = sqrt(lambda)
+cat("Fordelingens middelværdi, varians, og standardafvigelse er hhv.", mu, sigma^2, sigma)
+```
+
+### c. Hvad er sandsynligheden for, at ingen af de 70 skiver har helligdage?
+
+```{r}
+dpois(0, lambda)
+```
+
+### d. Beregn det forventede antal skiver med henholdsvis 0, 1, 2, 3 og 4 eller flere helligdage.
+
+```{r}
+1-ppois(-1,lambda)
+```
+
+```{r}
+1-ppois(0,lambda)
+```
+
+```{r}
+1-ppois(1,lambda)
+```
+
+```{r}
+1-ppois(2,lambda)
+```
+
+```{r}
+1-ppois(3,lambda)
+```
+
+## Opgave om fjedres fjederkonstant
+
+En dansk virksomhed er specialiseret i produktion af fjedre af mange forskellige typer og specifikationer. For en bestemt type galvaniseret trækfjeder oplyser virksomheden, at fjedre af denne type har en forventet fjederkonstant på 4.0 N/mm. Mere præcist oplyser virksomheden, at fjederkonstanten for fjedrene er normalfordelt med middelværdi 4.0 N/mm og standardafvigelse 0.1 N/mm.
+
+Beregn følgende under forudsætning af, at virksomhedens oplysninger er korrekte:
+
+### a. Beregn sandsynligheden for at en tilfældig fjeder af den omtalte type har en fjederkonstant på præcis 4.0 N/mm.
+
+Da sandsynligheden modelleres med en kontinuær tæthedsfunktion og at integralet under funktionen bestemmer sandsynligheden, vil det betyde at enhver specifik værdi vil have en sandsynlighed på 0% for at optræde. Der vil kun være en ikke 0% sandsynlighed når der kigges på intervaller.
+
+### b. Beregn sandsynligheden for at fjederens fjederkonstant er under 3.7 N/mm.
+
+```{r}
+mu = 4.0
+sigma = 0.1
+
+pnorm(3.7, mu, sigma)
+```
+
+### c. Beregn sandsynligheden for at fjederens fjederkonstant er større end 4.1 N/mm.
+
+```{r}
+1 - pnorm(4.1, mu, sigma)
+```
+
+### d. Beregn et interval omkring middelværdien, som 99% af fjedrene vil tilhøre.
+
+```{r}
+neg_z_alpha = qnorm(0.005, mu, sigma)
+z_alpha = qnorm(0.995, mu, sigma)
+cat("Intervallet, som 99% af fjedrene vil tilhøre er fra", neg_z_alpha, "til", z_alpha)
+```

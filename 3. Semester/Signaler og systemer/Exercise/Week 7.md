@@ -68,6 +68,18 @@ Use the Fourier transform analysis equation (4.9) to calculate the Fourier trans
 **(a)** $\delta(t+1) + \delta(t-1) \qquad$ **(b)** $\frac{d}{dt} \{u(-2-t) + u(t-2)\}$
 Sketch and label the magnitude of each Fourier transform.
 
+### (a)
+$$
+\begin{align*}
+X(j\omega) &= \int^{+\infty}_{-\infty} (\delta(t+1) + \delta(t-1)) e^{-j\omega t} \, dt\\
+&= \int^{+\infty}_{-\infty} \delta(t+1) e^{-j\omega t} + \delta(t-1) e^{-j\omega t} \, dt\\
+&= \int^{+\infty}_{-\infty} \delta(t+1) e^{-j\omega t} \, dt + \int^{+\infty}_{-\infty} \delta(t-1) e^{-j\omega t} \, dt\\
+&= e^{j\omega} + e^{-j\omega}\\
+&= \cos(\omega) + j\sin(\omega) + \cos(\omega) - j\sin(\omega)\\
+&= 2 \cos(\omega)
+\end{align*}
+$$
+
 ## Problem 4.3
 Determine the Fourier transform of each of the following periodic signals:
 **(a)** $\sin\left( 2\pi t + \frac{\pi}{4} \right) \qquad$ **(b)** $1 + \cos\left( 6\pi t + \frac{\pi}{8} \right)$

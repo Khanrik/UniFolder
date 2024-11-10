@@ -1,0 +1,56 @@
+# Week 5
+
+## M&F opg. 5.21 s. 149
+
+The nozzle of a mixing vibrator is tested for its number of vibrations. The vibration frequency, for each nozzle sample, can be modeled by a normal distribution with mean 128 and standard deviation 16 PdM.
+
+### (a) If engineering speciﬁcations require the sample to have a vibration frequency of 100 PdM, what is the probability that a sample will fail to meet speciﬁcations?
+
+```{r}
+mu = 128
+sigma = 16
+```
+
+100% chance of failing since you cant determine w6m
+
+### (b) In the long run, what proportion of samples will fail? Explain your answer.
+
+### (c) The mean vibration frequency can be increased by using different materials. What new mean is re- quired, when the standard deviation is 16, to re- duce the probability of not meeting speciﬁcations to 0.05?
+
+## M&F opg. 5.71, s. 173
+
+Two transistors are needed for an integrated circuit. Of the eight available, three have broken insulation layers, two have poor diodes, and three are in good condition. Two transistors are selected at random.
+
+### (a) Find the joint probability distribution of $X_1$ = the number of transistors with broken insulation layers and $X_2$ = the number having poor diodes.
+
+### (b) Find the probability of 1 or 2 total defects among the two selected.
+
+### (c) Find the marginal probability distribution of $X_2$.
+
+### (d) Find the conditional probability distribution of $X_2$ given $X_1 = 0$.
+
+## M&F opg. 5.73 (svær) + 5.75, s. 173
+
+If two random variables have the joint density
+
+$$
+f(x_1, x_2) =
+\begin{cases}
+x_1 x_2 & \text{for } 0 < x_1 < 2, 0 < x_2 < 1\\
+0 & \text{elsewhere}
+\end{cases}
+$$
+
+ﬁnd the probabilities that
+
+### (a) both random variables will take on values less than 1;
+
+### (b) the sum of the values taken on by the two random variables will be less than 1.
+
+### opg. 5.75
+
+With reference to Exercise 5.73, ﬁnd the joint cumula- tive distribution function of the two random variables, the cumulative distribution functions of the individual random variables, and check whether the two random variables are independent.
+
+## Ekstra
+
+Lav et program, der genererer n=10 tilfældige, normalfordelte tal. Vis tallene på et normalfordelingsplot. Kør programmet flere gange for at se de tilfældige ændringer. Prøv det samme igen med n=100 og n=1000.

@@ -1,5 +1,8 @@
 ---
----
+title: "R Notebook"
+output:
+  pdf_document: default
+  html_notebook: default
 ---
 
 # Frivillig Afleveringsopgave
@@ -40,7 +43,7 @@ alpha = 0.05
 sigma = 2.8
 n = length(D)
 z_alpha = qnorm(alpha/2, lower.tail = FALSE)
-cat(Xbar - z_alpha * sigma / sqrt(n), "< 𝜇 <", Xbar + z_alpha * sigma / sqrt(n))
+cat(Xbar - z_alpha * sigma / sqrt(n), "< mu <", Xbar + z_alpha * sigma / sqrt(n))
 ```
 
 Et 95% konfidensinterval betyder at middelværdien vil ligge indenfor intervallet (her fra 166.7 til 170.3) med 95% sikkerhed. Det vil sige, at hvis man finder en stikprøve hvor dette ikke gælder vil det kun ske 5% af gangende, og at det da er statistisk usandsynligt.
@@ -146,7 +149,7 @@ $$
 
 ### c. I figur 1 og i figur 2 ses et Venn-diagram med hvide og gule områder.
 
-### ![](images/clipboard-1032144662.png)
+![](images/clipboard-1032144662.png)
 
 -   Beskriv med ord, hvilke ventiler det gule område svarer til i figur 1.
 

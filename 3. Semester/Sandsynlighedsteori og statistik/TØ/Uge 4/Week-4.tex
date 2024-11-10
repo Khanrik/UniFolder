@@ -1,0 +1,504 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{article}
+\usepackage{amsmath,amssymb}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\usepackage[margin=1in]{geometry}
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\usepackage{longtable,booktabs,array}
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  pdftitle={R Notebook},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\title{R Notebook}
+\author{}
+\date{\vspace{-2.5em}}
+
+\begin{document}
+\maketitle
+
+\section{Uge 4}\label{uge-4}
+
+\subsection{\texorpdfstring{\textbf{Opgave} om en robot til
+sprøjtemaling af
+emner}{Opgave om en robot til sprøjtemaling af emner}}\label{opgave-om-en-robot-til-spruxf8jtemaling-af-emner}
+
+En robot til sprøjtemaling laver utilsigtede 'helligdage', d.v.s. små
+pletter, der ikke er blevet dækket af maling. Robotten laver i
+gennemsnit 0.8 helligdage per malet kvadrat meter. Robotten skal male 70
+cirkelformede skiver på forsiden. Hver skive har en diameter på 1.2 m
+
+\subsubsection{a. Hvor mange helligdage må der forventes at være på en
+tilfældig
+skive?}\label{a.-hvor-mange-helligdage-muxe5-der-forventes-at-vuxe6re-puxe5-en-tilfuxe6ldig-skive}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{A }\OtherTok{=}\NormalTok{ pi }\SpecialCharTok{*} \FloatTok{0.6}\SpecialCharTok{\^{}}\DecValTok{2}
+\NormalTok{lambda }\OtherTok{=}\NormalTok{ A}\SpecialCharTok{*}\FloatTok{0.8}
+\FunctionTok{cat}\NormalTok{(}\StringTok{"Der må forventes at være"}\NormalTok{, lambda, }\StringTok{"helligdage på en tilfældig skive"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Der må forventes at være 0.9047787 helligdage på en tilfældig skive
+\end{verbatim}
+
+\subsubsection{b. Hvilken sandsynlighedsfordeling vil du bruge til at
+beskrive antal helligdage på en skive, og hvad er fordelingens
+middelværdi, varians og
+standardafvigelse?}\label{b.-hvilken-sandsynlighedsfordeling-vil-du-bruge-til-at-beskrive-antal-helligdage-puxe5-en-skive-og-hvad-er-fordelingens-middelvuxe6rdi-varians-og-standardafvigelse}
+
+Da der ikke er en grænse for hvor mange pletter som kan være på en
+skive, og at der enten er eller ikke er en plet, vil antallet af
+helligdage kunne beskrives med en poisson-fordeling.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{mu }\OtherTok{=}\NormalTok{ lambda}
+\NormalTok{sigma }\OtherTok{=} \FunctionTok{sqrt}\NormalTok{(lambda)}
+\FunctionTok{cat}\NormalTok{(}\StringTok{"Fordelingens middelværdi, varians, og standardafvigelse er hhv."}\NormalTok{, mu, sigma}\SpecialCharTok{\^{}}\DecValTok{2}\NormalTok{, sigma)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Fordelingens middelværdi, varians, og standardafvigelse er hhv. 0.9047787 0.9047787 0.9511986
+\end{verbatim}
+
+\subsubsection{c.~Hvad er sandsynligheden for, at ingen af de 70 skiver
+har
+helligdage?}\label{c.-hvad-er-sandsynligheden-for-at-ingen-af-de-70-skiver-har-helligdage}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{dpois}\NormalTok{(}\DecValTok{0}\NormalTok{, lambda)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.4046314
+\end{verbatim}
+
+\subsubsection{d.~Beregn det forventede antal skiver med henholdsvis 0,
+1, 2, 3 og 4 eller flere
+helligdage.}\label{d.-beregn-det-forventede-antal-skiver-med-henholdsvis-0-1-2-3-og-4-eller-flere-helligdage.}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DecValTok{1}\SpecialCharTok{{-}}\FunctionTok{ppois}\NormalTok{(}\SpecialCharTok{{-}}\DecValTok{1}\NormalTok{,lambda)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 1
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DecValTok{1}\SpecialCharTok{{-}}\FunctionTok{ppois}\NormalTok{(}\DecValTok{0}\NormalTok{,lambda)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.5953686
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DecValTok{1}\SpecialCharTok{{-}}\FunctionTok{ppois}\NormalTok{(}\DecValTok{1}\NormalTok{,lambda)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.2292667
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DecValTok{1}\SpecialCharTok{{-}}\FunctionTok{ppois}\NormalTok{(}\DecValTok{2}\NormalTok{,lambda)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.06364609
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DecValTok{1}\SpecialCharTok{{-}}\FunctionTok{ppois}\NormalTok{(}\DecValTok{3}\NormalTok{,lambda)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.0136961
+\end{verbatim}
+
+\subsection{Opgave om fjedres
+fjederkonstant}\label{opgave-om-fjedres-fjederkonstant}
+
+En dansk virksomhed er specialiseret i produktion af fjedre af mange
+forskellige typer og specifikationer. For en bestemt type galvaniseret
+trækfjeder oplyser virksomheden, at fjedre af denne type har en
+forventet fjederkonstant på 4.0 N/mm. Mere præcist oplyser virksomheden,
+at fjederkonstanten for fjedrene er normalfordelt med middelværdi 4.0
+N/mm og standardafvigelse 0.1 N/mm.
+
+Beregn følgende under forudsætning af, at virksomhedens oplysninger er
+korrekte:
+
+\subsubsection{a. Beregn sandsynligheden for at en tilfældig fjeder af
+den omtalte type har en fjederkonstant på præcis 4.0
+N/mm.}\label{a.-beregn-sandsynligheden-for-at-en-tilfuxe6ldig-fjeder-af-den-omtalte-type-har-en-fjederkonstant-puxe5-pruxe6cis-4.0-nmm.}
+
+Da sandsynligheden modelleres med en kontinuær tæthedsfunktion og at
+integralet under funktionen bestemmer sandsynligheden, vil det betyde at
+enhver specifik værdi vil have en sandsynlighed på 0\% for at optræde.
+Der vil kun være en ikke 0\% sandsynlighed når der kigges på
+intervaller.
+
+\subsubsection{b. Beregn sandsynligheden for at fjederens fjederkonstant
+er under 3.7
+N/mm.}\label{b.-beregn-sandsynligheden-for-at-fjederens-fjederkonstant-er-under-3.7-nmm.}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{mu }\OtherTok{=} \FloatTok{4.0}
+\NormalTok{sigma }\OtherTok{=} \FloatTok{0.1}
+
+\FunctionTok{pnorm}\NormalTok{(}\FloatTok{3.7}\NormalTok{, mu, sigma)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.001349898
+\end{verbatim}
+
+\subsubsection{c.~Beregn sandsynligheden for at fjederens fjederkonstant
+er større end 4.1
+N/mm.}\label{c.-beregn-sandsynligheden-for-at-fjederens-fjederkonstant-er-stuxf8rre-end-4.1-nmm.}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DecValTok{1} \SpecialCharTok{{-}} \FunctionTok{pnorm}\NormalTok{(}\FloatTok{4.1}\NormalTok{, mu, sigma)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.1586553
+\end{verbatim}
+
+\subsubsection{d.~Beregn et interval omkring middelværdien, som 99\% af
+fjedrene vil
+tilhøre.}\label{d.-beregn-et-interval-omkring-middelvuxe6rdien-som-99-af-fjedrene-vil-tilhuxf8re.}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{neg\_z\_alpha }\OtherTok{=} \FunctionTok{qnorm}\NormalTok{(}\FloatTok{0.005}\NormalTok{, mu, sigma)}
+\NormalTok{z\_alpha }\OtherTok{=} \FunctionTok{qnorm}\NormalTok{(}\FloatTok{0.995}\NormalTok{, mu, sigma)}
+\FunctionTok{cat}\NormalTok{(}\StringTok{"Intervallet, som 99\% af fjedrene vil tilhøre er fra"}\NormalTok{, neg\_z\_alpha, }\StringTok{"til"}\NormalTok{, z\_alpha)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Intervallet, som 99% af fjedrene vil tilhøre er fra 3.742417 til 4.257583
+\end{verbatim}
+
+\subsection{\texorpdfstring{\textbf{Eksamensopgave} 2022 1 om fordeling
+af bølgers
+højde}{Eksamensopgave 2022 1 om fordeling af bølgers højde}}\label{eksamensopgave-2022-1-om-fordeling-af-buxf8lgers-huxf8jde}
+
+Selv i stabilt vejr er der stor variation i enkeltbølgers højde. En
+gruppe ingeniørstuderende vil undersøge hvordan højden af enkeltbølger
+fordeler sig. De registrerer 329 bølgers højde på det samme sted i løbet
+af 10 minutter på en dag med stille vejr. Tabellen nedenfor viser antal
+bølger fordelt efter højde i intervaller på 20 cm. F.eks. kan man se, at
+de studerende talte 22 bølger i intervallet mellem 1.0 og 1.2 meters
+bølgehøjde.
+
+\begin{longtable}[]{@{}ll@{}}
+\toprule\noalign{}
+Bølgehøjde (m) & Antal bølger \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+0.0 - 0.2 & 25 \\
+0.2 - 0.4 & 65 \\
+0.4 - 0.6 & 84 \\
+0.6 - 0.8 & 71 \\
+0.8 - 1.0 & 46 \\
+1.0 - 1.2 & 22 \\
+1.2 - 1.4 & 13 \\
+1.4 - 1.6 & 3 \\
+\end{longtable}
+
+\subsubsection{a. Omregn antal bølger i hvert interval til
+sandsynligheden for at få en bølge indenfor
+intervallet.}\label{a.-omregn-antal-buxf8lger-i-hvert-interval-til-sandsynligheden-for-at-fuxe5-en-buxf8lge-indenfor-intervallet.}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{D }\OtherTok{=} \FunctionTok{read.table}\NormalTok{(}\StringTok{"Data\_ECEStat\_2022\_opg1.csv"}\NormalTok{, }\AttributeTok{header=}\ConstantTok{TRUE}\NormalTok{, }\AttributeTok{sep=}\StringTok{";"}\NormalTok{)}
+\NormalTok{FRA }\OtherTok{=}\NormalTok{ D}\SpecialCharTok{$}\NormalTok{Opg1\_Hoejde\_Fra}
+\NormalTok{TIL }\OtherTok{=}\NormalTok{ D}\SpecialCharTok{$}\NormalTok{Opg1\_Hoejde\_Til}
+\NormalTok{ANTAL }\OtherTok{=}\NormalTok{ D}\SpecialCharTok{$}\NormalTok{Opg1\_Observeret\_Antal}
+
+\NormalTok{P\_wave }\OtherTok{=}\NormalTok{ ANTAL }\SpecialCharTok{/} \FunctionTok{sum}\NormalTok{(ANTAL)}
+\NormalTok{D}\SpecialCharTok{$}\NormalTok{P\_wave }\OtherTok{=}\NormalTok{ P\_wave}
+\NormalTok{D}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   Opg1_Hoejde_Fra Opg1_Hoejde_Til Opg1_Observeret_Antal      P_wave
+## 1             0.0             0.2                    25 0.075987842
+## 2             0.2             0.4                    65 0.197568389
+## 3             0.4             0.6                    84 0.255319149
+## 4             0.6             0.8                    71 0.215805471
+## 5             0.8             1.0                    46 0.139817629
+## 6             1.0             1.2                    22 0.066869301
+## 7             1.2             1.4                    13 0.039513678
+## 8             1.4             1.6                     3 0.009118541
+\end{verbatim}
+
+\subsubsection{b. Beregn den kumulerede sandsynlighedsfordeling for
+bølgehøjden. Hvad er sandsynligheden for, at den næste bølge er højere
+end 0.8
+m?}\label{b.-beregn-den-kumulerede-sandsynlighedsfordeling-for-buxf8lgehuxf8jden.-hvad-er-sandsynligheden-for-at-den-nuxe6ste-buxf8lge-er-huxf8jere-end-0.8-m}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{P\_wave\_cum }\OtherTok{=} \FunctionTok{cumsum}\NormalTok{(P\_wave)}
+\NormalTok{D}\SpecialCharTok{$}\NormalTok{P\_wave\_cum }\OtherTok{=}\NormalTok{ P\_wave\_cum}
+\NormalTok{D}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   Opg1_Hoejde_Fra Opg1_Hoejde_Til Opg1_Observeret_Antal      P_wave P_wave_cum
+## 1             0.0             0.2                    25 0.075987842 0.07598784
+## 2             0.2             0.4                    65 0.197568389 0.27355623
+## 3             0.4             0.6                    84 0.255319149 0.52887538
+## 4             0.6             0.8                    71 0.215805471 0.74468085
+## 5             0.8             1.0                    46 0.139817629 0.88449848
+## 6             1.0             1.2                    22 0.066869301 0.95136778
+## 7             1.2             1.4                    13 0.039513678 0.99088146
+## 8             1.4             1.6                     3 0.009118541 1.00000000
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{P\_greater\_8 }\OtherTok{=} \DecValTok{1} \SpecialCharTok{{-}}\NormalTok{ P\_wave\_cum[}\DecValTok{4}\NormalTok{]}
+\NormalTok{P\_greater\_8}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.2553191
+\end{verbatim}
+
+\subsubsection{c.~Beregn den gennemsnitlige bølgehøjde (antag at alle
+bølgerne i et interval har samme højde, nemlig intervallets
+midterværdi).}\label{c.-beregn-den-gennemsnitlige-buxf8lgehuxf8jde-antag-at-alle-buxf8lgerne-i-et-interval-har-samme-huxf8jde-nemlig-intervallets-midtervuxe6rdi.}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{mean\_height }\OtherTok{=} \FunctionTok{sum}\NormalTok{((FRA}\SpecialCharTok{+}\NormalTok{TIL)}\SpecialCharTok{/}\DecValTok{2} \SpecialCharTok{*}\NormalTok{ ANTAL) }\SpecialCharTok{/} \FunctionTok{sum}\NormalTok{(ANTAL)}
+\NormalTok{mean\_height}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.6100304
+\end{verbatim}
+
+\subsection{\texorpdfstring{\textbf{Eksamensopgave} 2023 2a-b om en F1
+racers
+bremsekøling}{Eksamensopgave 2023 2a-b om en F1 racers bremsekøling}}\label{eksamensopgave-2023-2a-b-om-en-f1-racers-bremsekuxf8ling}
+
+Bremseevnen er ikke den eneste parameter, der er vigtig i valget af
+bremsefabrikat. Bremsernes evne til at køle bremseskiverne ned igen
+efter en opbremsning er lige så vigtig. Bremserne virker ved at overføre
+racerbilens bevægelsesenergi til friktion (varme). Ved en hård
+opbremsning stiger bremsernes temperatur med ca. 100 °C pr. tiendedel
+sekund, og temperaturen kan overstige 1000 °C efter en opbremsning.
+Bremserne virker bedst mellem 400 og 800 °C, og de tager skade over 1000
+°C. Racerbilens kølesystem til bremserne skal effektivt fjerne varmen
+fra bremseskiverne, så de ikke tager skade, og så bremserne er klar til
+næste nedbremsning. Ingeniørerne fra MoneyGram Haas F1 Team har målt,
+hvor godt bremserne fra X Breaking Systems køler ned. For 800
+nedbremsninger har de målt nedkølingen som temperaturfaldet ∆𝑡 i det
+første sekund efter bremsepedalen slippes. De 800 målinger af
+nedkølingen ∆𝑡 fordeler sig som vist i tabellen nedenfor.
+
+\begin{longtable}[]{@{}ll@{}}
+\toprule\noalign{}
+Nedkøling & Antal \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\(\Delta t < 150^{\circ}C\) & 35 \\
+\(150^{\circ}C ≤ \Delta𝑡 < 200^{\circ}C\) & 179 \\
+\(200^{\circ}C ≤ \Delta𝑡 < 250^{\circ}C\) & 351 \\
+\(250^{\circ}C ≤ \Delta𝑡 < 300^{\circ}C\) & 205 \\
+\(\Delta𝑡 \geq 300^{\circ}C\) & 30 \\
+I Alt & 800 \\
+\end{longtable}
+
+Ingeniørerne antager, at bremsernes køleevne, målt som ∆𝑡, kan
+modelleres statistisk som en normalfordeling. De har estimeret
+normalfordelingens middelværdi og standardafvigelse ud fra de 800
+målinger til at være henholdsvis \(\hat{\mu} = 229^{\circ}C\) og
+\(\hat{\sigma} = 41^{\circ}C\). De ønsker at benytte en Goodness of Fit
+test til at afgøre, om antagelsen om normalfordeling er plausibel.
+
+\subsubsection{a. Beregn -- under forudsætning af ingeniørernes
+antagelse af en normalfordelt statistisk model -- sandsynlighederne for
+at nedkølingen efter en opbremsning ligger indenfor
+temperaturintervallerne i tabellen. Du skal altså beregne de 5
+sandsynligheder: P(∆t \textless{} 150 ℃), P(150 ℃ ≤ ∆t \textless{} 200
+℃), P(200 ℃ ≤ ∆t \textless{} 250 ℃), P(250 ℃ ≤ ∆t \textless{} 300 ℃),
+P(∆t ≥ 300
+℃).}\label{a.-beregn-under-forudsuxe6tning-af-ingeniuxf8rernes-antagelse-af-en-normalfordelt-statistisk-model-sandsynlighederne-for-at-nedkuxf8lingen-efter-en-opbremsning-ligger-indenfor-temperaturintervallerne-i-tabellen.-du-skal-altsuxe5-beregne-de-5-sandsynligheder-pt-150-p150-t-200-p200-t-250-p250-t-300-pt-300-.}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{D }\OtherTok{=} \FunctionTok{read.table}\NormalTok{(}\StringTok{"Data\_ECEStat\_2023\_opg2.csv"}\NormalTok{, }\AttributeTok{header=}\ConstantTok{TRUE}\NormalTok{, }\AttributeTok{sep =} \StringTok{";"}\NormalTok{)}
+\NormalTok{ANTAL }\OtherTok{=}\NormalTok{ D}\SpecialCharTok{$}\NormalTok{ObserveretAntal}
+\NormalTok{P\_interval }\OtherTok{=}\NormalTok{ ANTAL }\SpecialCharTok{/} \DecValTok{800}
+\NormalTok{D}\SpecialCharTok{$}\NormalTok{P\_interval }\OtherTok{=}\NormalTok{ P\_interval}
+\NormalTok{D}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   Temperaturinterval_tekst Temperaturinterval_nr ObserveretAntal P_interval
+## 1                    t<150                     1              35    0.04375
+## 2           150 <= t < 200                     2             179    0.22375
+## 3           200 <= t < 250                     3             351    0.43875
+## 4           250 <= t < 300                     4             205    0.25625
+## 5                 t >= 300                     5              30    0.03750
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{barplot}\NormalTok{(ANTAL, }\AttributeTok{names.arg =}\NormalTok{ D}\SpecialCharTok{$}\NormalTok{Temperaturinterval\_tekst)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Week-4_files/figure-latex/unnamed-chunk-17-1.pdf}
+
+Yup det er en normalfordeling.
+
+\subsubsection{b. Beregn under antagelse af ovennævnte normalfordeling
+det forventede antal nedbremsninger i hver af de fem
+temperaturintervaller, når der i alt foretages 800
+nedbremsninger.}\label{b.-beregn-under-antagelse-af-ovennuxe6vnte-normalfordeling-det-forventede-antal-nedbremsninger-i-hver-af-de-fem-temperaturintervaller-nuxe5r-der-i-alt-foretages-800-nedbremsninger.}
+
+\end{document}

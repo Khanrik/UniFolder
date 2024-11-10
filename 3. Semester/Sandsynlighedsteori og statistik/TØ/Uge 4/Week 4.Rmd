@@ -1,3 +1,10 @@
+---
+title: "R Notebook"
+output:
+  pdf_document: default
+  html_notebook: default
+---
+
 # Uge 4
 
 ## **Opgave** om en robot til sprøjtemaling af emner
@@ -81,4 +88,92 @@ pnorm(3.7, mu, sigma)
 neg_z_alpha = qnorm(0.005, mu, sigma)
 z_alpha = qnorm(0.995, mu, sigma)
 cat("Intervallet, som 99% af fjedrene vil tilhøre er fra", neg_z_alpha, "til", z_alpha)
+```
+
+## **Eksamensopgave** 2022 1 om fordeling af bølgers højde
+
+Selv i stabilt vejr er der stor variation i enkeltbølgers højde. En gruppe ingeniørstuderende vil undersøge hvordan højden af enkeltbølger fordeler sig. De registrerer 329 bølgers højde på det samme sted i løbet af 10 minutter på en dag med stille vejr. Tabellen nedenfor viser antal bølger fordelt efter højde i intervaller på 20 cm. F.eks. kan man se, at de studerende talte 22 bølger i intervallet mellem 1.0 og 1.2 meters bølgehøjde.
+
+| Bølgehøjde (m) | Antal bølger |
+|----------------|--------------|
+| 0.0 - 0.2      | 25           |
+| 0.2 - 0.4      | 65           |
+| 0.4 - 0.6      | 84           |
+| 0.6 - 0.8      | 71           |
+| 0.8 - 1.0      | 46           |
+| 1.0 - 1.2      | 22           |
+| 1.2 - 1.4      | 13           |
+| 1.4 - 1.6      | 3            |
+
+### a. Omregn antal bølger i hvert interval til sandsynligheden for at få en bølge indenfor intervallet.
+
+```{r}
+D = read.table("Data_ECEStat_2022_opg1.csv", header=TRUE, sep=";")
+FRA = D$Opg1_Hoejde_Fra
+TIL = D$Opg1_Hoejde_Til
+ANTAL = D$Opg1_Observeret_Antal
+
+P_wave = ANTAL / sum(ANTAL)
+D$P_wave = P_wave
+D
+```
+
+### b. Beregn den kumulerede sandsynlighedsfordeling for bølgehøjden. Hvad er sandsynligheden for, at den næste bølge er højere end 0.8 m?
+
+```{r}
+P_wave_cum = cumsum(P_wave)
+D$P_wave_cum = P_wave_cum
+D
+```
+
+```{r}
+P_greater_8 = 1 - P_wave_cum[4]
+P_greater_8
+```
+
+### c. Beregn den gennemsnitlige bølgehøjde (antag at alle bølgerne i et interval har samme højde, nemlig intervallets midterværdi).
+
+```{r}
+mean_height = sum((FRA+TIL)/2 * ANTAL) / sum(ANTAL)
+mean_height
+```
+
+## **Eksamensopgave** 2023 2a-b om en F1 racers bremsekøling
+
+Bremseevnen er ikke den eneste parameter, der er vigtig i valget af bremsefabrikat. Bremsernes evne til at køle bremseskiverne ned igen efter en opbremsning er lige så vigtig. Bremserne virker ved at overføre racerbilens bevægelsesenergi til friktion (varme). Ved en hård opbremsning stiger bremsernes temperatur med ca. 100 °C pr. tiendedel sekund, og temperaturen kan overstige 1000 °C efter en opbremsning. Bremserne virker bedst mellem 400 og 800 °C, og de tager skade over 1000 °C. Racerbilens kølesystem til bremserne skal effektivt fjerne varmen fra bremseskiverne, så de ikke tager skade, og så bremserne er klar til næste nedbremsning. Ingeniørerne fra MoneyGram Haas F1 Team har målt, hvor godt bremserne fra X Breaking Systems køler ned. For 800 nedbremsninger har de målt nedkølingen som temperaturfaldet ∆𝑡 i det første sekund efter bremsepedalen slippes. De 800 målinger af nedkølingen ∆𝑡 fordeler sig som vist i tabellen nedenfor.
+
+| Nedkøling                               | Antal |
+|-----------------------------------------|-------|
+| $\Delta t < 150^{\circ}C$               | 35    |
+| $150^{\circ}C ≤ \Delta𝑡 < 200^{\circ}C$ | 179   |
+| $200^{\circ}C ≤ \Delta𝑡 < 250^{\circ}C$ | 351   |
+| $250^{\circ}C ≤ \Delta𝑡 < 300^{\circ}C$ | 205   |
+| $\Delta𝑡 \geq 300^{\circ}C$             | 30    |
+| I Alt                                   | 800   |
+
+Ingeniørerne antager, at bremsernes køleevne, målt som ∆𝑡, kan modelleres statistisk som en normalfordeling. De har estimeret normalfordelingens middelværdi og standardafvigelse ud fra de 800 målinger til at være henholdsvis $\hat{\mu} = 229^{\circ}C$ og $\hat{\sigma} = 41^{\circ}C$. De ønsker at benytte en Goodness of Fit test til at afgøre, om antagelsen om normalfordeling er plausibel.
+
+### a. Beregn – under forudsætning af ingeniørernes antagelse af en normalfordelt statistisk model – sandsynlighederne for at nedkølingen efter en opbremsning ligger indenfor temperaturintervallerne i tabellen. Du skal altså beregne de 5 sandsynligheder: P(∆t \< 150 ℃), P(150 ℃ ≤ ∆t \< 200 ℃), P(200 ℃ ≤ ∆t \< 250 ℃), P(250 ℃ ≤ ∆t \< 300 ℃), P(∆t ≥ 300 ℃).
+
+```{r}
+D = read.table("Data_ECEStat_2023_opg2.csv", header=TRUE, sep = ";")
+mu = 229
+sigma = 41
+
+P_t150 = pnorm(150, mu, sigma)
+P_150t200 = pnorm(200, mu, sigma) - pnorm(150, mu, sigma)
+P_200t250 = pnorm(250, mu, sigma) - pnorm(200, mu, sigma)
+P_250t300 = pnorm(300, mu, sigma) - pnorm(250, mu, sigma)
+P_t300 = 1 - pnorm(300, mu, sigma)
+
+P_interval = c(P_t150, P_150t200, P_200t250, P_250t300, P_t300)
+
+cat("Sandsynligheden for de forskellige ting er: \nP(t < 150) =", P_interval[1], "\nP(150 <= t < 200) =", P_interval[2], "\nP(200 <= t < 250) =", P_interval[3], "\nP(250 <= t < 300 =", P_interval[4], "\nP(t >= 300 =", P_interval[5])
+```
+
+### b. Beregn under antagelse af ovennævnte normalfordeling det forventede antal nedbremsninger i hver af de fem temperaturintervaller, når der i alt foretages 800 nedbremsninger.
+
+```{r}
+cat("Det forventede antal nedbremsninger for hvert interval vil hhv. være\n", 800 * P_interval)
+
 ```

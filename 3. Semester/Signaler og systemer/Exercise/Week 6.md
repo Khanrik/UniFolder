@@ -49,6 +49,34 @@ $$
 \phi_{1} = 0, \; \phi_{3} = \frac{\pi}{2}
 $$
 
+## Problem 3.2
+A discrete-time periodic signal $x[n]$ is real valued and has a fundamental period $N = 5$. The nonzero Fourier series coefficients for $x[n]$ are
+$$
+a_{0} = 1, a_{2} = a^{*}_{-2} = e^{ j \frac{\pi}{4} }, a_{4} = a^{*}_{-4} = 2e^{ j \frac{\pi}{3} }
+$$
+Express $x[n]$ in the form
+$$
+x[n] = A_{0} + \sum^{\infty}_{k = 1} A_{k} \sin(\omega_{k} n + \phi_{k})
+$$
+
+### Solution
+The fundamental frequency can be calculated to
+$$
+\Omega_{0} = \frac{2\pi}{N} = \frac{2\pi}{5} = \frac{2\pi}{5}
+$$
+
+The given terms of $x[n]$ can now be written on the form $a_{k}e^{j\Omega_{0}kn}$
+$$
+\begin{align*}
+x[n] &= 1 \cdot e^{ 0 j \frac{2\pi}{5} n } + e^{ j \frac{\pi}{4} } e^{ 2 j \frac{2\pi}{5} n } + e^{ - j \frac{\pi}{4} } e^{ -2 j \frac{2\pi}{5} n} + 2e^{ j \frac{\pi}{3} } e^{ 4 j \frac{2\pi}{5} n } + 2e^{ -j \frac{\pi}{3} } e^{ - 4j \frac{2\pi}{5} n }\\
+&= 1 + e^{ j \frac{\pi}{4} + 2 j \frac{2\pi}{5} n } + e^{ - j \frac{\pi}{4} - 2 j \frac{2\pi}{5} n } + 2 \left( e^{ j \frac{\pi}{3} + 4 j \frac{2\pi}{5} n } + e^{ -j \frac{\pi}{3} - 4j \frac{2\pi}{5} n } \right)\\
+&= 1 + 2\cos\left( \frac{\pi}{4} + \frac{4\pi}{5} n \right) + 4 \cos\left( \frac{\pi}{3} + \frac{8\pi}{5} n \right)\\
+&= 1 + 2\sin\left( \frac{3\pi}{4} + \frac{4\pi}{5} n \right) + 4 \sin\left( \frac{5\pi}{6} + \frac{8\pi}{5} n \right)
+\end{align*}
+$$
+
+
+
 ## Problem 3.3
 For the continuous-time periodic signal
 $$
@@ -64,7 +92,9 @@ The cosine and sine terms can be rewritten using Euler's relations resulting in
 $$
 \begin{align*}
 x(t) &= 2 + \frac{e^{j \frac{2\pi}{3} t} + e^{-j \frac{2\pi}{3} t}}{2} + 4 \frac{e^{j \frac{5\pi}{3} t} - e^{-j \frac{5\pi}{3} t}}{2j}\\
-&= 2 + \frac{1}{2} (e^{j \frac{2\pi}{3} t} + e^{-j \frac{2\pi}{3} t}) + 2j (e^{j \frac{5\pi}{3} t} - e^{-j \frac{5\pi}{3} t})
+&= 2 + \frac{1}{2} \left( e^{j \frac{2\pi}{3} t} + e^{-j \frac{2\pi}{3} t} \right) + \frac{2}{j} \left( e^{j \frac{5\pi}{3} t} - e^{-j \frac{5\pi}{3} t} \right)\\\\
+&= 2 + \frac{1}{2} \left( e^{j \frac{2\pi}{3} t} + e^{-j \frac{2\pi}{3} t} \right) + \frac{2j}{j \cdot j} \left( e^{j \frac{5\pi}{3} t} - e^{-j \frac{5\pi}{3} t} \right)\\
+&= 2 + \frac{1}{2} \left( e^{j \frac{2\pi}{3} t} + e^{-j \frac{2\pi}{3} t} \right) - 2j \left( e^{j \frac{5\pi}{3} t} - e^{-j \frac{5\pi}{3} t} \right)
 \end{align*}
 $$
 It can be seen that the angular frequency of the exponential terms are $\frac{2\pi}{3}$ and $\frac{5\pi}{3}$. The greatest common divisor between these two terms is $\frac{\pi}{3}$, which must mean that the fundamental frequency is
@@ -79,7 +109,7 @@ $$
 
 From this it can be seen that the different Fourier series coefficients should be
 $$
-a_{0} = 2, \; a_{2} = a_{-2} = \frac{1}{2}, \; a_{5} = a_{-5}^{*} = 2j
+a_{0} = 2, \; a_{2} = a_{-2} = \frac{1}{2}, \; a_{5} = a_{-5}^{*} = -2j
 $$
 
 ## Problem 3.4
@@ -110,7 +140,7 @@ $$
 a_{k} = \frac{1}{2} \int^{2}_{0} x(t) \cdot e^{-jk \frac{2\pi}{2} t} \, dt = \frac{1}{2} \int^{2}_{0} x(t) \cdot e^{-jk \pi t} \, dt
 $$
 
-Inserting the two different intervals from the signals piecewise function gives
+Inserting the two different intervals from the signals piece-wise function gives
 $$
 \begin{align*}
 a_{k} &= \frac{1}{2} \left( \int^{1}_{0} 1.5 \cdot e^{- j k \pi t} \, dt + \int^{2}_{1} (-1.5) \cdot e^{- j k \pi t} \, dt  \right)\\

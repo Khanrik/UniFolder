@@ -129,7 +129,7 @@ x_{1}[n] &= \frac{1}{2\pi} \int_{2\pi} \left(\sum_{k = -\infty}^{\infty} \left\{
 \end{align*}
 $$
 
-### (a)
+### (b)
 $$
 \begin{align*}
 x_{2}[n] &= \frac{1}{2\pi} \int_{2\pi} \left(\begin{cases} 2j, & 0 < \omega \leq \pi \\ -2j, & -\pi < \omega \leq 0 \end{cases}\right) e^{ j\omega n } \, d\omega\\

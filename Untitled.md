@@ -1,36 +1,21 @@
 $$
 \begin{align*}
-\det(A - \lambda I_{3}) &= 0\\
-\det\left( \begin{bmatrix}
-1 - \lambda & 0 & 0 \\
-1 & 3 - \lambda & 1 \\
--2 & -4 & -1-\lambda
-\end{bmatrix} \right) &= 0\\
-
-\end{align*}
-$$
-
-$$
-\begin{align*}
-A - \lambda I_{3} &= \begin{bmatrix}
-1-1 & 0 & 0 \\
-1 & 3-1 & 1 \\
--2 & -4 & -1-1
+\textbf{J}(x,y) &= \begin{bmatrix}
+30 - 3 \cdot 0 - 0 & -0 \\
+2 \cdot 0 & 20 - 4 \cdot 0 + 2 \cdot 0
 \end{bmatrix}\\
 &= \begin{bmatrix}
-0 & 0 & 0 \\
-1 & 2 & 1 \\
--2 & -4 & -2
-\end{bmatrix}\\
-&\sim_{R_{2} \to R_{2} + 2R_{1}}\\
-&\begin{bmatrix}
-0 & 0 & 0 \\
-1 & 2 & 1 \\
-0 & 0 & 0
+30 & 0 \\
+0 & 20
 \end{bmatrix}
 \end{align*}
 $$
 
 $$
-
+\begin{align*}
+\det(A-\lambda I_{3}) &= \det \left( \begin{bmatrix}1-\lambda & 2 & 3 \\ 4 & 5-\lambda & 6 \\ 7 & 8 & 9-\lambda \end{bmatrix}\right) \\ 
+&= (1-\lambda)\det \left(\begin{bmatrix}5-\lambda & 6 \\8 & 9-\lambda\end{bmatrix}\right)-2\det \left(\begin{bmatrix}4 & 6 \\7 & 9-\lambda\end{bmatrix}\right)+3\det \left(\begin{bmatrix}4 & 5-\lambda \\7 & 8\end{bmatrix}\right) \\ 
+&= (1-\lambda)((5-\lambda)(9-\lambda)-6\cdot8)-2(4\cdot(9-\lambda)-6\cdot7)+3(4\cdot8-(5-\lambda)\cdot7) \\ 
+&(1-lam*((5-lam*(9-lam-6*8)-2*(4*(9-lam-6*7)+3*(4*8-(5-lam*7)
+\end{align*}
 $$

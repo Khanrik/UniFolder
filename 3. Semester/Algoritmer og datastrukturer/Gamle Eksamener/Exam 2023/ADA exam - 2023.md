@@ -1,0 +1,3 @@
+Time was at ??:??:?? when i was done
+
+## Opgave 1

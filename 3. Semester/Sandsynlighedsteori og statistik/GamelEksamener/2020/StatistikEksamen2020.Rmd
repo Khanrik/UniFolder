@@ -1,0 +1,161 @@
+---
+title: "StatistikEksamen2020"
+output:
+  pdf_document: default
+  html_notebook: default
+---
+
+# Statistik Eksamensæt 2020
+
+## Opgave 1 – Byen med det første dødsfald i Italien
+
+### a.
+
+Det antages, at det er lige sandsynligt for alle indbyggere at blive smittet, hvilket betyder at sandsynlighederne kan findes som antallet af smittet for hver hændelse ($C$) delt med antallet af indbyggere ($U$). Beregnes dette bliver sandsynligheden for de forskellige hændelser:
+
+```{r}
+U = 3300
+C1 = 89
+C2 = 6
+C3 = 0
+PC1 = C1 / U
+PC2 = C2 / U
+PC3 = C3 / U
+
+cat("P(C1) =", PC1, "\nP(C2) =", PC2, "\nP(C3) =", PC3)
+```
+
+### b.
+
+Da alle, der blev syge d. 20. marts, også blev syge d. 6. marts, vil det gælde at $P(C_2) = P(C_2 \cap C_1)$. Den betingede sandsynlighed kan findes som sandsyngligheden for fælleshændelsen delt med sandsynligheden for $C_1$. Den betingede sandsynlighed bliver da:
+
+```{r}
+PC2nC1 = PC2
+PC2lC1 = PC2nC1 / PC1
+cat("P(C2 | C1) =", PC2lC1)
+```
+
+### c.
+
+Gider ikke skrive forklaring nu
+
+```{r}
+S1nC1 = 89 - 63
+PS1nC1 = S1nC1 / U
+PS1lC1 = PS1nC1 / PC1
+
+S1barnC1 = 63
+PS1barnC1 = S1barnC1 / U
+PS1barlC1 = PS1nC1 / PC1
+
+PC1bar = 1 - PC1
+S1nC1bar = 127
+PS1nC1bar = S1nC1bar / U
+PS1lC1bar = PS1nC1bar / PC1bar
+
+cat("P(S1 | C1) =", PS1lC1, "\nP(S1bar | C1) =", PS1barlC1, "\nP(S1 | C1bar) =", PS1lC1bar)
+```
+
+### d.
+
+$S_1$ er antallet af folk, som udviser symptomer, hvilket må svare til alle dem dem med Corona fratrukket dem som ikke udviser symptomer ($S_1 \cap C_1$), adderet med alle dem som udviser symptomer, men ikke har Corona ($S_1 \cap \bar{C_1}$). Da det stadig antages at alle udfald i $U$ er lige sandsynlige, kan $P(S_1)$ beregnes som $\frac{S_1}{U}$. Dette vil resultere i:
+
+```{r}
+S1 = 89 - 63 + 127
+PS1 = S1 / U
+
+cat("P(S1) =", PS1)
+```
+
+### e.
+
+Gider ikke skrive forklaring nu
+
+```{r}
+PC1lS1 = PS1nC1 / PS1
+cat("P(C1 | S1) =", PC1lS1)
+```
+
+## Opgave 2 – Inkubationstid
+
+### a.
+
+Det givne kode kan genbruges, men med inkubationstiden sat til 14 døgn istedet for 7. Beregningen vil da vise anddelen af de smittede som forventes at udvise symptomer indenfor de 14 døgn karantæne. For at få anddelen som først vil udvise symptomer efter de 14 døgn skal den beregnede værdi trækkes fra 1. Dette vil resultere i følgende:
+
+```{r}
+## Hvor stor en andel af smittede vil have en inkubationstid på under 7 døgn?
+inku_14 = 14
+# Inkubationstid, der ønskes undersøgt
+log_inku_14 = log(inku_14)
+# Bemærk at i R er log() den naturlige logaritme.
+# Variablen log_inku_7 = 1.9459 er den naturlige logaritme til inkubationstiden.
+# Vi får at vide, at den naturlige logaritme til inkubationstiden følger en
+# normalfordeling med mu = 1.6198 og standardafvigelse sigma = 0.4387
+mu = 1.6198
+# Middelværdi
+sigma = 0.4387
+# Standardafvigelse
+andel_inku_under_14 = pnorm(log_inku_14, mu, sigma) # andel_inku_under_7 = 0.7714
+# 77 pct af smittede vil have udvist Covid-19 symptomer efter en uge.
+
+andel_inku_over_14 = 1 - andel_inku_under_14
+
+cat(andel_inku_over_14)
+
+```
+
+Mængden af smittede som vil udvise symptomerne efter karantænens udløb vil da være omkring 0.01 eller 1%.
+
+### b.
+
+Medianen kan findes ved at bruge den inverse tæthedsfunktion, hvilket kan gøres i R med qnorm funktionen. Da der dog arbejdes med en log-normal-fordelingen skal svaret først indsættes i den naturlige eksponentialfunktion for at få resultatet i døgn.
+
+```{r}
+m = exp(qnorm(0.5, mu, sigma))
+cat(m)
+```
+
+Forksergruppen har ret i at medianen for inkubationstiden er omkring 5.1 døgn eller mere præcis ca. 5.052 døgn.
+
+### c.
+
+Dette kan beregnes på samme måde, men med 95% som input i den inverse tæthedsfunktion istedet for 50% for medianen.
+
+```{r}
+symptom95 = exp(qnorm(0.95, mu, sigma))
+cat(symptom95)
+```
+
+Det forventes, at 95% af alle smittede vil have udvist symptomer efter 10.395 døgn.
+
+### d.
+
+Det empiriske interval bestemmes som $\mu \pm 3\sigma$, hvilket svarer til:
+
+```{r}
+cat("[", mu-3*sigma, ",", mu+3*sigma, "]\n")
+cat("eller\n")
+cat("[", exp(mu-3*sigma), ",", exp(mu+3*sigma), "], hvis det skal angives i døgn")
+```
+
+## Opgave 3 – Udvikling af antal døde i Danmark og Sverige
+
+### a.
+
+Dataene justeres først som ønsket ved at fjerne de første 10 datapunkter, samt at dele antal døde med antal million indbyggere for hvert land.
+
+```{r}
+popDK = 5.8
+popSE = 10.3
+
+D = read.table("Data_ECEStat_2020_opg3.csv", header=TRUE, sep=";")
+X = D$Opg3_dagnummer[11:39] - 80
+YDK = D$Opg3_akkum_dk[11:39] / popDK
+YSE = D$Opg3_akkum_se[11:39] / popSE
+
+plot(X, YDK, pch = 20, col = "red", main = "Antallet af døde med Covid-19 i 2020", xlab = "Antal dage efter dagnummer 80", ylab = "Antal døde pr. million indbygger")
+points(X, YSE, pch = 20, col = "blue")
+legend("topleft", legend=c("Danmark","Sverige"), fill = c("red", "blue")) 
+```
+
+### b.

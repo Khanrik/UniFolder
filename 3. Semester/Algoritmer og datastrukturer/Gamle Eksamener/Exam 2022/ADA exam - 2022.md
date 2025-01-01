@@ -1,3 +1,5 @@
+Time was at 01:11:17 when i was done
+
 ## Opgave 1
 func1 har et for loop, som iterer n gange. I selve funktionen kaldes func2, som også iterer n gange. Tidskompleksiteten bliver da $\mathcal{O}(n \cdot n) = \mathcal{O}(n^{2})$
 
@@ -95,7 +97,9 @@ std::vector<T> partitionEvenOdd(std::vector<T> &arg) // returnerer en vektor hvo
 ```
 
 Det kan ses, at algoritmen kun har en enkelt for loop og ikke laver nogen rekursive kald. For loopet itererer fra $i=0$ til $i=N$, hvor $N$ er størrelsen af arg. Den vil da have en tidskompleksitet på $\mathcal{O}(N)$.
-$\pagebreak$
+
+<div style="page-break-after: always;"></div>
+
 ## Opgave 6
 Det givne array kan godt repræsentere en prioritetskø. Hvert element i arrayet (udover det første) er identificeret af et index fra 1 til 20 så det kan tilgås, og har en tilhørende prioritet, hvis elementets værdi ses som prioriteten. Når elementet med højst prioritet skal slettes skal et for loop bruges for at gennemgå alle elementerne. Hvis man ønsker, at beholde mere information i prioritetskøen skal man bruge et array af par i stedet for heltal.
 

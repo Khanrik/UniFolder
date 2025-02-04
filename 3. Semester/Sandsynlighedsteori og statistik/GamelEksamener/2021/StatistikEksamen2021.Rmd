@@ -1,0 +1,208 @@
+---
+title: "StatistikEksamen2021"
+output: html_document
+---
+
+# Statistik Eksamen 2020
+
+## Opgave 1 – Kvalitetskontrol af bremseskiver
+
+### a. Hvor stor en procentdel af produktionen må formodes at være defekt?
+
+```{r}
+n = 30
+d = 1.65
+P_d = d/n
+P_d
+```
+
+5.5%
+
+### b. Hvad er sandsynligheden for, at ingen bremseskiver i dagens stikprøve er defekte?
+
+Det vides fra forrige opgave, at sandsynligheden for at få en defekt bremseskive er 5.5%. Da bremseskiver enten kan være defekte eller ikke, må dette gælde som et bernoulli forsøg, hvilket betyder, at det kan beskrives som en binomial fordeling med 30 prøver.
+
+```{r}
+x = 0
+n = 30
+dbinom(x, n, P_d)
+```
+
+Sandsynligheden for at ingen bremseskiver er defekte er 18.3%.
+
+### c. Hvad er sandsynligheden for, at der er 3 eller flere defekte i dagens stikprøve?
+
+```{r}
+x = 2
+pbinom(x, n, P_d, lower.tail = FALSE)
+```
+
+22.69%
+
+### d. Hvad er middelværdi, varians og standardafvigelse for antal defekte i de daglige stikprøver?
+
+```{r}
+middel = n * P_d
+varians = n * P_d * (1 - P_d)
+afvigelse = sqrt(varians)
+
+cat(middel, varians, afvigelse)
+```
+
+## Opgave 2 – Bremseskivernes tykkelse
+
+### a. Opstil nulhypotese og alternativhypotese for testen.
+
+Nulhypotese: $\mu = 21.8 \text{ mm}$
+
+Alternativ hypotese: $\mu \neq 21.8 \text{ mm}$
+
+### b. Opstil en formel for teststørrelsen og angiv hvilken fordeling, den følger. Beregn kritisk interval for testen.
+
+Da populationsvariansen ikke kendes og der kun arbejdes med en enkel stikprøve bliver formlen for teststørrelsen:
+
+$$
+t_0 = \frac{\bar{x} - \mu_0}{s / \sqrt{n}}
+$$
+
+Hvor $t_0$ er t-fordelt med $28-1 = 27$ frihedsgrader.
+
+```{r}
+alpha = 0.05
+df = 27
+t_alpha_half = qt(alpha/2, df)
+
+```
+
+Nulhypotesen forkastes hvis følgende ikke holder.
+
+$$
+-2.052 \leq t_0 \leq 2.052
+$$
+
+### c. Beregn teststørrelsens værdi og konkludér på testen.
+
+```{r}
+D = read.table("Data_ECEStat_2021_opg2.csv", header=TRUE, sep=";")
+tykkelse = D$Opg2_Tykkelse
+mu0 = 21.8
+n = 28
+x_bar = mean(tykkelse)
+s = sqrt(var(tykkelse))
+t0 = (x_bar - mu0) / (s / sqrt(n))
+t0
+```
+
+Da $t_0$ ligger under det kritiske interval forkastes nulhypotesen.
+
+P-værdien for denne stikprøve kan findes.
+
+```{r}
+df = n - 1
+p = 2 * pt(t0, df)
+p
+```
+
+Denne p-værdi betyder, at der er 1.4% sandsynlighed for at få en stikprøve som ligger så langt udenfor det det kritiske interval som den der er blevet arbjedet med.
+
+### d. Oplys hvilke antagelser, der er gjort i hypotesetesten, og vurdér om antagelserne er rimelige på baggrund af data.
+
+Det er antaget at den centrale grænseværdi-sætning holder for denne stikprøve. Da stikprøvestørrelsen er 28 må det betyde, at den er tilstrækkelig stor og at både sætningen og hypotesetesten holder.
+
+Der kan også laves et stem and leaf plot for at se om dataene har en nogenlunde normalfordelt form
+
+```{r}
+stem(tykkelse)
+```
+
+Det kan ses at der et et toppunkt i midten og 2 uddøende haler på hver ende, hvilket betyder at dataene kan beskrives med en normalfordeling.
+
+### e. Beregn et 99 % konfidensinterval for den sande tykkelse af bremseskiverne.
+
+```{r}
+alpha = 0.01
+t99 = qt(alpha/2, df, lower.tail = FALSE)
+bredde = t99 * (s / sqrt(n))
+cat("99% konfidensintervallet for den sande tykkelse vil være \n[", x_bar - bredde, ";", x_bar + bredde, "]")
+```
+
+Med andre ord er vi 99% sikre på, at den sande middel tykkelse ($\mu$) ligger et sted mellem 21.58 mm og 21.81 mm.
+
+### f. Beregn et 95 % prædiktionsinterval for skivernes tykkelse.
+
+```{r}
+alpha = 0.05
+t95 = qt(alpha/2, df, lower.tail = FALSE)
+bredde = t95 * s * sqrt(1 + 1/n)
+cat("95% prædiktionsintervallet for skivernes tykkelse er \n[", x_bar - bredde, ";", x_bar + bredde, "]")
+```
+
+Med andre ord ved vi at 95% af bremseskiverne vil have en tykkelse mellem 21.28 mm og 22.12 mm.
+
+## Opgave 3 – Brudstyrke af bremseskiver med forskellige legeringer
+
+### a. Lav et parallelt boksplot (kassediagram) for de fire legeringer. Hvad fortæller boksplottet?
+
+```{r}
+data = read.table("Data_ECEStat_2021_opg3.csv", header=TRUE, sep=";")
+nr = data$Opg3_Legering_nr
+navn = data$Opg3_Legering_navn
+styrke = data$Opg3_Styrke
+boxplot(styrke ~ navn, main = "Boksplot for de fire legeringer", xlab = "Legering navn", ylab = "Brudstyrke")
+```
+
+Boksplottet viser at Legering A og B generelt har højere brudstyrke, men C somme tider kan hamle op. Legering D har en maksimal brudstyrke som er lavere end den minimale styrke af både A og B. Den har dog en mindre spredning end både A og C, hvilket betyder, at det er nemmere at forudse. Det samme gælder for legering B, som både har en høj median brudstyrke samt har lav spredning.
+
+### b. Undersøg med en variansanalyse, om der er statistisk belæg for at påstå, at der er forskel på de fire legeringer på 5 % signifikansniveau.
+
+```{r}
+fm1 = aov(styrke ~ navn)
+summary(fm1)
+```
+
+Det kan ses, at analysen kom frem til en f-værdi på 8.59 med en tilsvarende p-værdi på 0.125%. Da $0.125\% < 5\%$ må det betyde, at vi kan forkaste en nulhypotese med 5% signifikansniveau om at legeringerne har samme brudstyrke.
+
+### c. Lav en parvis sammenligning af legeringerne med Tukey HSD metoden. Hvilke par af legeringer er forskellige på 5 % signifikansniveau?
+
+```{r}
+alpha = 0.05
+TukeyHSD(fm1, conf.level = 1-alpha)
+```
+
+Tukey HSD testen viste ingen signifikant forskel mellem legering A og B samt C og D, hvilket kan ses i at deres P-værdier (99.9% og 83.2%) er lang over signifikansniveauet (5%). Derudover kan det også ses i konfidensintervallet for deres forskelle at 0 ligger i midten, hvilket betyder, at der er en sandsynlighed for at forskellen mellem disse to par er 0. For alle andre paringer ligger p-værdierne under signifikansniveauet, hvilket betyder at der er statistisk signifikant forskel mellem dem.
+
+### d. Hvilke antagelser er der gjort for residualerne i analysen? Vurdér om antagelserne holder.
+
+Det var antaget at residualerne er normalfordelte og varianshomogene. For at tjekke om residualerne er normalfordelte, kan de opsættes i et normalfordelingsplot.
+
+```{r}
+e = fm1$residuals
+qqnorm(e)
+```
+
+Det kan ses at plottet er nogenlunde lineær, hvilket betyder, at det er en rimelig antagelse, at residualerne er normalfordelte.
+
+```{r}
+y_hat = fm1$fitted.values
+plot(y_hat, e, type="p", main="Residualplot for estimeret styrke", xlab="Estimeret styrke", ylab="Residual", col="blue")
+abline(h=0, col="red")
+```
+
+Det kan ses at residualerne er uafhængig af y_hat, men har forskellig spredning, hvilket ikke tegner godt for antagelsen om varianshomogenitet. Der laves også en residualplot med legeringerne. Her er legeringerne identificeret med deres numre, da det ikke virker med deres navne.
+
+```{r}
+plot(nr, e, type="p", main="Residualplot for legeringer", xlab="Legering", ylab="Residual", col="blue")
+abline(h=0, col="red")
+```
+
+Det ser ud til, at residualerne er parvis ensartet. A og C varierer dog mere end B og D, så der undersøges yderligere med en Bartlett's test.
+
+```{r}
+bartlett.test(styrke, navn)
+```
+
+Denne analyse tester for nulhypotesen om at alle legeringer har samme variation. Testen kommer frem til en p-værdi på 20.08%, hvilket er meget højere end en typisk signifikansniveau på 5%. Nulhypotesen kan da ikke forkastes, hvilket betyder at der ikke er statistisk signifikant tegn på, at der ikke er varianshomogenitet. Antagelsen må derfor holde.
+
+### e. Hvilken legering ville du anbefale at bruge på baggrund af eksperimentet? Begrund dit svar.
+
+Det er tydeligt at A og B har højst brudstyrke både for median og maksimale måling. Legering A har den absolut højste måling, men varierer meget mere end B. Jeg ville da vælge B da den har en generel høj brudstyrke og er mere ensartet.

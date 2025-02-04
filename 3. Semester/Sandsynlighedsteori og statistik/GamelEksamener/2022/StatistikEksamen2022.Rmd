@@ -1,0 +1,148 @@
+---
+title: "StatistikEksamen2022"
+output: html_document
+---
+
+# Statistik Eksamen 2022
+
+## Opgave 1 – Bølgers variabilitet
+
+### a. Omregn antal bølger i hvert interval til sandsynligheden for at få en bølge indenfor intervallet.
+
+Sandsynligheden for hvert interval bestemmes som antal gange intervallet er observeret delt med mængden af observationer. Tabellen med intervallerne og deres sandsynligheder kan ses fornede.
+
+```{r}
+D = read.table("Data_ECEStat_2022_opg1.csv", header=TRUE, sep=";")
+fra = D$Opg1_Hoejde_Fra
+til = D$Opg1_Hoejde_Til
+antal = D$Opg1_Observeret_Antal
+total = sum(antal)
+P_interval = antal/total
+tabel1a = cbind(fra, til, P_interval)
+print(tabel1a)
+```
+
+### b. Beregn den kumulerede sandsynlighedsfordeling for bølgehøjden. Hvad er sandsynligheden for, at den næste bølge er højere end 0.8 m?
+
+Den kumulerede sandsynlighed kan ses tilføjet i tabellen for neden.
+
+```{r}
+P_interval_cum = cumsum(P_interval)
+tabel1b = cbind(fra, til, P_interval, P_interval_cum)
+print(tabel1b)
+```
+
+Sandsynligheden for at få en bølge højere end 0.8 m må være 100% fratrukket sandsynligheden for at få en lavere bølge, hvilket svarer til den kumulerede som, som står overfor intervallet [0.6 ; 0.8].
+
+```{r}
+1-0.74468085
+```
+
+Sandsynligheden for at den næste bølge er højere end 0.8 m er da 25.5%.
+
+### c. Beregn den gennemsnitlige bølgehøjde (antag at alle bølgerne i et interval har samme højde, nemlig intervallets midterværdi).
+
+Midterværdien for hvert interval må være summen af intervallets start og slut værdi delt med 2. Disse værdier kan så ganges på sandsynlighederne for hvert interval og til sidst summeres for at få den samlede gennemsnitshøjde.
+
+```{r}
+midt = (fra + til) / 2
+middel = sum(midt * P_interval)
+middel
+```
+
+## Opgave 2 – Sammenhæng mellem bølgerne og bølgemaskinens effekt
+
+### a. Lav et plot for hver af de uafhængige variable (hhv. bølgelængde og bølgehøjde), der viser om der er korrelation mellem variablen og den producerede effekt. Diskutér kort dine plots.
+
+Effekten plottes først som funktion af bølgelængden
+
+```{r}
+data = read.table("Data_ECEStat_2022_opg2.csv", header=TRUE, sep=";")
+length = data$Opg2_Boelgelaengde
+height = data$Opg2_Boelgehoejde
+power = data$Opg2_Effekt
+plot(length, power, type = "p", col="blue", pch=16)
+```
+
+Det kan ses at effekten går ned i takt med at bølgelængden stiger. Der er dermed en negativ korrelation mellem effekten og bølgelængden.
+
+Derefter kan effekten plottes som funktion af bølgehøjden
+
+```{r}
+plot(height, power, type = "p", col = "blue", pch = 16)
+```
+
+Det kan ses at effekten her stiger i takt med at bølgehøjden stiger. Der er dermed en positiv korrelation mellem effekten og bølgehøjden. Derudover kan det også nævnes, at der er mindre variation i dataene for bølgehøjden, og at bølgehøjden derfor muligvis har en større påvirkning på effekten.
+
+### b. Lav en multipel lineær regressionsanalyse, der beskriver produceret effekt som funktion af bølgelængde og bølgehøjde. Skriv regressionsligningen op.
+
+```{r}
+lmWave = lm(power ~ length + height)
+summary(lmWave)
+```
+
+Ud fra regressionsanalysen kan følgende ligning opstilles:
+
+$$
+P = 51.285 - 24.606 \cdot \lambda + 19.409 \cdot h
+$$
+
+hvor $P$ er effekten, $\lambda$ er bølgelængden og $h$ er bølgehøjden.
+
+### c. Forklar vha. regressionsanalysens statistikker og dine plots fra delopgave a., om modellen beskriver observationerne godt.
+
+Regressionen passer meget godt. Det kan ses at alle koefficienter er signifikant forskellige fra 0 med en signifikansniveau på 5%. Derudover viser ANOVA testen, at der er stor sandsynlighed for at bølgehøjden og længden påvirker effekten, da F værdien er relativ stor og p værdien er langt under et signifikansniveau på 5%. Selve modellen beskriver nogenlunde dataene, da den har en $R^2$ værdi på 0.7959, men der kan være en lille risiko for overfitting, da den justerede $R^2$ værdi er lidt lavere med en værdi på 0.7505. Det er dog ikke alt for slemt.
+
+### d. Lader der til at være en lineær sammenhæng mellem bølgehøjde og effekt, når bølgelængden er fast L = 2.0 m? (kopiret fra facit fordi det ser nemt ud)
+
+```{r}
+height2 = height[4:9]
+power2 = power[4:9]
+plot(height2, power2, type = "p", col = "blue", pch = 19)
+```
+
+Plottet viser en sammenhæng, der måske bedre kan beskrives som S-formet end som lineær. Der lader til at skulle en vis bølgehøjde til for at danne energi, og når bølgehøjden bliver tilstrækkelig stor, klinger den producerede effekt af.
+
+Jeg tester med en simpel lineær regression
+
+```{r}
+lm2 = lm(power2 ~ height2)
+summary(lm2)
+```
+
+Det er en god model, hvor hældingskoefficienten b1 = 19.9143 er signifikant (pValue = 0.000699). R-Squared og Adjusted R-Squared er over 0.9 (hhv. 0.9571 og 0.9464), så modellen forklarer en stor andel af variationen uden at overfitte. Men på plottet ser punkterne ud til at følge et S-formet forløb. Her med regressionslinjen vist på figuren:
+
+```{r}
+plot(height2, power2, type = "p", col = "blue", pch = 19)
+abline(reg = lm2, col = "red")
+```
+
+### e. Lav en transformation af bølgehøjden
+
+Simpel lineær regression mellem transformeret bølgehøjde og effekt:
+
+```{r}
+k = 2.5
+H_l = 1 / (1 + exp(k - height2))
+lm3 = lm(power2 ~ H_l)
+summary(lm3)
+```
+
+Man bemærker, at nu fitter modellen data næsten perfekt, f.eks. er R-squared 0.996 og en justeret $R^2$, som er lige så stor, hvilket betyder, at det ikke er overfitted.
+
+```{r}
+plot(H_l, power2, type = "p", col = "blue", pch = 16)
+abline(reg = lm3, col = "red",)
+```
+
+### f. Brug den lineære regression fra delopgave e. til at skrive et udtryk for E som funktion af H. Beregn den forventede effekt med en bølgehøjde på 4.6 m.
+
+$$
+E = 120.263 \cdot H_l - 7.901
+$$
+
+```{r}
+H = 4.6
+E = 120.263 * 1 / (1 + exp(k - H)) - 7.901
+E
+```

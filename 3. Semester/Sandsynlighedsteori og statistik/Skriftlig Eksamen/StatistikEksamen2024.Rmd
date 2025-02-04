@@ -1,0 +1,271 @@
+---
+title: "Statistik Eksamen 2024"
+output:
+  pdf_document: default
+  html_document: default
+---
+
+## Opgave 1 – Genkendelse af modne æbler
+
+### a. Beregn sandsynlighederne $P(M), P(M_c), P(B | M) \text{ og } P(B_c | M_c)$.
+
+```{r}
+P_Bc_l_M = 0.07
+P_B_l_Mc = 0.13
+U = 1075
+M = 945
+P_M = M / U
+P_Mc = 1 - P_M
+P_B_l_M = 1 - P_Bc_l_M
+P_B = P_B_l_M * P_M + P_B_l_Mc * P_Mc
+P_Bc_l_Mc = (P_B - P_B_l_M * P_M) / P_Mc
+cat("De ønskede værdier er \nP(M) =", P_M, "\nP(Mc) =",
+    P_Mc, "\nP(B | M) =", P_B_l_M, "\nP(Bc | Mc) =", P_Bc_l_Mc)
+
+```
+
+### b. Beregn sandsynligheden for, at det nye system bedømmer et tilfældigt æble fra træet som modent.
+
+```{r}
+cat("Sandsynligheden for at systemet bedømmer et æble modent er:", P_B)
+```
+
+### c. I en kasse er der samlet 250 æbler, som det nye system har bedømt som modne, og som robotten derfor har genkendt, grebet, plukket og pakket. Hvor mange af æblerne i kassen må man forvente i virkeligheden er umodne?
+
+```{r}
+250 * P_B_l_Mc
+```
+
+Hvis systemet bedømmer 250 æbler kan man forvente, at den får valgt 33 umodne æbler.
+
+### d. Beregn hvor mange æbler det nye system vil bedømme forkert, hvis alle træets æbler bedømmes.
+
+```{r}
+U * P_B_l_Mc + U * P_Bc_l_M
+```
+
+Det nye system vil bedømme 215 æbler forkert, hvis det bedømmer alle træets 1075 æbler.
+
+\newpage
+
+## Opgave 2 – Temperatursensor
+
+### a. Lav en lineær regression, der udtrykker temperaturen som funktion af modstanden. Skriv regressionsligningen op. Beregn den forventede temperatur, når der måles en modstand på 10.0 k$\Omega$.
+
+Regressionsanalysen laves med lm() funktionen i R:
+
+```{r}
+data = read.table("Data_ECEStat_2024_opg2.csv", header=TRUE, sep=";")
+temp = data$Temperatur
+modstand = data$Modstand
+
+lmTemp = lm(temp ~ modstand)
+summary(lmTemp)
+```
+
+Ud fra analysen fås følgende regressionsligning:
+
+$$
+t = 37.5664 - 1.573 M
+$$
+
+hvor $t$ er temperaturen og $M$ er modstanden.
+
+Den forventede temperatur ved 10.0 k$\Omega$ modstand kan beregnes ved at indsætte modstanden i ligningen.
+
+```{r}
+M10k = 10
+37.5664 - 1.573 * M10k
+```
+
+Når der måles en modstand på 10.0 k$\Omega$ forventes det at temperaturen er 21.8364°C.
+
+\newpage
+
+### b. Forklar ved hjælp af regressionsanalysens statistikker (p-værdier, $R^2$, Adjusted $R^2$ og F), om det er en god model.
+
+Det er en meget god model da p-værdierne til koefficienterne er tæt på 0, hvor den højeste er 5.05e-07, og de tilhørende t-værdier er signifikant forskellige fra 0. $R^2$ værdien er på 0.8866 hvilket er forholdsvist tæt på 1, hvilket betyder at den passer nogenlunde. Den justeret $R^2$ værdi er 0.8772, hvilket er tæt på den forrig nævnte værdi. Det vil sige, at modellen ikke ser ud til at overfit datapunkterne. ANOVA testen viser, at der er en relation mellem temperaturen og modstanden, da den kommer frem til en stor F-værdi på 93.83 og en tilhørende lille p-værdi på 5.047e-07, hvilket er langt under et signifikansniveau på 5%.
+
+### c. Prøv at lave bedre fit med hver af følgende to lidt mere komplicerede modeller
+
+Først gøres det med den polynomielle model
+
+```{r}
+lmTempPoly = lm(temp ~ modstand + I(modstand^2))
+summary(lmTempPoly)
+```
+
+Dette giver funktionsudtrykket:
+
+$$
+t = 51.225408 - 3.734386 M + 0.063614 M^2
+$$
+
+Indsættes modstanden på 10.0 k$\Omega$ fås følgende værdi
+
+```{r}
+51.225408 - 3.734386 * M10k + 0.063614 * M10k^2
+```
+
+Der efter gøres det med logaritmiske model
+
+```{r}
+lmTempLog = lm(temp ~ log(modstand))
+summary(lmTempLog)
+```
+
+Dette giver funktionsudtrykket:
+
+$$
+t = 70.6266 - 22.2499 \ln(M)
+$$
+
+Indsættes modstanden på 10.0 k$\Omega$ fås følgende værdi
+
+```{r}
+70.6266 - 22.2499 * log(M10k)
+```
+
+### d. Lav et scatterplot og et residualplot for hver af de to transformerede modeller. Residualplottet skal vise residualet som funktion af den estimerede temperatur ($\hat{t}$).
+
+Først laves de to scatterplot.
+
+```{r}
+plot(temp ~ modstand, type = "p", col = "blue", 
+     pch = 16, main = "Scatterplot med polynomiel model")
+
+#use model to get predicted values
+pred <- predict(lmTempPoly)
+ix <- sort(modstand, index.return=T)$ix
+
+#add polynomial curve to plot
+lines(modstand[ix], pred[ix], col='red', lwd=2)
+```
+
+```{r}
+plot(temp ~ modstand, type = "p", col = "blue", 
+     pch = 16, main = "Scatterplot med logaritmisk model")
+
+#use model to get predicted values
+pred <- predict(lmTempLog)
+ix <- sort(modstand, index.return=T)$ix
+
+#add polynomial curve to plot
+lines(modstand[ix], pred[ix], col='red', lwd=2)
+```
+
+Derefter laves residualplottene
+
+```{r}
+resPoly = resid(lmTempPoly)
+
+#produce residual vs. fitted plot
+plot(fitted(lmTempPoly), resPoly, col = "blue", 
+     main = "Residualplot for polynomiel model", 
+     xlab = "Estimeret temperatur", 
+     ylab = "Residual")
+
+#add a horizontal line at 0 
+abline(0,0)
+```
+
+```{r}
+resLog = resid(lmTempLog)
+
+#produce residual vs. fitted plot
+plot(fitted(lmTempLog), resLog, col = "blue", 
+     main = "Residualplot for logaritmisk model", 
+     xlab = "Estimeret temperatur", 
+     ylab = "Residual")
+
+#add a horizontal line at 0 
+abline(0,0)
+```
+
+### e. Diskuter hvilken model, der er bedst, på baggrund af analyserne i delopgave c) og d).
+
+Det kan ses ud fra residualplottene, at begge de transformerede modeller er rimelige gode, men at den logaritmiske passer en smule bedre. Dette kan også ses i $R^2$ værdierne, hvor den logaritmiske har en værdi på 0.9954 og den polynomielle 0.9826. Der er heller ikke fare for overfitting for nogen af dem da den justeret $R^2$ værdi er temmelig tæt på. Når man kigger på residualplottene er har begge modeller en tendens til at overestimere i lave og høje temperaturer og underestimere i midte temperaturene, men det er ikke alt for systematisk, så det kan godt ses som at være tilfældigt og uafhængigt fordelt. Derudover kan det ses, at den logaritmiske models residualer har et spænd fra ca. -1.5 til 1.2, men den anden har fra ca. -2.2 til 3.2. Dette understøtter yderligere, at den logaritmiske model passer bedre. Jeg vil da mene baseret på denne analyse, at den logaritmiske model er bedst.
+
+\newpage
+
+## Opgave 3 – Metoder til vurdering af modenhed
+
+### a. Lav og kommentér et parallelt boksplot, der viser modenhedsscoren med de to metoder.
+
+```{r}
+data = read.table("Data_ECEStat_2024_opg3.csv", header=TRUE, sep=";")
+Hueab = data$Hue_ab
+astar = data$a_stjerne
+boxplot(data[2:3], names = c("Hue_ab", "a*"))
+```
+
+Ud fra boxplottet kan det ses at Hue_ab har en lidt højere minimum og maksimum score ift. a\*. Derudover er IQR af Hue_ab også mindre, hvilket vil sige at dog ikke med meget er den mere ensartet end a\*. Det ser derfor umiddelbart ud som om, at Hue_ab metoden er den mindste smule bedre. Dog, minder de to metoder alligevel meget om hinanden, da forskellen mellem dem udgør ca. 3 score point.
+
+### b. Man ønsker at slå fast med et signifikansniveau på 5 %, om der er forskel på de to metoder. Opstil nulhypotese og alternativhypotese for denne hypotesetest.
+
+Da man ønsker at fastslå om de er forskellige, må nulhypotese være, at de er ens. Dette kan bestemmes ved at se om deres middelværdier $\mu_1$ og $\mu_2$ er lig hinanden, eller om forskellen $\delta_0 = \mu_1 - \mu_2$ er lig 0. Alternativ hypotesen vil da være, at denne forskel ikke er lig 0. Matematisk kan det opskrives som følgende:
+
+-   $H_0$: $\delta_0 = 0$
+
+-   $H_1$: $\delta_0 \neq 0$
+
+### c. Opstil formlen for teststørrelsen og angiv hvilken fordeling den følger. Beregn værdien af teststørrelsen.
+
+Da der er tale om to små parvist uafhængige stikprøver, hvilket betyder at teststørrelsen kan bestemmes ud fra formlen:
+
+$$
+t_{0} = \frac{\bar{x} - \bar{y} - \delta_{0}}{S_{p} \cdot \sqrt{ \frac{1}{n_{1}} + \frac{1}{n_{2}} }}, \quad S_{p}^{2} = \frac{(n_{1} - 1)S_{1}^{2} + (n_{2} - 1)S_{2}^{2}}{n_{1} + n_{2} - 2}
+$$
+
+hvor $n$ er stikprøvestørrelserne, $S^2$ er stikprøvevariansene og $\bar{x}$ samt $\bar{y}$ er stikprøvemiddelværdierne.
+
+Her følger teststørrelsen en t-fordeling med $n_1 + n_2 - 2 = 24 + 24 - 2 = 46$ frihedsgrader. Teststørrelsen bestemmes ved at finde alle størrelserne for hver stikprøve og indsætte dem i formlen
+
+```{r}
+delta_0 = 0
+n_1 = 24
+n_2 = 24
+x_bar = mean(Hueab)
+y_bar = mean(astar)
+S_1_sq = var(Hueab)
+S_2_sq = var(astar)
+S_p_sq = ((n_1 - 1)*S_1_sq + (n_2 - 1)*S_2_sq) / (n_1 + n_2 - 2)
+S_p = sqrt(S_p_sq)
+
+t_0 = (x_bar - y_bar - delta_0) / (S_p * sqrt((1/n_1) + (1/n_2)))
+t_0
+```
+
+Teststørrelsen har en værdi på 0.582.
+
+### d. Beregn den kritiske region for testen og konkludér på hypotesetesten.
+
+Den kritiske region bestemmes ud fra signifikansniveauet på 5% med qt() funktionen i R. Da alternativhypotesen siger at forskellen $\delta_0$ ikke må være et specifikt tal bruges en tohalet hypotesetest.
+
+```{r}
+df = 46
+alpha = 0.05
+t_alpha_halve = qt(alpha/2, df, lower.tail = FALSE)
+cat("Den kritiske værdi bliver:", t_alpha_halve)
+```
+
+Da teststørrelsen ligger indenfor den kritiske region, altså $|t_0| < t_{\alpha/2}$, kan vi med 5% signifikansniveau ikke forkaste nulhypotesen om, at der ikke er forskel mellem de to metoder. Der er dermed ikke statistisk signifikant forskel mellem de to metoder og deres score.
+
+\newpage
+
+### e. Beregn et 95 % konfidensinterval for forskellen på metodernes middelværdi.
+
+Konfidensintervallet kan beregnes med den kritiske værdi fra tidligere, da den var baseret på samme signifikansniveau.
+
+```{r}
+KI_bredde = t_alpha_halve * S_p * sqrt((1/n_1) + (1/n_2))
+KI_nedre = x_bar - y_bar - KI_bredde
+KI_oevre = x_bar - y_bar + KI_bredde
+cat("KI_nedre =", KI_nedre, "og KI_øvre =", KI_oevre)
+```
+
+95% konfidensintervallet for forskellen på metodernes middelværdi vil da være [-5.019 ; 9.102].
+
+### f. Diskutér hvordan boksplot, hypotesetest og konfidensinterval stemmer overens.
+
+Det kan ses på boksplottet, at scoren for de to metoder minder rigtig meget om hinanden da boksplottene har nogenlunde samme form bortset fra bunden a\* som går lidt længere ned. Der vil derfor være en forskel, hvilket også kan ses i konfidensintervallet. Forskellen er dog højst på 9, hvilket ud af en score skala mellem 0 og 100 ikke er ret meget. Dette er også konklusionen som hypotesetesten kom frem til, så alle tre processer stemmer overens.

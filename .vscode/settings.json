@@ -55,6 +55,12 @@
         "string": "cpp",
         "unordered_map": "cpp",
         "xhash": "cpp",
-        "*.tpp": "cpp"
+        "*.tpp": "cpp",
+        "array": "cpp",
+        "stack": "cpp",
+        "algorithm": "cpp",
+        "deque": "cpp",
+        "queue": "cpp",
+        "xstddef": "cpp"
     }
 }

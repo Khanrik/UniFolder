@@ -1,5 +1,3 @@
-Time was at ??:??:?? when i was done
-
 ## Opgave 1
 ### 1.
 Antaget, at det er den naturlige logaritme funktion der er tale om vil den ydre for-løkke blive kørt n (8) gange, og den indre for-løkke vil blive kørt $\ln(8) \approx 3$ gange. Det betyder at den adderer 0, 1 og 2 til x, hvilket svarer til at addere 3. Resultatet vil da blive $8 \cdot 3 = 24$.
@@ -27,3 +25,46 @@ int func1(int n)
 ```
 
 ## Opgave 2
+```c++
+bool trySort(queue<int> &q, queue<int> &result)
+{
+    stack<int> s;
+    int value;
+    
+    while (!q.empty())
+    {
+        value = q.front();
+        q.pop();
+  
+        if (!result.empty() && value > result.front() && value > s.top())
+        {
+            return false;
+        }
+        
+        if (q.size() > 1 && value < q.front())
+        {
+            result.push(value);
+        }
+        else
+        {
+            s.push(value);
+        }
+    }
+    
+    while (!s.empty())
+    {
+        result.push(s.top());
+        s.pop();
+    }
+    return true;
+}
+```
+
+## Opgave 3
+
+## Opgave 4
+
+
+## Opgave 5
+Når Prim's algoritme bruges og algoritme starter i knude 4, fås følgende minimum spanning tree. Rækkefølgen kanterne er tegnet i er skrevet udenfor kanten (der er ikke angivet vægte i figuren). Det skal siges at kanten mellem 0 og 6 kunne være tegnet før kanten mellem 3 og 4, men det ville resultere i samme minimum spanning tree. Alternativt kunne kanten mellem 1 og 3 også bruges i stedet for kanten mellem 3 og 4.
+![[ADA exam - 2023 opg 5]]

@@ -1,0 +1,181 @@
+---
+title: "StatistikEksamen2023"
+output: html_document
+---
+
+# Statistik Eksamen 2023
+
+## Opgave 1 – Bremseevne
+
+### a. Lav et parallelt boksplot (kassediagram) for hver faktor, der viser forskelle i bremseevnen for faktorens niveauer. Beskriv diagrammerne.
+
+```{r}
+data = read.table("Data_ECEStat_2023_opg1.csv", header=TRUE, sep=";")
+fabrikant = as.factor(data$Bremsefabrikat)
+driver = as.factor(data$Koerer)
+type = as.factor(data$Daektype)
+bremseevne = data$Bremseevne
+boxplot(bremseevne ~ fabrikant, names = c("Brembo", "X Breaking System (XBS)"))
+```
+
+```{r}
+boxplot(bremseevne ~ driver)
+```
+
+```{r}
+boxplot(bremseevne ~ type)
+```
+
+### b. Lav en variansanalyse (ANOVA) på signifikansniveau 5 %, der belyser, om der mht. bremseevne er signifikant effekt af hver af de tre faktorer. Er der signifikante 2-faktor og 3-faktor interaktioner?
+
+```{r}
+anova = aov(bremseevne ~ fabrikant + driver + type 
+    + fabrikant:driver 
+    + fabrikant:type
+    + driver:type
+    + fabrikant:driver:type)
+summary(anova)
+```
+
+De første tre rækker viser 1-faktor interaktionerne. Alle konklusionerne laves på baggrund af en signifikansniveau på 5%:
+
+-   Fabrikanterne har ikke statistisk signifikant forskelle, da p-værdien er 28.4%, hvilket er langt over 5%.
+
+-   Kørerne har statistisk signifikant forskelle, da p-værdien er tæt på 0, hvilket er mindre end 5%.
+
+-   Dæktypen har statistisk signifikant forskelle, da p-værdien er tæt på 0, hvilket er mindre end 5%.
+
+De næste tre rækker viser 2-faktor interaktionerne:
+
+-   Fabrikanterne og kørerne har statistisk signifikant interaktion, da p-værdien er tæt på 0, hvilket er mindre end 5%.
+
+-   Fabrikanterne og dæktyperne har ikke statistisk signifikant interaktion, da p-værdien er 93.4%, hvilket er langt over 5%.
+
+-   Kørerne og dæktyperne har ikke statistisk signifikant interaktion, da p-værdien er 89.1%, hvilket er langt over 5%
+
+Den sidste række viser 3-faktor interaktionen, hvor der kan ses at der ikke er statistisk signifikant interaktion mellem de tre faktorer, da p-værdien er 70.6%, hvilket er langt over 5%.
+
+### c. Hvor mange frihedsgrader er der for testen for interaktion imellem de to faktorer bremsefabrikat og dæktype (A og C), og hvordan er antal frihedsgrader beregnet?
+
+Antal frihedsgrader for interaktionen mellem faktorerne er 2 , hvilket beregnes som $(a-1) (c-1) = 1 \cdot 2 = 2$, idet der er $a = 2$ niveauer af faktor A og $c = 3$ niveauer af faktor C.
+
+### d. Lav en parvis sammenligning af bremseevnen for de tre dæktyper med Tukey HSD metoden. Hvilke dæktyper er forskellige på 5 % signifikansniveau? Hvad er 95 % konfidensintervallet for de parvise forskelle på bremseevne for de tre dæktyper?
+
+```{r}
+alpha = 0.05
+TukeyHSD(anova, "type", conf.level = 1-alpha)
+```
+
+Det kan ses at alle dæk er forskellige på 5% signifikansniveau, da alle p-værdierne er langt under 5%, hvor den højeste ligger på 0.04%. Det kan også ses at 95% konfidensintervallet for de tre er:
+
+-   Medium og Hard: [-119 ; -67]
+
+-   Soft og Hard: [-163 ; -111]
+
+-   Soft og Medium: [-70 ; -18]
+
+Ingen af disse intervaller indeholder værdien 0, hvilket betyder at vi med 95% sikkerhed kan sige at der er forskel mellem alle tre dæktyper.
+
+### e. Hvilke antagelser for residualerne er der gjort i denne statistiske model? Undersøg med plots, om antagelserne holder.
+
+Det var antaget at residualerne er normalfordelte og varianshomogene. For at tjekke om residualerne er normalfordelte, kan de opsættes i et normalfordelingsplot.
+
+```{r}
+e = anova$residuals
+qqnorm(e)
+```
+
+Det kan ses at plottet er nogenlunde lineær, hvilket betyder, at det er en rimelig antagelse, at residualerne er normalfordelte.
+
+```{r}
+y_hat = anova$fitted.values
+plot(y_hat, e, type="p", main="Residualplot for estimeret bremseevne", xlab="Estimeret bremseevne", ylab="Residual", col="blue")
+abline(h=0, col="red")
+```
+
+Det kan ses at residualerne er uafhængig af den estimerede bremseevne og fordeler sig nogenlunde tilfældigt omkring.
+
+```{r}
+plot(as.integer(fabrikant), e, type="p", main="Residualplot for bremsefabrikant", xlab="Bremsefabrikant", ylab="Residual", col="blue")
+abline(h=0, col="red")
+```
+
+Det kan ses at bremsefabrikanterne næsten har lige stor varians, men at XBS (2) lige er en tand mere ensartet end Brembo (1).
+
+```{r}
+plot(as.integer(driver), e, type="p", main="Residualplot for kører", xlab="Kører", ylab="Residual", col="blue")
+abline(h=0, col="red")
+```
+
+Her er der lidt større forskelle, hvor Hülkenberg (2) har lidt mere ensartede residualer end Magnussen (1).
+
+```{r}
+plot(as.integer(type), e, type="p", main="Residualplot for dæktype", xlab="Dæktype", ylab="Residual", col="blue")
+abline(h=0, col="red")
+```
+
+Til sidst kan man se at der er tydelig forskel på de tre dæk, hvor Medium (2) klart er mest ensartet og Soft (3) har mest varians. Hard (1) ligger i midten, men hælder lidt mod at have højere varians.
+
+## Opgave 2 – Bremsernes kølesystem
+
+Sandsynlighederne kan beregnes med pnorm funktionen:
+
+```{r}
+D = read.table("Data_ECEStat_2023_opg2.csv", header=TRUE, sep = ";")
+o = D$ObserveretAntal
+x_bar = 229
+s = 41
+
+P_t150 = pnorm(150, x_bar, s)
+P_150t200 = pnorm(200, x_bar, s) - pnorm(150, x_bar, s)
+P_200t250 = pnorm(250, x_bar, s) - pnorm(200, x_bar, s)
+P_250t300 = pnorm(300, x_bar, s) - pnorm(250, x_bar, s)
+P_t300 = 1 - pnorm(300, x_bar, s)
+
+P_interval = c(P_t150, P_150t200, P_200t250, P_250t300, P_t300)
+
+cat("Sandsynligheden for de forskellige ting er: \nP(t < 150) =", P_interval[1], "\nP(150 <= t < 200) =", P_interval[2], "\nP(200 <= t < 250) =", P_interval[3], "\nP(250 <= t < 300 =", P_interval[4], "\nP(t >= 300 =", P_interval[5], "\n")
+```
+
+### b. Beregn under antagelse af ovennævnte normalfordeling det forventede antal nedbremsninger i hver af de fem temperaturintervaller, når der i alt foretages 800 nedbremsninger.
+
+Det forventede antal nedbremsninger kan beregnes ved at gange 800 på sandsynlighederne fra før.
+
+```{r}
+e = 800 * P_interval
+cat("Det forventede antal nedbremsninger for hvert interval vil være\n", e)
+```
+
+### c. Opstil formlen for teststørrelsen for en Goodness of Fit test og oplys teststørrelsens fordeling og antal frihedsgrader.
+
+Teststørrelsen beregnes med summen
+
+$$
+{\chi^2}_0 = \sum_{i=1}^{k} \frac{(o_i - e_i)^2}{e_i}
+$$
+
+hvor $\chi^2$ er teststørrelsen, $o$ er observeret antal nedbremsninger, $e$ er det forventede antal nedbremsninger og $k$ er antallet af kategorier eller temperaturintervaller i dette tilfælde.
+
+Teststørrelsen er fordelt med $df = k- p - 1$ frihedsgrader, hvor $p$ er antal estimerede parametre, hvilket er 2 da der arbejdes med en normalfordeling. Dette giver $df = 5 - 2 - 1 = 2$ frihedsgrader.
+
+### d. Beregn den kritiske grænse for testen på 5 % signifikansniveau.
+
+Den kritiske grænse kan beregnes med qchisq funktionen.
+
+```{r}
+alpha = 0.05
+k = 5
+p = 2
+df = 2
+chi2_alpha = qchisq(1-alpha, df)
+cat("Den kritiske grænse med 5 % signifikansniveau er", chi2_alpha)
+```
+
+### e. Beregn teststørrelsens værdi og konkludér på testen.
+
+```{r}
+chi2_0 = sum(((o-e)^2) / e)
+cat("Teststørrelsen værdi bliver:", chi2_0)
+```
+
+Da teststørrelsens værdi ${\chi^2}_0 = 9.75$ er større end den kritiske grænse ${\chi^2}_\alpha = 5.99$, forkaster vi nulhypotesen om, at bremsernes køleevne er normalfordelt.

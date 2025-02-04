@@ -5,7 +5,7 @@ output:
   html_notebook: default
 ---
 
-# Statistik Eksamensæt 2020
+# Statistik Eksamen 2020
 
 ## Opgave 1 – Byen med det første dødsfald i Italien
 
@@ -145,17 +145,103 @@ cat("[", exp(mu-3*sigma), ",", exp(mu+3*sigma), "], hvis det skal angives i døg
 Dataene justeres først som ønsket ved at fjerne de første 10 datapunkter, samt at dele antal døde med antal million indbyggere for hvert land.
 
 ```{r}
+D = read.table("Data_ECEStat_2020_opg3.csv", header=TRUE, sep=";")
+
 popDK = 5.8
 popSE = 10.3
+start = 11
+slut = length(D$Opg3_dagnummer)
 
-D = read.table("Data_ECEStat_2020_opg3.csv", header=TRUE, sep=";")
-X = D$Opg3_dagnummer[11:39] - 80
+X = D$Opg3_dagnummer[11:39]
 YDK = D$Opg3_akkum_dk[11:39] / popDK
 YSE = D$Opg3_akkum_se[11:39] / popSE
 
-plot(X, YDK, pch = 20, col = "red", main = "Antallet af døde med Covid-19 i 2020", xlab = "Antal dage efter dagnummer 80", ylab = "Antal døde pr. million indbygger")
+plot(X, YDK, pch = 20, col = "red", main = "Antallet af døde med Covid-19 i 2020", xlab = "Dag numre", ylab = "Antal døde pr. million indbygger")
 points(X, YSE, pch = 20, col = "blue")
 legend("topleft", legend=c("Danmark","Sverige"), fill = c("red", "blue")) 
 ```
 
 ### b.
+
+Lineær regression for Danmark:
+
+```{r}
+DagNumre = X
+lmDK = lm(YDK ~ DagNumre)
+summary(lmDK)
+```
+
+Lineær regression for Sverige:
+
+```{r}
+lmSE = lm(YSE ~ DagNumre)
+summary(lmSE)
+```
+
+Dette resulterer i at modelligningerne for hvert land bliver følgende.
+
+Danmark: $C(t) = 2.1782 t - 178.5964$
+
+Sverige: $C(t) = 4.8742 t - 412.3612$
+
+### c.
+
+Begge modeller passer til en rimelig grad, hvilket kan siges da begge deres p-værdier i meget tæt på 0, og de tilhørende t-værdier viser at koefficienterne er signifikant forskellig fra 0. Den danske model ser ud til at passe bedre da dens $R^2$ værdi er højere end den svenske. Derudover er de justerede $R^2$ værdier også rimelig tæt på de ikke justerede, hvilket tyder på, at der ikke er tale om en overfitted model.
+
+En grund til, at den svenske model ikke passer lige så godt som den danske er at udviklingen ikke foregår lineært. Det kan også ses i grafen fra opgave 3.a, at den svenske graf i modsætning til den danske ser mere eksponentiel ud end lineær.
+
+### d.
+
+```{r}
+DK1000 = (1000 + 178.5964) / 2.1782
+SE1000 = (1000 + 412.3612) / 4.8742
+
+cat("Danmark kan forvente at overskride 1000 døde pr. mio. indbyggere på dag", floor(DK1000), "\n")
+cat("Sverige kan forvente at overskride 1000 døde pr. mio. indbyggere på dag", floor(SE1000))
+```
+
+### e.
+
+Det kan ses i udledningen at lineær regression på logaritmisk data vil kunne give koefficienter svarende til hældningskoefficienten ($A$) og skæringen med skæring med y-aksen ($\log(B)$). Tages den naturlige eksponentialfunktion fås da den eksponentielle model.
+
+Lineær regression for Danmark:
+
+```{r}
+logDK = log(YDK)
+emDK = lm(logDK ~ DagNumre)
+summary(emDK)
+```
+
+Hvor eksponentialfunktionen til $\log(B)$ giver:
+
+```{r}
+BDK = exp(-8.486477)
+cat("B =", BDK, "\n")
+```
+
+Lineær regression for Sverige:
+
+```{r}
+logSE = log(YSE)
+emSE = lm(logSE ~ DagNumre)
+summary(emSE)
+```
+
+Hvor eksponentialfunktionen til $\log(B)$ giver:
+
+```{r}
+BSE = exp(-12.424655)
+cat("B =", BSE, "\n")
+```
+
+Dette resulterer i at modelligningerne for hvert land bliver følgende.
+
+Danmark: $C(t) = 2.062386 \cdot 10^{-4} \cdot e^{0.120684 t}$
+
+Sverige: $C(t) = 4.018286 \cdot 10^{-6} \cdot e^{0.165289 t}$
+
+### f.
+
+Eksponentiel for Sverige pga. formen på grafen fra opgave 3.a og fordi $R^2$ værdien passer bedre for den ekspnoentielle model ift lineære.
+
+Lineær for Danmark af samme grund, men omvendt da formen på grafen var lineær og den lineære model havde bedre $R^2$ værdi.

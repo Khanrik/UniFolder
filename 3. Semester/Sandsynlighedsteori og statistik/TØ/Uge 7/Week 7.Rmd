@@ -1,3 +1,10 @@
+---
+title: "R Notebook"
+output:
+  pdf_document: default
+  html_notebook: default
+---
+
 # Week 7
 
 ## **Opgave** om snydesoftware i dieselbiler

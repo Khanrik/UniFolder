@@ -1,0 +1,30 @@
+class SeqSwap
+
+instance variables
+
+    first_list  : seq of int;
+    second_list : seq of int;
+
+operations
+
+    public SeqSwap : () ==> SeqSwap
+    SeqSwap() == (
+        first_list := [1, 2, 3, 4, 5];
+        second_list := []
+    );
+
+    public DoSwap : () ==> seq of int
+    DoSwap() == (
+        while ((len first_list) > 0) do (
+            SwapNext();
+        );
+        return second_list;
+    );
+
+    public SwapNext : () ==> ()
+    SwapNext() == (
+        second_list := second_list ^ [(hd first_list)];
+        first_list := (tl first_list);
+    );
+
+end SeqSwap

@@ -15,7 +15,7 @@
             "name": "RunDoSwap",
             "type": "vdm",
             "request": "launch",
-            "noDebug": false,
+            "noDebug": true,
             "defaultName": "SeqSwap",
             "command": "print new SeqSwap().DoSwap()"
         }

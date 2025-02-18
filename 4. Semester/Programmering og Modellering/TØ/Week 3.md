@@ -67,3 +67,4 @@ No, the different rules used do not lead into each other, and the discharging is
 ![[POM Week 3 Exercise 8.b]]
 
 ### (c)
+![[POM Week 3 Exercise 8.c]]

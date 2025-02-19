@@ -6,7 +6,7 @@ A predicate is a statement about one or more variables which can become true or 
 A theorem is a statement which can be proven true using formal proofs.
 
 ### (c)
-A tautology is a statement which is always true.
+A tautology is a statement which is always true. This also means that the statement has no premises.
 
 ### (d)
 A sequent is a statement that given some premises, a conclusion can be proven.
@@ -68,3 +68,5 @@ No, the different rules used do not lead into each other, and the discharging is
 
 ### (c)
 ![[POM Week 3 Exercise 8.c]]
+
+### (d)

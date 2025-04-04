@@ -15,29 +15,34 @@ Virksomheden har fået tildelt netværket `130.225.16.0/24`. Router R1’s adres
 
 | Navn på element | Interface | IP-adresse (CIDR notation) |
 | --------------- | --------- | -------------------------- |
-| Router R1       | eth0      |                            |
-| Router R2       | eth0      |                            |
-| Router R2       | eth1      |                            |
-| Host H1         | eth0      |                            |
-| Host H2         | eth0      |                            |
-| Host H3         | eth0      |                            |
-| Host H4         | eth0      |                            |
+| Router R1       | eth0      | 130.225.16.1/25            |
+| Router R2       | eth0      | 130.225.16.2/25            |
+| Router R2       | eth1      | 130.225.16.129/25          |
+| Host H1         | eth0      | 130.225.16.3/25            |
+| Host H2         | eth0      | 130.225.16.130/25          |
+| Host H3         | eth0      | 130.225.16.131/25          |
+| Host H4         | eth0      | 130.225.16.132/25          |
 
 ### b) Angiv en velvalgt default gateway-adresse for host H3.
-
+Da H3 er forbundet til det subnet hvor Router R2 fik det første IP, vil denne router fungere som default gateway. Default gateway-adressen for H3 er da `130.225.16.129/25`.
 
 ## Opgave 3 (1 point)
 Antag at vi ønsker at transmittere den binære besked `11001001` og at vi ønsker at beskytte den mod fejl ved hjælp af CRC-polynomiet $x^3 + x + 1$.
 
 ### a) Hvilken af følgende beskeder skal sendes, når der tages højde for CRC-tjek?
+CRC-polynomiet svarer til `1011` i binær. Da polynomiet er af 3 grad skal der tilføjes 3 nuller i slutningen af beskeden, hvilke gør at den bliver `11001001000`. 
 
+![[Midterm 2025 Opg 3.a]]
+
+Resten af divisionen var `10` trækkes dette fra den forlængede besked fås `11001001000 - 10 = 11001000110`. Svaret er dermed [B].
 
 ## Opgave 4 (1 point)
 Figuren nedenfor viser en lag-2 infrastruktur bestående af 7 bridges $B10, \dots, B90$, som samlet forbinder 6 LAN-segmenter $A, B, \dots, F$. Bridges er nummereret med deres Bridge ID, så f.eks. $B90$ har $ID=90$. Alle bridges kører Spanning Tree-protokollen, og vi antager, at protokollen har konvergeret.
 ![[Pasted image 20250403000328.png]]
 
 ### a) Angiv eller illustrer det spanning tree, som forbinder alle bridges.
-
+Bridge $B10$ må være roden da den har det mindste Bridge ID. Netværkets spanning tree kommer da til at se ud som således
+![[Midterm 2025 Opg 4.a]]
 
 ## Opgave 5 (1 point)
 Betragt et udsnit af Internettet som vist nedenfor.
@@ -56,7 +61,7 @@ Betragt et udsnit af Internettet som vist nedenfor.
 ## Opgave 6 (1 point)
 
 ### a) Hvilke/hvilken af følgende mekanismer bruges til at finde MAC-adressen, når modtagerens IP-adresse er kendt?
-
+Svaret er C "Address Resolution Protocol (ARP)".
 
 ## Opgave 7 (1 point)
 

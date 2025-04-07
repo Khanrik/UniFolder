@@ -2,7 +2,7 @@
 En host computer med MAC-adressen `80-CE-62-78-B6-E2` anvender stateless autokonfiguration for at tilegne sig en global IPv6-adresse. Fra den lokale router får host'en annonceret det globale netværkspræfiks: `2021:0:0:2403::/64`.
 
 ### a) Hvilken adresse konfigurerer hosten?
-Svaret er [C] Hosten konfigurerer 2021::2403:82CE:62FF:FE78:B6E2
+Svaret er [C]. Hosten konfigurerer 2021::2403:82CE:62FF:FE78:B6E2
 
 ### b) Forklar kort hvorledes stateless autokonfiguration virker for IPv6?
 Den tager computerens MAC adresse, tilføjer de 2 bytes FFFE i midten og sætter den syvende bit til dens komplementære værdi. Dette vil give et suffix, som i forrige opgave svarer til "82CE:62FF:FE78:B6E2", hvilket bliver sat bag på netværkspræfix'et.
@@ -50,34 +50,47 @@ Betragt et udsnit af Internettet som vist nedenfor.
 
 ### a) Konstruér en forwarding-table for router R2 med informationer fra figuren ved at udfylde tabellen nedenfor. Bemærk at netværkene er angivet i CIDR-notation på figuren, mens forwarding-tabellen adskiller netværk og subnetmaske og anvender dotted-decimal notation (a.b.c.d).
 
-| Netværk | Subnetmask | Next hop |
-| ------- | ---------- | -------- |
-|         |            |          |
-|         |            |          |
-|         |            |          |
-|         |            |          |
-|         |            |          |
+| Netværk       | Subnetmask    | Next hop  |
+| ------------- | ------------- | --------- |
+| 89.184.128.0  | 255.255.224.0 | Direkte   |
+| 212.237.192.0 | 255.255.248.0 | Direkte   |
+| 85.218.128.0  | 255.255.128.0 | R1 (.6)   |
+| 104.121.0.0   | 255.192.0.0   | R3 (.155) |
 
 ## Opgave 6 (1 point)
-
 ### a) Hvilke/hvilken af følgende mekanismer bruges til at finde MAC-adressen, når modtagerens IP-adresse er kendt?
 Svaret er C "Address Resolution Protocol (ARP)".
 
 ## Opgave 7 (1 point)
-
 ### a) Hvilke/hvilken af følgende er CODE BITS (også kaldet Flags) i TCP-protokollen?
-
+ACK er et flag svarende til acknowledgement. Svaret er dermed [A].
 
 ### b) Giv sekvensen af kontrolkommandoer, som TCP anvender, for at sætte en forbindelse op mellem en initiativtagende afsender og en destination.
-
+1. SYN: Inititatoren sender end SYN kommando til serveren.
+2. SYN-ACK: Serveren svarer med SYN-ACK kommandoen.
+3. ACK: Inititatoren svarer igen med en sidste ACK.
 
 ## Opgave 8 (1 point)
 Antag at en TCP-forbindelse kører over en `1-Gbps` Ethernet link og udnytter den fulde båndbredde kontinuerligt.
 
 ### a) Hvor lang tid vil der gå, før TCP's sequence number har gennemløbet hele den tilgængelige nummerserie (wrap around)?
+En TCP sequence er en 32-bit sekvens der udgør
+$$
+2^{32} \text{ B} = 4.294.967.296 \text{ B}
+$$
 
+Den fulde båndebreede svarer i dette tilfælde til
+$$
+\frac{10^{9} \frac{\text{b}}{\text{s}}}{8 \frac{b}{B}} = 125 \cdot 10^{6} \frac{\text{B}}{\text{s}}
+$$
+Tiden det tager for hele gennemløbet er da
+$$
+\frac{4.294.967.296 \text{ B}}{125 \cdot 10^{6} \frac{\text{B}}{s}} = 34.36 \text{ s}
+$$
+Svaret er dermed [B].
 
 ## Opgave 9 (1 point)
 En datapakke sendes ved hjælp af UDP over IPv4.
 
 ### a) Hvilke af følgende protokolfelter er medtaget i beregningen af UDP-pakkens checksum?
+UDP-pakkens checksum beregning består af IP source/destination, protokol, og UDP længde, så svaret er [B].

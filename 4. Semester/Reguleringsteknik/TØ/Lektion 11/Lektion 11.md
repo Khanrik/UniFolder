@@ -73,4 +73,3 @@ Det uregulerede system ser ud som således
 
 Det kan ses at fasemarginfrekvensen skal løftes med 14.9 rad/s for at nå kravet for krydsfrekvensen. Der tilføjes derfor en $K_{p} = 14.9 \text{ dB}$, hvilket giver dette.
 ![[Pasted image 20250408115331.png]]
-

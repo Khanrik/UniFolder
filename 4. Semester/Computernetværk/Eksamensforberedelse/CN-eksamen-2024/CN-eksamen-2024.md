@@ -1,19 +1,25 @@
 ## Opgave 1
-Det er
-* en unicast-adresse
-* en internetadresse, som bruges til kommunikation på et lokalt subnet
-* adresse som tilhører et `/10` præfix
+Det er en unicast-adresse
+Det er en internetadresse, som bruges til kommunikation på et lokalt subnet.
+Adressen tilhører et /10 præfix.
 
 ## Opgave 2
-Netværksadressen: `180.2.4.128`
-Broadcastadresse: `180.2.4.255`
-Maximale antal hosts i netværket: 126
 
+| Netværksadressen (network address)   | `180.2.4.128` |
+| ------------------------------------ | ------------- |
+| Broadcastadresse (broadcast address) | `180.2.4.255` |
+
+| Maximale antal hosts i netværket | 126 |
+| -------------------------------- | --- |
 ## Opgave 3
-Den sidste DHCP besked er en DHCP-acknowledgement.
+DHCP Discover
+DHCP Offer
+DHCP Request
+DHCP Acknowledgement
+
 Hvis hosten bliver fjernet fra netværket vil IP-adressen stadig være reserveret, så andre hosts ikke kan få adressen. Når leasingperioden på IP-adressen udløber vil det være muligt for hosten eller andre hosts at få adressen igen.
 
-## Opgave 4 magnler
+## Opgave 4
 Linus kommandoen for at konfigurere en IP-adresse til eth0 er 
 ```sh
 ip addr add <ip adresse> dev eth0
@@ -21,16 +27,15 @@ ip addr add <ip adresse> dev eth0
 
 | Id    | Netværk i CIDR notation |
 | ----- | ----------------------- |
-| Net 1 |                         |
-| Net 2 |                         |
-| Net 3 |                         |
-| Net 4 |                         |
-| Net 5 |                         |
-| Net 6 |                         |
+| Net 1 | 194.68.0.0/27           |
+| Net 2 | 194.68.0.32/27          |
+| Net 3 | 194.68.0.64/27          |
+| Net 4 | 194.68.0.96/27          |
+| Net 5 | 194.68.0.128/27         |
+| Net 6 | 194.68.0.160/27         |
 
-
-## Opgave 5 magnler
-
+## Opgave 5
+Pakken forwardes på eth1
 
 ## Opgave 6
 `2024:cafe:5123:424:3e4a:92ff:fe6e:b01f`
@@ -60,11 +65,35 @@ R8 -> R3 -> R2 -> R1
 
 En algoritme til at bestemme den korteste vej kunne være dijkstra eller a*.
 
-## Opgave 11 mangler
+## Opgave 11
+Hvis Alice vælger den private nøgle 2
+$$
+6^{2} \text{ mod } 17 = 2
+$$
+Hvis Bob vælger den private nøgle 3
+$$
+6^{3} \text{ mod } 17 = 12
+$$
+Deres fælles nøgle ville da være
+$$
+12^{2} \text{ mod } 17 = 8
+$$
+eller
+$$
+2^{3} \text{ mod } 17 = 8
+$$
 
+| Alice’s private nøgle         | 2   |
+| ----------------------------- | --- |
+| Bob’s private nøgle           | 3   |
+| Alice’s og Bob's fælles nøgle | 8   |
 
-## Opgave 12 mangler
+En symmetrisk krypteringsalgoritme som AES kan bruges. Alice kan kryptere en besked med nøglen 8 og Bob kan derefter dekryptere den med samme nøgle.
 
+## Opgave 12
+`100110001`
+
+CRC-checksum bruges til at detektere om en datapakke er blevet korrupt.
 
 ## Opgave 13
 

@@ -73,16 +73,23 @@ $$
 
 ---
 
-
+$$
+\begin{align*}
+E[x + z] &= \int_{-\infty}^{\infty} \int_{-\infty}^{\infty} (x+z) \cdot p(x,z) \, dx  \, dz\\
+&= \int_{-\infty}^{\infty} \int_{-\infty}^{\infty} x \cdot p(x,z) \, dx  \, dz + \int_{-\infty}^{\infty} \int_{-\infty}^{\infty} z \cdot p(x,z) \, dx  \, dz\\
+&= \int_{-\infty}^{\infty} x \cdot \int_{-\infty}^{\infty} p(x,z) \, dz  \, dx + \int_{-\infty}^{\infty} z \cdot \int_{-\infty}^{\infty} p(x,z) \, dx  \, dz\\
+&= \int_{-\infty}^{\infty} x \cdot p(x)  \, dx + \int_{-\infty}^{\infty} z \cdot p(z)  \, dz\\
+&= E[x] + E[z]
+\end{align*}
+$$
 
 ## Added Questions
 Given constants $a, b, \in R$ and random variables $X$ and $Y$, show that
 ### 1. $E[a + bX] = a + b E[X]$
 $$
 \begin{align*}
-E[a + bX] &= \frac{1}{n_{x}} \sum^{n_{X}}_{i=1} a + bx_{i}\\
-&= \frac{1}{n_{X}} \sum^{n_{X}}_{i=1} a + \frac{1}{n_{X}} \sum^{n_{X}}_{i=1} bx_{i}\\
-&= \frac{n_{X} \cdot a}{n_{X}} + b \cdot \frac{1}{n_{X}} \sum^{n_{X}}_{i=1} x_{i}\\
+E[a + bX] &= \int_{-\infty}^{\infty} (a + b \cdot X) \cdot p(X) \, dX\\
+&= a \int_{-\infty}^{\infty} p(X) \, dX + b \cdot \int_{-\infty}^{\infty} X p(X) \, dX\\
 &= a + b \cdot E[X]
 \end{align*}
 $$
@@ -90,8 +97,11 @@ $$
 ### 2. $E[X + Y] = E[X] + E[Y]$
 $$
 \begin{align*}
-E[X + Y] &= \frac{1}{n_{U}} \sum^{n_{U}}_{i=1} x_{i} + y_{i}\\
-&= 
+E[X + Y] &= \int_{-\infty}^{\infty} \int_{-\infty}^{\infty} (X+Y) \cdot p(X,Y) \, dX  \, dY\\
+&= \int_{-\infty}^{\infty} \int_{-\infty}^{\infty} X \cdot p(X,Y) \, dX  \, dY + \int_{-\infty}^{\infty} \int_{-\infty}^{\infty} Y \cdot p(X,Y) \, dX  \, dY\\
+&= \int_{-\infty}^{\infty} X \cdot \int_{-\infty}^{\infty} p(X,Y) \, dY  \, dX + \int_{-\infty}^{\infty} Y \cdot \int_{-\infty}^{\infty} p(X,Y) \, dX  \, dY\\
+&= \int_{-\infty}^{\infty} X \cdot p(X)  \, dX + \int_{-\infty}^{\infty} Y \cdot p(Y)  \, dY\\
+&= E[X] + E[Y]
 \end{align*}
 $$
 
@@ -109,10 +119,46 @@ $$
 $$
 \begin{align*}
 Var[a + bX] &= E[(a + bX)^{2}] - E[a + bX]^{2}\\
-&= E[(a^{2} + b^{2}X^{2} + 2abX)] - E[a + bX]^{2}\\
-&= E[a^{2}] + E[b^{2}X^{2}] + E[2abX] - E[a + bX]^{2}\\
-&= a^{2} + b^{2}E[X^{2}] + 2abE[X] - E[a + bX]^{2}
+&= E[a^{2} + b^{2}X^{2} + 2abX] - (a + bE[X])^{2}\\
+&= a^{2} + b^{2} E[X^{2}] + 2abE[X] - a^{2} - b^{2}E[X]^{2} - 2abE[X]\\
+&= b^{2}E[X^{2}] - b^{2}E[X]^{2}\\
+&= b^{2}E[X]
 \end{align*}
 $$
 
-### 5. $Var[X+Y] = Var[X] + Var[y] + 2Cov[X,Y]$
+### 5. $Var[X+Y] = Var[X] + Var[Y] + 2Cov[X,Y]$
+$$
+\begin{align*}
+Var[X + Y] &= E[(X + Y)^{2}] - E[X + Y]^{2}\\
+&= E[X^{2} + Y^{2} + 2XY] - (E[X] + E[Y])^{2}\\
+&= E[X^{2}] + E[Y^{2}] + 2E[XY] - (E[X]^{2} + E[Y]^{2} + 2E[X]E[Y])\\
+&= E[X^{2}] - E[X]^{2} + E[Y^{2}] - E[Y]^{2} + 2E[XY] - 2E[X]E[Y]\\
+&= Var[X] + Var[Y] + 2 Cov[X,Y]
+\end{align*}
+$$
+
+### 6. $Cov[X, Y] = E[XY] - E[X]E[Y]$
+$$
+\begin{align*}
+Cov[X,Y] &= E_{X,Y}[(X - E[X])(Y - E[Y])]\\
+&= E[XY - XE[Y] - E[X]Y + E[X]E[Y]]\\
+&= E[XY] - E[X]E[Y] - E[X]E[Y] + E[X]E[Y]\\
+&= E[XY] - E[X]E[Y]
+\end{align*}
+$$
+
+Assuming that $X$ and $Y$ are both independent, show that
+### 7. $Cov[X,Y] = Corr[X,Y] = 0$
+$$
+\begin{align*}
+Cov[X,Y] &= E[XY] - E[X]E[Y]\\
+&= \int_{-\infty}^{\infty} \int_{-\infty}^{\infty} XY \cdot p(X,Y) \, dY  \, dX - E[X]E[Y]\\
+&= \int_{-\infty}^{\infty} X \int_{-\infty}^{\infty} Y \cdot p(X,Y) \, dY  \, dX - E[X]E[Y]\\
+&= \int_{-\infty}^{\infty} X p(X) E[Y]  \, dX - E[X]E[Y]\\
+&= E[X]E[Y] - E[X]E[Y]\\
+&= 0
+\end{align*}
+$$
+
+### 8. $Var[X + Y] = Var[X] + Var[Y]$
+Brug opg 5 og 7.

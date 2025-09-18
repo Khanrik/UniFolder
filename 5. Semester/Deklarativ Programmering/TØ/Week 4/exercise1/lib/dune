@@ -1,0 +1,3 @@
+(library
+ (name test)
+ (inline_tests (backend qtest.lib)))

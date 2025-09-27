@@ -1,0 +1,4 @@
+(library
+  (name week5)
+  (modules week5)
+  (inline_tests (backend qtest.lib)))

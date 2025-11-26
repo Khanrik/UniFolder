@@ -1,0 +1,27 @@
+(library
+  (name LamTerm)
+  (modules LamTerm)
+  (libraries Syntax Utility)
+  (modes byte native))
+
+(library
+  (name DeBruijn)
+  (modules DeBruijn)
+  (libraries Syntax Utility)
+  (modes byte native))
+
+(library
+  (name Convert)
+  (modules Convert)
+  (libraries Utility LamTerm DeBruijn)
+  (modes byte native))
+
+(library
+  (name InteractiveLC)
+  (modules InteractiveLC)
+  (libraries Utility LamTerm DeBruijn Convert))
+
+(library
+  (name Prolog)
+  (modules Prolog)
+  (libraries Patricia Utility Substitution Formula Transform Unification))

@@ -1,0 +1,11 @@
+Printf.printf "L08 workspace";;
+#use "topfind";;
+#use_output "dune top"
+#directory "pclib"
+open Patricia;;
+open Formula;;
+open Substitution;;
+#install_printer tprinter
+#install_printer fprinter
+open Transform;;
+open Rewrite

@@ -1,0 +1,27 @@
+(library
+  (name Syntax)
+  (modules Syntax)
+  (libraries Utility)
+  (modes byte native))
+
+(library
+  (name Partial)
+  (modules Partial)
+  (modes byte native))
+
+(library
+  (name ListSet)
+  (modules ListSet)
+  (modes byte native))
+
+(library
+  (name Patricia)
+  (modules Patricia)
+  (libraries ListSet)
+  (modes byte native))
+
+(library
+  (name Utility)
+  (modules Utility)
+  (libraries Patricia)
+  (modes byte native))

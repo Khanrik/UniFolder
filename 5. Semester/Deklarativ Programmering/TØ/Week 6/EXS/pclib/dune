@@ -1,0 +1,15 @@
+(library
+  (name Formula)
+  (modules Formula)
+  (libraries Partial Utility)
+  (modes byte native))
+
+(library
+  (name Partial)
+  (modules Partial)
+  (modes byte native))
+
+(library
+  (name Utility)
+  (modules Utility)
+  (modes byte native))

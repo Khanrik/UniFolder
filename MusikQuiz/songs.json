@@ -1,0 +1,16 @@
+{
+    "songs": {
+        "Bohemian Rhapsody": {
+            "url": "https://www.youtube.com/watch?v=fJ9rUzIMcZQ",
+            "txt_file": "bohemian_rhapsody.txt"
+        },
+        "Imagine": {
+            "url": "https://www.youtube.com/watch?v=YkgkThdzX-8",
+            "txt_file": "imagine.txt"
+        },
+        "Hotel California": {
+            "url": "https://www.youtube.com/watch?v=09839DpTctU",
+            "txt_file": "hotel_california.txt"
+        }
+    }
+}

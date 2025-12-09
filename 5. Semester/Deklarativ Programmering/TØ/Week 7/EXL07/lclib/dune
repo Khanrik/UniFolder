@@ -1,0 +1,5 @@
+(library
+  (name Lambda)
+  (modules Lambda)
+  (libraries Partial Syntax Utility)
+  (modes byte native))

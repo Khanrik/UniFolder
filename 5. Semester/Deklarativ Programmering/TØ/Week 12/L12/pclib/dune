@@ -1,0 +1,34 @@
+(library
+  (name Formula)
+  (modules Formula)
+  (libraries Partial Syntax Patricia)
+  (modes byte native))
+
+(library
+  (name Substitution)
+  (modules Substitution)
+  (libraries Formula ListSet Patricia)
+  (modes byte native))
+
+(library
+  (name Unification)
+  (modules Unification)
+  (libraries Utility Formula Patricia Substitution)
+  (modes byte native))
+
+(library
+  (name Transform)
+  (modules Transform)
+  (libraries Utility Patricia Formula Substitution)
+  (modes byte native))
+
+(library
+  (name Rewrite)
+  (modules Rewrite)
+  (libraries Utility Patricia Formula Substitution)
+  (modes byte native))
+
+(library
+  (name InteractivePC)
+  (modules InteractivePC)
+  (libraries Utility Patricia Formula Substitution Transform Rewrite))

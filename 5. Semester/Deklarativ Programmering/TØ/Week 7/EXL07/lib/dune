@@ -1,0 +1,3 @@
+(library
+  (name Nat)
+  (modules Nat))

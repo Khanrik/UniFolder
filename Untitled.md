@@ -1,7 +1,7 @@
 $$
-x[n] =
-\begin{cases}
-(-1)^{n} & \text{når } n \geq 0, \\
-0 & \text{ellers}
-\end{cases}
+\nabla g =
+\begin{bmatrix}
+1 \\
+4
+\end{bmatrix}
 $$

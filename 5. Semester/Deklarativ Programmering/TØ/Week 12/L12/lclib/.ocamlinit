@@ -1,0 +1,7 @@
+#use_output "dune top"
+#directory "lclib"
+open DeBruijn
+open LamTerm
+open Convert
+#install_printer dbprinter
+#install_printer lprinter

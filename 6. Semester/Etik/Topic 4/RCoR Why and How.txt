@@ -1,0 +1,414 @@
+INTRODUCTION.
+
+Publicly funded research has increased enormously in recent decades, and countries around the
+globe allocate a substantial share of their resources to science. For example, member states of the
+European Union have agreed to the Barcelona Objective of raising public and private investment in
+research and development to 3% of the GNP in each member state.
+In return for this investment, society expects new scientific knowledge on which goverments,
+public and privates agencies, and individual citizens can trustingly draw in making informed
+decisions on many different issues in modern life, from dietary advice and medical treatment to
+energy saving initiatives and computer safety, and which companies can draw on in developing new
+and improving existing products and technologies. Hence, the consequences of poor or fraudulent
+science can be quite serious: patients may die from inefficient treatments, people may suffer harm
+or loss from acting on the basis of incorrect health information, and resources may be lost in
+pursuing apparently interesting results that turn out to be mere chimeras. To illustrate, we shall
+provide an example before turning to a general overview of how scientific misconduct has been and
+is treated internationally, national and locally at the institutions where research takes place.
+
+
+WAKEFIELD AND THE VACCINATION SCARE.
+
+In 1998, the British medical doctor Andrew Wakefield published a report in the journal Lancet in
+which he and his co‐authors from a study of 12 children hypothesized a causal link between MMR
+vaccination and autism. The news of this disturbing finding soon spread,
+not only among scientists, but also in the public media, and caused parents to decline the MMR
+vaccine for their children. However, it later turned out that Wakefield's study was fraudulent, and in
+2010, twelve years after its original publication, the paper was finally retracted by the editors of
+Lancet. However, by then references to the paper had already spread widely. As a result, at many anti‐vaccination web sites
+and similar sources that parents may encounter when searching information on the pros and cons
+of vaccines, reference to Wakefield's work is still prominent as an authoritative source of
+skepticism towards vaccination. As a consequence of the vaccination skepticism,
+several countries do not have herd immunity against measles, mumps and rubella, and epidemics
+can therefore still occur, and with them the rare but serious complications such as brain damage,
+sterility and damage to fetuses. As this case clearly shows, scientific misconduct can have quite severe consequences, and we shall
+describe below how misconduct has become a more and more pressing issue as society has come to
+depend more and more on science and its results.
+
+
+SCIENCE AND ITS IMPORTANCE IN THE 21 ST CENTURY.
+
+Science has not always played such a prominent role in society as it does today. During the 20th and
+up into the 21st century, science has gained an immense importance. Especially after WWII, when
+the invention of radars, the development of mass produced antibiotics, as well as the production of
+the World's first atomic bomb had made it clear to both politicians and the general public alike that
+science was a truly transformative power, science came to be seen as an endeavor that “when put to
+practical use mean[s] more jobs, higher wages, shorter hours, more abundant crops, more leisure
+for recreation, for study, for learning how to live without the deadening drudgery which has been
+the burden of the common man for ages past”. With these high expectation to what
+advances in science would bring, governments all over the world allocated substantial amounts of
+money to scientific research in the hope that the flow of new scientific knowledge would be both
+continuous and substantial. Public agencies for the funding of scientific research to the benefit of
+society was created in many countries, such as in the US the National Science Foundation in 1950
+, or in Denmark the National Research Council in 1952.
+The Cold War and the 1957 “Sputnik chock” only strengthened the political impression of the
+importance of science, and the 1950es and 1960es witnessed remarkable increases in funding,
+activities, and results. Historian of science Solla Price argued in his book Little Science – Big Science
+that the amount of scientific activities and results grew exponentially with a doubling time
+of only 10‐15 years. But he also warned that this growth could not go on indefinitely: “… it is clear
+that we cannot go up another two orders of magnitude as we have climbed the last five. If we did,
+we should have two scientists for every man, woman, child, and dog in the population, and we
+should spend on them twice as much money as we had”.
+I the 1980es and 1990es, although funding was still growing, the rate of the growth started to
+decline. Large programs, such as the Superconducting Supercollider, were closed for financial
+reason. Nobel Laureate and president of the AAAS, Leon M. Lederman,
+lamented how the individual researcher on average had received less and less funding for their
+research since the late 1960es. Arguments were advanced that national budgets cold no longer
+afford continued expansion of science, and therefore science needed to rationalize, and become
+more tightly organized and clearly managed. This did in no way mean that
+science had lost its importance. Quite the contrary, more and more funding was
+allocated to science, but spending so much money on science it also became increasingly important
+that the money was spent well. Accountability, evaluation and priorities became key topics for
+science policy and science management. At the same time, competition on funding, collaboration
+with industry, and large scale collaborations introduce challenged traditional norms of how science
+were to be pursued. Whereas the sociologist of science Morton by the mid‐20 th century
+had described the norms of science by the so‐called CUDOS norms that stressed that new results are the
+common property of the scientific community, that scientists can all contribute to
+science regardless of their race or gender or social background, that scientists are
+not driven by personal interests in their pursuit of science, and scientific claims
+are critically scrutinized by the scientific community before accepted, Ziman at the end of the century described the norms of science by the PLACE
+norms that stressed instead that results are proprietary rather than communal, that researchers
+focus on local puzzles rather than the general understanding, that there is a hierarchical structure
+of authority rather than the equality implied by Merton’s universalism, that research is often
+commissioned and therefore not disinterested, and that scientists are valued as experts rather than
+for their originality.
+
+THE NEED FOR RESPONSIBLE CONDUCT IN A COMPETITIVE WORLD.
+
+The continuous demand for new research results and the limited resources available to provide
+them make science a very competitive enterprise. Most funding agencies allocate research funding
+through free competition between applicants. For example, in 2013 the Danish Council for
+Independent Research received applications for a total of dkk 7.4 billion while granting support for
+a total of dkk 1.2 billion, i.e. a success rate of 16%. Similarly, applicants at the European Research
+Council have in recent years experienced success rates around 10%. With such keen competition,
+researchers are highly dependent on proving their continued success in the form of publications
+and citations. Many researchers therefore perceive an increasing pressure to publish as much as
+possible, as quickly as possible, and in as high ranking journals as possible, and for some it may
+appear tempting to cut corners.
+Moreover, current research politics strongly encourage collaboration and co‐funding between
+universities and industry in the hope of seeing higher economic returns from society’s huge
+investment in research. As a result, researchers increasingly engage in research activities with
+partners from the private sector where financial and other interests may conflict in ways that can
+compromise the way research is conducted and reported.
+Contemporary research is also characterized by greater internationalisation and interdisciplinarity.
+Researchers from different cultures and with different areas of expertise therefore have to
+collaborate. At the same time, these collaborating researchers may not each be fully capable of
+understanding and assessing all aspects of the research conducted, and it can easily become opaque
+who is responsible for the results produced and accountable for the individual parts.
+With all these dangers lurking in the world of contemporary science, it is important that all
+researchers: have a clear understanding of what is responsible conduct of research, and know how to adhere
+to it; can identify questionable researcher practices and know how to react when it occurs.
+
+
+WHEN IT GOES WRONG.
+
+Personal ambition, the aim of earning money or gaining power, the pressure to publish, or the
+desire to please superiors or collaborators are some of the many various causes that lead some
+researchers cut corners and engage in questionable research behaviors or scientific misconduct
+.
+One of the spectacular cases of scientific misconduct concerned the work of the immunologists
+William T. Summerlin who had been hired as senior researcher at the Sloan‐Kettering Institute in
+1973 to work with Robert A. Good. They
+had worked together for some time on a particular procedure for treating skin and other organs
+before transplantation, which was supposed to prevent rejection of the graft due to the immune
+response. Summerlin had reported to succesfully have conducted xenogenic skin grafting with
+humans, pigs, guinea pigs and rats as donors and mice as recipients, and cornea transplants with
+humans as donors and rabbits as recipients. However, other laboratories had had difficulties
+replicating their experiments, and the same was the case when Good and Summerlin hired a young
+research fellow to repeat their experiments.
+To prove his case, Summerlin was asked to meet with Good and display the grafting of skin from a
+black mouse onto a white. Summerlin went to the meeting, bringing from the stables 18 strain A‐
+albino mice that had received skin from strain C57 black mice. But the grafts looked gray, and, alone
+in the elevator, Summerlin took a black felt pen and painted the skin of two of the mice before he
+took them to Good’s office to present them. Good did not notice the anything suspicious at the
+meeting, but after Summerlin had returned the mice to the stables, a care taker noticed that the
+grafts looked stranged, washed them with alcohol ‐ and observed the black color turn greay and
+dull! He immediately reported it, and the Sloan‐Kettering Institute appointed an investigation
+committee to look into Summerlin’s work. The committee discovered that also the cornea
+transplants were fraudulent. Summerlin had claimed that the experiment involved both eyes of the
+rabbits, with a fresh cornea grafted on the one eye and a cornea treated according to his new
+procedure on the other. Hence, when the rabbits later displayed one clear and one opaque eye it
+had been interpreted as proving that Summerlin’s procedure was successful. It now turned out that,
+in reality, the rabbits had only received transplant on one eye, and that the transplantations had all
+been failures.
+After his fraud had been revealed, Summerlin was dismissed from the Sloan‐Kettering Institute.
+However, the board issued a release in which it was stated that “the most rational explanation for
+Dr. Summerlin’s recent performance is that he has been suffering from an emotional disturbance of
+such a nature that he has not been fully responsible for the actions he has taken nor the
+representations he has made” and that after discussion with both
+Summerlin and his personal psychiatrist the center would provide Summerlin with up to a year’s
+medical leave on full pay “to enable him to obtain the rest and professional care which his condition
+may require”.
+Among the plagiarism cases, the case related to Vijay Soman from the Yale School of Medicine also
+attracted wide attention. Reviewing a manuscript
+submitted to New England Journal of Medicine, Soman had recommended rejection of the
+manuscript while at the same time lifting text and results to a manuscript that he was himself
+preparing together with his supervisor, Philip Felig. After Soman had submitted the manuscript to
+JAMA, it was sent in review to Jesse Roth who relayed the review job to his assistant Helena
+Wachslicht‐Rodbart – who happened to be the author of the original manuscript from which
+material had been lifted. When Wachslicht‐Rodbart complained to the involved journals, her
+superior Roth and Soman’s superior Felig, who happened to be old friends, first suggested that Felig
+and Soman would hold their paper back until Wachslicht‐Rodbarts had been published, and
+expected that by resolving the issue of priority Wachlicht‐Rodbart would be satisfied. However, she
+instead insisted on an investigation whether the study reported by Soman and Felig had actually
+been carried out. After much delay, during which Wachslicht‐Rodbart felt that she received little
+support and was under some pressure to withdraw the case, an external audit concluded that data
+had indeed been fabricated, and additional investigations revealed that ten out of Soman’s papers
+were either suspicious or clearly fraudulent and had to be retracted too. Soman was immediately
+dismissed from his position, while Felig had to resign from a prestigious chair he had just been
+offered and return to his previous professorship. By then Wachslicht‐Rodbart had decided to leave
+research.
+These cases illustrate some of the difficulties related to questionable research behavior and
+scientific misconduct. First, on the one hand, very often fraudulent research will sooner or later be
+scrutinized by people with the necessary expertise to detect the fraud. On the other hand, scientists
+are so used to trusting each other that they can have difficulties realizing when their trust has been
+misused and should be withdrawn. Second, questionable research practices and scientific
+misconduct concern not only the individual researchers involved, but also the institutions at which
+they work, and the journals in which they publish.
+
+
+PUBLIC REGULATION.
+
+The kind of behavior now described as scientific misconduct and questionable research practices
+have always existed in science. Already Charles Babbage warned almost two centuries ago
+about the ‘forging’, ‘trimming’ and ‘cooking’ of data. But the consequences of scientific misconduct
+and questionable research behavior in the form of people harmed and resources lost have gained
+importance as society has come and to allocate more and more money to scientific activities, and to
+rely more and more on the research results produced.
+Further, scientific misconduct and questionable research practices are unfortunately not rare
+occurrences. Based on a survey distributed among several thousand US researchers, found that 0,3 % of the scientists who replied to the survey had
+engaged in the falsification of data, 1.4 % had used the ideas of others without obtaining permission
+or giving due credit, 6% had failed to present data that contradicted their own research, and 12.5%
+had overlooked other’s use of flawed data or questionable interpretation of data. Similarly, based
+on a meta‐analysis of available studies of the prevalence of scientific misconduct,
+has found that almost 2% admitted to have “fabricated, falsified or modified data or results at least
+once”, while 33,7% admitted other questionable research practices. When asked about
+the behavior of colleagues, numbers rose, and 14% reported that they had experienced colleagues
+engage in falsification while 72% reported to have experienced colleagues engage in questionable
+research practices.
+
+
+THE INTRODUCTION OF PUBLIC REGULATIONS.
+
+Given this prevalence of misconduct and questionable behavior and the potential harm that it can
+cause, society has gradually realized a need for regulation. During the 1970es and 1980es, news
+reports and popular books, especially from the US, described a number of spectacular cases of
+misconduct, including the Summerlin case and the Soman case described above. To the US public and their politicians, the reported cases indicated an inability
+within the scientific community to deal with fraudulent behavior in their midst. To the public it
+looked as if scientists were either gullible or deliberately chose to close their eyes at even glaringly
+fraudulent acts. In some cases, investigations seemed to be dragged out for ages. In others,
+perpetrators were not punished, but allowed to move unrevealed to the next institution to continue
+their questionable or fraudulent behavior. In others again, old‐boys networks appeared to work to
+silence whistle‐blowers rather than to support them. Hence, despite initial protest from scientists
+who maintained that misconduct was best handled internally by the scientific community itself, US
+politicians concluded that political intervention was needed, and by the late 1980es the US was the
+first country to implement regulations that required universities receiving public funding to
+establish clear policies and procedures for handling misconduct.
+
+
+INTERNATIONAL DIFFERENCES AND HARMONIZATION EFFORTS.
+
+Gradually, many countries have implemented regulations that define scientific misconduct and
+specify how cases of misconduct should be handled. However, it is important to be aware that
+national regulations differ, as do the various definitions of misconduct itself. Hence, when participating in the international world of science it remains important
+when travelling from country to country, or even from institution to institution, to inquire about
+local regulations!
+Within the last decade, agencies around the globe have worked towards international dialogue on
+how to understand and promote research integrity and to eventually harmonize standards and
+regulations.
+This work has led to the 2010 Singapore Statement on Research Integrity which outlines “the
+principles and professional responsibilities that are fundamental to the integrity of research
+wherever it is undertaken” and the 2013 Montreal Statement on Research Integrity in Cross‐
+Boundary Research Collaborations which outlines the responsibilities of individual and
+institutional partners in cross boundary research collaborations, including general collaborative
+responsibilities, responsibilities in managing the collaboration, responsibilities in collaborative
+relationships, and responsibilities for the outcomes of research.
+These statements emphasize that the fundamental principles on which scientific research must
+necessarily build are: Honesty in all aspects of research; Accountability in the conduct of research;
+Professional courtesy and fairness in working with others; Good stewardship of research on behalf of others.
+While describing the basic principles and professional responsibilities that are fundamental to the
+integrity of science in general terms, the statements also acknowledge that there are many national
+and disciplinary differences in the way research is organized and conducted. The detailed
+interpretation of the general principles and responsibilities are therefore often spelled out in
+national and local regulations.
+
+
+DEFINITIONS OF SCIENTIFIC MISCONDUCT.
+
+Definitions of scientific misconduct can roughly be divided into the group of narrow definitions
+focused on fabrication, falsification and plagiarism and the group of
+broader definition that attempt to include a wider zone of questionable and unacceptable
+behaviours in addition to what is covered by the FFP definition.
+The first definition of misconduct was provided by the US misconduct regulations and initially
+attempted a mixture of the two by defining misconduct as fabrication, falsification, plagiarism, or
+other practices that seriously deviate from those that are commonly accepted within the scientific
+community. However, the “other practices that seriously deviate” clause was criticized by many
+scientists, including the National Academy of Science, because it could be used to punish creative or
+novel science. The ‘other serious deviations’ clause was therefore later removed, and the US
+regulations now include only fabrication, falsification and plagiarism.
+
+
+Definition of Research Misconduct, Office of Research Integrity.
+
+Research misconduct means fabrication, falsification, or plagiarism in proposing, performing, or
+reviewing research, or in reporting research results.
+A. Fabrication is making up data or results and recording or reporting them.
+B. Falsification is manipulating research materials, equipment, or processes, or changing or
+omitting data or results such that the research is not accurately represented in the research record.
+C. Plagiarism is the appropriation of another person's ideas, processes, results, or words without
+giving appropriate credit.
+Research misconduct does not include honest error or differences of opinion.
+In contrast to the US definition of misconduct, the Danish definition of scientific misconduct also
+includes misrepresentations in the form of e.g. misleading use of statistical methods, distorted
+interpretations of result, or distorted conclusions. We shall discuss the distinction between
+misconduct and poor science below, after both national and local rules and regulations have been
+presented.
+
+
+Executive Order on the Danish Committees on Scientific Dishonesty.
+
+Consolidated Act No. 306 of 20 April 2009, Section 2:
+
+Scientific dishonesty shall mean: Falsification, fabrication, plagiarism and other serious violation of
+good scientific practice committed wilfully or grossly negligent on planning, performance or
+reporting of research results. Included hereunder are:
+1. Undisclosed fabrication and construction of data or substitution with fictitious data.
+2. Undisclosed selective or surreptitious discarding of a person s own undesired results.
+3. Undisclosed unusual and misleading use of statistical methods.
+4. Undisclosed biased or distorted interpretation of a person s own results and conclusions.
+5. Plagiarisation of other persons’ results or publications.
+6. A false credit given to the author or authors, misrepresentation of title or workplace.
+7. Submission of incorrect information about scientific qualifications.
+
+In addition to the national regulations, the individual institutions may have local regulations for
+good scientific practice. For example, at the University of Copenhagen the local guidelines for good
+scientific practice are based on international codes and recommendations such as the Vancouver
+Recommendations, the European Code of Conduct from the European Science Foundation and the Singapore
+Statement on Research Integrity.
+
+
+Rules on Good Scientific Practice, University of Copenhagen.
+
+Good scientific practice is based on a series of principles that have been formulated and are
+regularly adjusted by relevant international associations of researchers and research organisations.
+These principles include:
+1. that the research is conducted in a reliable manner
+2. that primary data is kept secure and, as far as possible, is made publicly available
+3. that the research results are presented openly and honestly
+4. that there is openness in relation to possible conflicts of interest
+5. that everybody who takes part in the research process is credited in a fair manner.
+
+Similarly, Aarhus University has a local set of rules to safeguard good scientific practice. These rules
+proscribe against scientific misconduct as it is defined in the national order on scientific dishonesty,
+and against other questionable behaviors, such as negligence that is not sufficiently gross to count
+as misconduct but which nevertheless has important consequences, or misrepresentations that are
+not so serious as to be seen as misconduct.
+
+
+The University of Aarhus's rules of 29 June 2000 to safeguard good scientific practice
+
+Section 1. Scientific work at the University of Aarhus must be carried out in keeping with good
+scientific practice, cf. Subsections 2 and 3.
+Subsection 2. Good scientific practice requires scientific integrity. In other words, there must be
+no display of behaviour which can be characterised as being "scientifically dishonest", as this notion
+is defined in the Danish Ministry of Research and Information Technology's Order no. 933 of 15
+December 1998 concerning the Danish Committees on Scientific Dishonesty Section 3. Here, scientific dishonesty concerns actions or omissions
+which are characterised by:
+Falsification or distortion of the scientific message having taken place during research, or grossly
+misleading information or actions regarding a person's efforts within the research, and
+The person concerned having acted with intent or gross negligence regarding the activities under
+consideration.
+Subsection 3. Furthermore, good scientific practice requires good research conduct. This, in other
+words, means that scientific work must be carried out with due respect for the generally recognized
+methods and any scientific codes of ethics that may apply to the area of research in question, as
+well as in accordance with the protection of the personal and professional integrity of the person or
+persons concerned. Actions and omissions contrary to good scientific practice might, for example,
+be:
+Negligence, which cannot be described as gross, but the consequences of which must, however, be
+considered as having serious implications for the research.
+Deliberate misrepresentation of research results or being misleading about one's own or another
+person's role in the research, even though the extent and consequences of the unlawfulness cannot
+in themselves be considered as serious.
+Conduct which is not in keeping with the guidelines concerning good scientific practice that apply
+to the field in question which may be issued by official and/or professionally acknowledged
+organisations.
+Participation in scientific work where personal or financial interests in the course of the work and
+its results can give reason for reasonable doubt being cast upon the impartiality of the person in
+question.
+Subsection 4. Finally, good scientific practice requires loyal collegiate conduct, which respects
+generally recognized standards for the presentation of and comment on both one's own scientific
+efforts and those of others.
+Subsection 5. The requirement for good scientific practice is not a requirement for "political
+correctness" or a requirement about restraint concerning professional and objective criticism of
+other people's scientific work or of current professional theories.
+
+The Danish national regulations on scientific misconduct that include misrepresentations in the
+definition of misconduct require a distinction between misrepresentations that are so grave that it
+is scientific misconduct, and less grave misrepresentations that are ‘just’ poor science. The
+demarcation line between misconduct and poor science can be difficult to draw, and rulings can
+therefore be controversial. We shall briefly illustrate this with the case of Lomborg and his
+monograph The Skeptical Environmentalist. By the same token, research institutions may not want
+their employees to engage in poor research, even if it is not misconduct, and they may therefore
+introduce local rules that supplement the national regulation regarding misconduct, such as it is the
+case at Aarhus University. Again, demarcating poor science from science as such can be difficult,
+and also here rulings can be controversial.
+
+
+MISCONDUCT VERSUS GREY ZONE BEHAVIOR.
+
+Bjørn Lomborg received tenure as Associate Professor at the Department of Political Science at
+Aarhus University in 1997. By then he had published primarily on game theory and the simulation
+of multiparty systems. In the beginning of 1998, together with a group of students Lomborg wrote a
+number of feature articles in the Danish newspaper Politiken in which they argued that the
+widespread and alarming conceptions of the state of the environment were wrong: we are not
+developing a shortage of raw materials, we are not losing species at an alarming rate, and the
+importance of the greenhouse effect is questionable. Later the same year Lomborg expanded the
+material into a Danish monograph, and in August 2001 it was published in English at Cambridge
+University Press with the title The Skeptical Environmentalist. The monograph was controversial,
+politically as well as scientifically, and a few months after the publication of The Sceptical
+Environmentalist allegations of misconduct were raised with the DCSD.
+Since the Danish regulations regarding scientific misconduct regulate only research publications,
+the DCSD first needed to settle whether The Sceptical Environmentalist was a research publication
+at all. On the one hand, it could be argued that “in its manifest one‐sidedness” and “with the vast
+breadth of topics treated and the lack of qualification of any scientific method ‐ including criteria for
+the selection of sources” it did not “present the appearance of a scientific work but precisely that of
+a provocative debate‐generating book”. But on the other hand, Lomborg presented himself in the
+book as Associate Professor of statistics and had listed the book as a research publication in the
+yearbook of Aarhus University, and the many notes and references also gave the book “a scientific
+form”, and the DCSD therefore decided to try the case.
+At that time, the Executive Order on the DCSD the definition of misconduct as two separate criteria
+that both needed to be fulfilled, namely, first, that misrepresentation had taken place, and second,
+that it had been done intentionally or with gross negligence. As a consequence, the DCSD also
+divided its ruling in the Lomborg case into two parts. First, with respect to misrepresentation the
+DCSD argued that “that there has been such perversion of the scientific message in the form of
+systematically biased representation that the objective criteria for upholding scientific dishonesty...
+have been met”. Second, with regard to intent, the DCSD argued that “in consideration of the
+extraordinarily wide‐ranging scientific topics dealt with by [Lomborg] without having any special
+scientific expertise” it could not be proven that Lomborg had acted with intent. Therefore, only one
+of the two criteria were fulfilled, and the the Committees arrived at the ruling, that “Objectively
+speaking, the publication of the work under consideration is deemed to fall within the concept of
+scientific dishonesty. In view of the subjective requirements made in terms of intent or gross
+negligence, however, Bjørn Lomborg's publication cannot fall within the bounds of this
+characterization. Conversely, the publication is deemed clearly contrary to the standards of good
+scientific practice”.
+This ruling was controversial. A large group of researchers from primarily the social sciences
+signed a petition against the DCSD and the ruling. Another large group of researchers from
+primarily the natural and medical sciences signed another petition in support of the DCSD. After
+Lomborg had also complained over the ruling to the Ministry of Research, the Ministry changed the
+executive Order so that the two elements of the definitions, misrepresentation and intent, were no
+longer treated as two separate criteria. In addition, it was added that the DCSD cannot try cases
+regarding the quality of the research performed. Finally, it was specified that the DCSD only tries
+cases in which the researcher accused of misconduct has scientific training in the scientific field
+that the case relates to. Hence, to day, poor science as well as researchers making claims outside
+their area of expertise cannot be treated by the DCSD. Such cases therefore have to be handled by
+other means, either within the scientific community through peer criticism, or through local
+regulations at the institutions at which the researchers are employed.

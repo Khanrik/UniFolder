@@ -3,11 +3,11 @@ import sys
 from pathlib import Path
 
 BASE_DIR = Path(__file__).resolve().parent
-topic_path = BASE_DIR.parent / "Topic 4"
-text_name = "RCoR Collaboration"
+topic_path = BASE_DIR.parent / "Topic 5"
 
 def remove_parenthetical(text: str) -> str:
-    cleaned = re.sub(r"\([^)]*\)", "", text)
+    cleaned = str.replace(text, "�", "")
+    cleaned = re.sub(r"\([^)]*\)", "", cleaned)
     # Remove spaces before punctuation (e.g. "word ." -> "word.")
     cleaned = re.sub(r" +([.,;:!?])", r"\1", cleaned)
     # Collapse multiple spaces into one
@@ -16,11 +16,16 @@ def remove_parenthetical(text: str) -> str:
     cleaned = "\n".join(line.strip() for line in cleaned.splitlines())
     return cleaned.strip()
 
-def process_file(file_path: str) -> None:
-    path = Path(file_path)
-    text = path.read_text(encoding="utf-8")
+def process_file(file_path: Path) -> None:
+    text = file_path.read_text(encoding="utf-8")
     cleaned = remove_parenthetical(text)
-    path.write_text(cleaned, encoding="utf-8")
-    print(f"Done. Processed: {text_name}.txt")
+    file_path.write_text(cleaned, encoding="utf-8")
+    print(f"Done. Processed: {file_path.name}")
 
-process_file(str(topic_path / f"{text_name}.txt"))
+def find_text(dir: Path) -> Path:
+    for file in dir.glob("*.txt"):
+        return file
+    raise FileNotFoundError(f"No txt files found in {dir}")
+
+if __name__ == "__main__":
+    process_file(find_text(topic_path))

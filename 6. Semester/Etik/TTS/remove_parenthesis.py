@@ -3,7 +3,7 @@ import sys
 from pathlib import Path
 
 BASE_DIR = Path(__file__).resolve().parent
-topic_path = BASE_DIR.parent / "Topic 5"
+topic_path = BASE_DIR.parent / "Topic 6"
 
 def remove_parenthetical(text: str) -> str:
     cleaned = str.replace(text, "�", "")

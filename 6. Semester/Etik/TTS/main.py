@@ -10,7 +10,7 @@ BASE_DIR = Path(__file__).resolve().parent
 
 voice = PiperVoice.load(str(BASE_DIR / "en_US-libritts_r-medium.onnx"))
 
-topic_path = BASE_DIR.parent / "Topic 5"
+topic_path = BASE_DIR.parent / "Topic 6"
 
 if __name__ == "__main__":
     text_name = find_text(topic_path).stem

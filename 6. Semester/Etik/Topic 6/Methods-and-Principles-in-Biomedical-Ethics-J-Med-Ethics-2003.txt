@@ -1,0 +1,634 @@
+The four principles approach to medical ethics plus
+specification is used in this paper. Specification is
+defined as a process of reducing the indeterminateness
+of general norms to give them increased action guiding
+capacity, while retaining the moral commitments in the
+original norm. Since questions of method are central to
+the symposium, the paper begins with four observations
+about method in moral reasoning and case
+analysis.Three of the four scenarios are dealt with. It is
+concluded in the “standard” Jehovah’s Witness case
+that having autonomously chosen the authority of his
+religious institution, a Jehovah’s Witness has a
+reasonable basis on which to refuse a recommended
+blood transfusion. The author’s view of the child of a
+Jehovah’s Witness scenario is that it is morally
+required—not merely permitted—to overrule this
+parental refusal of treatment. It is argued in the selling
+kidneys for transplantation scenario that a fair system of
+regulating and monitoring would be better than the
+present system which the author believes to be a
+shameful failure.
+
+Firstly, Raanan Gillon and I share the view that
+it is legitimate and rewarding to diagnose
+cases through the lens of general ethical
+principles. I will here assume, rather than argue
+for, moral principles of respect for autonomy; non-maleficence
+; benefi-
+cence, and justice.1 Methodologically, these principles
+function for me much as considered judgments
+function for John Rawls in his justly famous
+explication of the method of reflective
+equilibrium.2 3 Like him, I believe that method in
+ethics begins with the moral convictions that
+inspire the highest confidence and that appear to
+have the lowest level of bias. They serve as first
+principles and conditions of more specific moral
+conceptions.4 I take these principles to be univer-
+sally valid norms that warrant us in making
+intercultural and crosscultural judgments about
+moral depravity, morally misguided beliefs, sav-
+age cruelty, and other moral failures.
+Secondly, these abstract principles need to be
+specified to make them suitable for the analysis of
+a context, case, or policy.5 6 Specification is a process
+of reducing the indeterminateness of general
+norms to give them increased action guiding
+capacity, while retaining the moral commitments
+in the original norm.Filling out the commitments
+of the norms with which one starts is accom-
+plished by narrowing the scope of the norms. This
+process involves, as Henry Richardson puts it,
+“spelling out where, when, why, how, by what
+means, to whom, or by whom the action is to be
+done or avoided”. Complex
+or problematic cases almost always involve
+contingent normative conflict, as do each of the
+cases in this symposium. The first line of attack in
+managing these cases should be to specify the
+relevant norms in order to eradicate the conflicts
+among them. This method requires, as does the
+associated method of reflective equilibrium, that
+we match and adjust all of our well substantiated
+moral judgments in order to render them
+coherent with the full range of our moral
+commitments.7 8
+Thirdly, I accept the casuistical postulate that
+leading cases often
+become enduring and authoritative sources of
+reflection and decision making. Past decisions
+about moral rights and wrongs in cases serve as a
+form of authority for decisions in new cases.
+These cases profoundly influence our standards of
+fairness, negligence, justified paternalism, and
+the like. In this way, analogical reasoning links
+past cases to present cases.9–11 Analogical reason-
+ing of this sort requires that there be normative
+similarities across cases. The casuistical method
+therefore assumes that general norms of moral
+relevance couple the cases.12 That is, all analogical
+reasoning in ethics requires a connecting norm in
+order to show that one object or event is like or
+unlike another in the relevant respects. The crea-
+tion or discovery of these circumstance linking
+norms cannot be achieved purely by analogy. At
+least rough and ready principles, rules, or maxims
+are required. For this reason, casuistry is not a
+rival methodological model to the use of princi-
+ples and specification, even though they have
+been widely regarded in the literature of ethics as
+conflicting methods.
+Fourthly, styles of case analysis are legitimately
+diverse. Different disciplines and different goals
+of case analysis will direct a reader to identify
+specific elements in the cases as deserving of ana-
+lytical development. There is no reason to suppose
+that moral philosophy or methods of specification
+supply the only way or the best way to treat a case.
+From this perspective, there may be no single
+right solution to the problems presented in a case,
+but it does not follow that morally unjustified and
+poorly reasoned answers are beyond valid criti-
+cism.
+To conclude these comments on method, I am
+assuming that very general moral principles are
+shared by all moral persons, but that specified
+moral frameworks are works in progress that can legitimately vary from person to person and from culture to culture.
+These specified moralities include the many moral norms,
+aspirations, ideals, attitudes, and sensitivities that spring from
+cultural traditions, religious traditions, professional practice,
+institutional codes of ethics, and the like. The general moral
+standards shared by all moral persons are conspicuously
+abstract, universal, and content thin. Particular moralities are
+usually the reverse: concrete, non-universal, and content rich.
+Frameworks of particular moralities are not finished prod-
+ucts. Solutions to moral problems, such as whether and how to
+respect religious beliefs and how to develop the most suitable
+system for organ procurement and distribution, are projects
+periodically in need of adjustment by further specification and
+the search for reflective equilibrium. We should assume that,
+in the analysis of hard cases, we face a never ending search for
+coherence and for solutions to new problems that may
+challenge our prevailing moral convictions.
+With these observations about method behind us, I turn to
+the three scenarios.
+THE “STANDARD” JEHOVAH’S WITNESS CASE
+The now standard treatment of the “standard” case in the first
+scenario is to specify the commitments of the principle of
+respect for autonomy for those contexts in which the religious
+commitments of a patient conflict with the healing commit-
+ments of health care professionals or institutions.13 To look for
+an appropriate specification in the case before us, consider two
+moral rules that have come into conflict in this first scenario:
+1. It is morally prohibited to risk death for a patient whose life
+threatening condition can be medically managed by
+suitable medical techniques.
+2. It is morally prohibited to disrespect a first party refusal of
+treatment.
+In a wide variety of cases—well beyond those involving
+religious commitments—patients refuse promising treat-
+ments offered by medical officials. Sometimes these patients
+are concerned about the consequences of treatment, but often
+their decisions rest on principled convictions or specific objec-
+tives that exhibit little or no concern with medical conse-
+quences. For example, these patients may not find the
+treatment worth the cost, may not trust their doctors, may
+wish to die, or may have religious objections to an
+intervention.
+To handle conflicts between the obligation to treat and the
+obligation to respect a refusal, it is now widely accepted that
+rule 2 should be specified as follows in order to handle the
+problem of a contingent conflict with rule 1:
+2.1. It is morally prohibited to disrespect a first party refusal
+of treatment by a patient, unless the refusal is non-
+autonomous and presents a significant danger to the
+patient.
+Rule 2.1 qualifies as a specification because much of the con-
+tent of the original rule remains intact. Rule 2.1 states that
+a physician is not absolutely required to respect refusals of
+treatment, but that the range of exceptions is narrow. This rule
+has the simple but powerful effect of informing medical offi-
+cials that all truly autonomous refusals of
+treatment must be respected, no matter the consequences.
+There is no evidence in the scenario before us to indicate
+that the patient has made other than an autonomous choice,
+though nothing in this case indicates whether the choice by
+the patient was adequately autonomous. Some moral philoso-
+phers have argued that autonomous action is incompatible
+with the authority of religious organisations and political
+communities that legislate persons’ principles and decisions.
+They maintain that autonomous persons must act on their
+own reasons and can never submit to the dictates of religious
+or political authorities.14–16 No fundamental inconsistency
+exists, however, between autonomy and authority if individu-
+als exercise their autonomy in accepting the norms of the
+authority. Having autonomously chosen the authority of his
+religious institution, a Jehovah’s Witness has a reasonable
+basis on which to refuse a recommended blood transfusion.
+However, rule 2.1 may not be quite as unbending as my
+analysis thus far suggests. Occasionally in medical ethics, an
+autonomy interest is minimal and a medical benefit maximal,
+warranting a paternalistic intervention by the physician. Justi-
+fied paternalism of this sort constitutes another type of
+exception to rule 2. This exception is limited, however, to cases
+in which a vital or substantial autonomy interest is not at
+stake. This is not the case in the present scenario. The decision
+by this Jehovah’s Witness rests on a paradigmatically vital
+autonomy interest. To intervene coercively by compelling a
+transfusion could not be justified under any plausible
+condition of justified paternalism known to me.
+Once the questions I have raised about autonomy are
+settled, this case does not otherwise turn on an assessment, by
+the patient or others, of harms and benefits to the patient. The
+patient’s assessment is not concerned with medical benefits
+and harms, and it distorts the logic of the agent’s reasoning to
+suggest that there are religious harms and benefits at stake. It
+is also unlikely that the patient is taking into account his psy-
+chological suffering.
+This case also does not turn on principles of justice. Any
+rights at stake are rights of autonomy, not rights grounded in
+distributive justice. There is potentially a justice connected
+question about the legitimacy of using more expensive mate-
+rials in place of less expensive and more
+efficacious products. But absent further development of this
+consideration of justice—a task that well exceeds the
+possibilities of the present symposium—this case does not
+turn on issues of justice.
+THE CHILD OF A JEHOVAH’S WITNESS CASE
+In the second scenario, parents committed to the Jehovah’s
+Witness faith refuse a blood transfusion for their two year old
+child.13 The surgeon and the hospital lawyer resist this decision
+and propose to use their own authority to override the author-
+ity of the parents. The following two rules conflict in this sec-
+ond scenario:
+1. It is morally prohibited to risk death for a patient if his or
+her life threatening condition can be medically managed by
+suitable medical techniques.
+2. It is morally prohibited to disrespect a parental refusal of
+treatment.
+In many circumstances, beyond but including those involving
+religious commitments, parents refuse treatment for infants
+in the conviction that the infant’s overall best interest is
+served. To handle such conflicts, rule 2 can be specified as 2.1:
+2.1. It is morally prohibited to disrespect a parental refusal of
+treatment, unless the refusal constitutes child abuse, child
+neglect, or violates a right of the child.
+Rule 2.1 qualifies as a specification because much of the con-
+tent of the original rule remains intact, but now we
+understand that a medical professional is only generally
+required to respect parental refusals of treatment. Rule 2.1 is a
+start, but only a start, down the path of specification. It will
+not handle all cases and will need further examination of child
+abuse, child endangerment, child neglect, and the rights of
+children. None the less, 2.1 does show that there is a path out
+of the initial conflict between rules 1 and 2, and it indicates
+that physicians and hospital administrators are not con-
+fronted with an absolute rule requiring that medical officials
+uphold parental refusals. With enough additional specifica-
+tion, an entire hospital policy could be constructed that is
+generally adequate to process the range of cases of parental
+refusal that surgeons, paediatricians, and those in other
+specialties might expect to see.
+Assuming that 2.1 is an acceptable specification, what
+action should be performed in the second scenario? My view
+is that it is morally required—not merely morally
+permitted—to overrule this parental refusal of treatment,
+because the refusal does constitute a form of child abuse, child
+endangerment, child neglect, or inattention to the rights of
+the child. Many forms of neglect, abuse, and endangerment of
+children have occurred in the name of religion, and withhold-
+ing a recommended medical therapy on the basis of religious
+convictions, causing a child’s preventable death, is one of
+them.
+Jehovah’s Witness parents who refuse lifesaving blood
+transfusions for their minor children have been widely
+considered in bioethics as a paradigm of overreaching paren-
+tal authority. I accept this conclusion myself, but it must also
+be acknowledged that this judgment is not free of controversy.
+Legislative bodies around the world have, over the course of
+the last century, wavered and reversed themselves over these
+issues. They have, on the one hand, passed statutes that allow
+for so called “religious exemptions” that permit parental reli-
+gious convictions to prevail over recommended medical treat-
+ment. But when parents then make judgments that endanger
+children, many of these legislatures temper or rescind the very
+religious exemptions they previously allowed.17
+In 1944 the United States Supreme Court decided, in the
+case of Prince v Massachusetts,18 that a Jehovah’s Witness parent
+could not neglect the education of her nine year old child by
+dictating that the child sell religious magazines on the street.
+In this case, Ms Prince argued that her religious beliefs were
+constitutionally protected, but the Supreme Court found that
+rights of religion are not beyond limitation and that a child
+cannot reasonably be subjected to a poor education, to
+communicable disease, to ill health, or to death. The court
+determined that parents may martyr themselves, but may not
+martyr their children.
+Prince established in US law an important principle that
+should be no less pronounced in morals, namely that religious
+standards and practices must yield to sober medical judgment
+when they seriously affect the welfare and health of children.
+Nothing in the protection of religious belief, in law, or in mor-
+als, should allow for the neglect of a child’s appropriate medi-
+cal treatment. More specifically, if a child faces a risk of death,
+disfigurement, serious bodily injury, or ill health a decision to
+withhold medical care constitutes parental abuse or neglect
+even if the parent’s reason is religious and reflective of the
+parents’ considered viewpoint.
+We all recognise that rights of parental autonomy often
+appropriately prevent governments from intervening in the
+rearing of a child. Likewise, we recognise that an overarching
+interest of the child must be at stake to warrant government
+intervention. But parents who are committed to the view that
+medical treatment is sinful or will condemn a child to eternal
+damnation are particularly serious dangers to the welfare of
+their children. It is difficult, in law and morals, to protect both
+parents and children through a provision of religious exemp-
+tions from prosecution.
+It is unclear why religious conviction stands as a special form
+of belief, somehow deserving a more protected status than
+moral, political, or aesthetic convictions. No less clear is why
+we should allow the religious convictions of a particular
+religious group to deserve a protected status. Why should the
+views of a denomination, such as Jehovah’s Witness, be more
+protected than those same views when embraced by an indi-
+vidual who is not associated with this
+denomination? A parent could make a judgment about what
+he or she accepts as religiously proscribed medical treatment
+even if no article of faith held by a religious group such as
+Jehovah’s Witnesses stood behind the judgment.
+I am pondering how we can distinguish bizarre and unpro-
+tected religious convictions from those that are not bizarre and that
+merit protection, conventionally the religious mainstream. If
+we determine that legitimate parental decisions are confined
+to those based on the beliefs of established denominations, then
+a parent who is a member of a religious group other than one
+that accepts the creed in question could potentially be charged
+with involuntary manslaughter or neglect for the same action
+and the same religious conviction as that tolerated in support
+of a Jehovah’s Witness parent. In short, I am raising sceptical
+questions about whether there could be a clear statute or
+moral rule that distinguished justifiable from unjustifiable
+parental decisions based on religious doctrine.
+Parental rights have seldom been regarded in the law of
+Western nations as a legal trump. The widely recited language
+of parens patriae was not introduced in law to support parental
+rights; to the contrary, it was introduced to protect children
+against abusive parents. It literally means “parent of the
+country” and refers to the sovereign power of guardianship
+over those who cannot protect themselves.19 The doctrine sup-
+ports state interventions to limit those actions of parents that
+breach parental responsibilities to protect a child.
+Well before autonomy and privacy were pervasively applied
+through law and morals to the decisions of surrogates for
+incompetents and minors, the best interests standard—rather
+than an autonomy standard—was recognised as having
+authority over parental rights. It is the fitting standard for
+analysis of the case before us. The best interests standard val-
+idly overrides parental rights of control whenever the welfare
+interest of the child is substantial. If the interests of the child
+were less than substantial—for example, if the outcome of a
+surgical intervention had merely the effect of an unobtrusive
+scar—then deference to parental wishes would be reasonable.
+But the case before us indisputably involves a major interest of
+the child.
+When parents bring a child to a physician for treatment, the
+physician’s primary responsibility is to serve the child’s inter-
+ests even if the parents initiated the contract and even if the
+physician has obligations of fidelity to the parents. The latter
+obligations may be set aside if parental decisions seriously
+threaten a child’s health or survival. Jehovah’s Witnesses who
+reject blood transfusions for themselves have moral warrant for
+what they do only because their own autonomy gives them
+authority over themselves; they lose this authority if they
+reject medically necessary blood transfusions for their
+children. Accordingly, the surgeon in this case has made the
+correct choice.
+The conclusions I have reached also apply to analogous
+contexts of surrogate decision making that involve vulnerable
+and incompetent adult patients. A useful rule to restrict all
+surrogate decision making is this: If a designated surrogate
+makes a decision that threatens the patient’s best interests,
+the decision should be overridden unless there is an explicitly
+worded document executed by the incapacitated patient that
+supports the surrogate’s decision. Such a document requires
+that a once competent patient stated a treatment preference in
+an advance directive. There is no such document in the case
+before us and therefore this exceptive rule does not apply.
+I am arguing that there is no relevant difference between
+the situation of a vulnerable child whose parents impose their
+religious views and the situation of vulnerable adults whose
+surrogates impose their religious views. Consider—for exam-
+ple, both adult patients who have no religious preferences
+and adult patients who have stated religious preferences
+that clash with those of a surrogate. I take, as morally basic in
+both cases, that health care officials should, in circumstances
+of serious medical need, override the preferences of surrogates
+who use their religious convictions rather than a best interests
+standard. If we accept the validity of overriding surrogate
+decisions in these circumstances with adults, then moral
+Methods and principles in biomedical ethics
+coherence compels us to accept the validity of overriding
+parental judgments in relevantly similar circumstances.
+SELLING KIDNEYS FOR TRANSPLANTATION
+I turn now to the third scenario—selling kidneys.13 Here a dis-
+tinction between the justification of policies and the justifica-
+tion of acts is needed. Public rules or laws sometimes justifiably
+prohibit conduct that is morally justified in individual cases.
+To put this distinction to work for present purposes, two moral
+questions about selling kidneys need to be distinguished:
+Are persons ever morally justified in complying with requests
+that they sell one of their kidneys, and Is there an adequate
+moral basis to justify the legalisation of a market in kidneys?
+As important as legalisation is, questions about the justifiabil-
+ity of individual acts present the more fundamental moral
+issue.
+It is not difficult to construct circumstances of a contract
+between consenting adults in which it is morally permissible
+to sell one’s kidney. Suppose that my wealthy cousin will per-
+ish without a kidney; he offers me $100 000 for mine. I am
+well informed about the current and lifetime risks of
+nephrectomy, and I could put the $100 000 to good use in
+reducing a burdensome mortgage. I understand my cousin
+well, and he understands me equally well. Limitation of our
+liberty would require a compelling justification for preventing
+us from entering into a relationship that will benefit me
+financially and will save his life. I see no reason why, judged as
+an individual act, it would be morally wrong of me to sell my
+kidney to my cousin.
+I have thus far assumed that no considerations external to
+my relationship to my cousin, such as the implications of a
+worldwide market, are pertinent to a judgment of moral per-
+missibility. Of course, other considerations may turn out to
+constitute good and sufficient moral reasons for banning the
+sale of kidneys as a matter of public law. One of the problems
+with the literature on a market in organs is that many differ-
+ent assumptions are made: some authors assume or argue for
+an open market, others a heavily regulated market; some
+authors presume a Third World source of the organs, whereas
+others do not consider international markets. Some authors
+make a distinction between receiving payment for and
+purchasing a kidney, whereas others make no such distinc-
+tion. Some authors consider only monetary incentives, not payments,
+whereas others see no morally relevant differences between
+incentives and payments.20–23
+I cannot carefully consider the moral relevance of these
+important distinctions, but I will argue both that some policies
+that allow for sales and incentives are morally problematic and
+that, notwithstanding their problematic features, monetary
+inducements may still be justified. Although there are serious
+moral objections to some markets and incentives, these objec-
+tions are not necessarily sufficient, I will argue, to warrant a
+ban on these inducements.
+In 1999 CNN reported that online shoppers who visited the
+internet auction site eBay were surprised to find a “fully func-
+tional kidney” for sale by a man giving his home as “Sunrise,
+Florida”. He was proposing to sell one of his two kidneys. The
+price had been bid up before eBay intervened and terminated
+the auction.24 It was not known whether this auction
+was genuine or to whom the kidney may have belonged, yet
+this auction was largely in public view. A private market in
+kidneys would be more difficult to monitor and to control, and
+therefore more problematic.
+Countries in which markets in kidneys have flourished
+support this estimate. One study showed, after locating 305
+sellers of kidneys in India, that persons who sold their kidneys
+generally worsened rather than bettered their financial
+position as a result of the sale, that some men forced their
+wives to sell a kidney, and that many sellers suffered a decline
+in health status. The selling of a kidney in India has not
+worked as a deliverance from indigence. This study shows
+that for 96% of those who sell kidneys most of the money
+received was spent to pay off debts, to buy food and
+clothing, or for marriage; that a person’s pov-
+erty was more likely to be worsened than diminished after the
+sale of a kidney, and that the money paid was not adequate
+to bring sellers out of debt. Of participants, 79% said that they
+would now not recommend selling a kidney.25 A second study
+in India indicates that sales of kidneys generally do not occur
+as a planned passageway from poverty to security, but rather
+function as a way of raising money to pay off high interest
+loans.26 As is well known in even Western countries, high
+interest loans prey on the poor and undereducated who
+are caught in a never-ending cycle of borrowing and repaying.
+Selling or purchasing a kidney need not involve disrespect
+for persons and is not in itself grounds for moral repulsion or
+indignation. What, then, is problematic? The worry most con-
+sistently expressed in literature on kidney sales is that
+markets invariably lead to some form of exploitation. This lit-
+erature is, however, less than clear about the nature and con-
+ditions of exploitation. I will now consider what I take to be
+the two most worrisome problems.
+Exploitation deriving from systemic injustice
+Firstly, a market in kidneys may be unjust. This is not an issue
+of whether volunteers are paid a fair price. The question is
+whether free market distribution constitutes a fair system. A
+systemic injustice seems to me to occur if the gift of life
+through kidney transplantation benefits only the well off, with
+the burdens allocated entirely or disproportionately to
+disadvantaged members of society. Potentially a market in
+kidneys will produce a social situation in which virtually all
+kidney “donations” come from the poor, with the rich
+enjoying the availability of kidneys and escaping responsibil-
+ity for donation. The limited financ-
+ing currently available in many national health care systems
+would assure that transplantation is available only to the
+wealthy. It seems to me unjust to allow and even encourage
+donation and selling in a circumstance in which those who
+donate or sell are blocked from receiving an organ when they
+themselves are in need. Distributive justice calls for more than
+libertarian exchange.
+Organ donation has always been and should remain a social
+enterprise intended both to procure and to allocate a scarce
+resource in a broadly inclusive and participatory way. A mar-
+ket in kidneys has the potential of drawing a life giving
+resource exclusively from a narrow spectrum of willing and
+available “donors”. This market is exploitative in the sense
+that the disadvantaged are used to the gain of the wealthy in
+the absence of a more general system of fair procurement and
+fair allocation. Many topics in bioethics beyond organ
+donation present similar problems—for example, the selection
+and payment of research subjects. Such issues can be
+addressed only by specifying and defending the precise condi-
+tions under which either an arrangement or a market is
+unfair—a task far beyond the scope of this article. This task
+would require that we take account of the justice of
+background conditions that cause circumstances of disadvan-
+tage, no less than constructing a fair system of procurement
+and allocation. To my knowledge, no one has as yet supplied a
+convincing account of unjust background conditions.
+Exploitation deriving from constraining situations
+A second problem of exploitation is that potential “volun-
+teers” may be constrained by their situation into a non-
+voluntary sale—that is, manipulated to the acceptance of
+offers because of the constraints of their impoverished condi-
+tion. The issue here is not whether those who sell their kidneys
+are entirely free of manipulative or constraining influences, but
+whether they are sufficiently free so that they are enabled to act
+autonomously.
+Rather obviously, a consent to the sale of one’s kidney might
+not be sufficiently voluntary or informed to constitute an
+autonomous consent. Getting a potential volunteer to
+comprehend and appreciate risks and benefits can itself be a
+formidable task. For example, persons might not adequately
+appreciate the risk and nature of a deterioration in health sta-
+tus from nephrectomy, what the money they receive will pur-
+chase, the risks of a decline in family income, or the risk that
+a middle person or hospital will not make full payment.
+Potential volunteers may find the benefits overwhelmingly
+attractive, causing them to devalue the risks. In one respect,
+these volunteers correctly understand basic facts about proce-
+dures and arrangements, but, in other respects, their
+understanding is inadequate. The fact that 79% of participants
+in the study in India afterward said that they would not
+recommend selling a kidney suggests that if some persons
+who sell their kidneys had more information about likely con-
+sequences they would be less willing to sell.
+As important as these issues of informed consent are, I will
+here set them aside in order to attend to the more salient and
+perplexing problem of constraining situations—sometimes
+misleadingly called coercive situations. For coercion to occur,
+one person must intentionally threaten another in order to gain
+compliance. Constraining situations, by contrast, are those in
+which non-intentional, coercion like situations cause a person
+to feel controlled by the constraints of a situation, rather than
+by the design of another person. People unintentionally cause
+other persons to feel “threatened,” and sometimes situations
+such as illness, powerlessness, and lack of resources present
+“threats” of harm that a person feels compelled to prevent at
+all costs.
+Persons sometimes accept offers that they would refuse
+under less constraining circumstances, and the offer of money
+for a kidney seems a prime example. Such an offer may be
+exploitative in the sense that it manipulates a person into an
+unwelcome choice through incentives too attractive to be
+refused by the person. The prospect of another shivering night
+in the cold, another day without decent food, or another visit
+from a debt collector could place enormous pressure on a per-
+son to accept an offer of payment for a kidney, just as would an
+intentional threat by an employer to fire an employee who
+could not find another job unless the employee agreed to be
+transferred to an objectionable location and position. The psy-
+chological effects on persons constrained to choose payment
+for a kidney and to accept relocation in a job may be similar,
+and the person can appropriately say in each case: “I have no
+choice; it is not feasible to refuse the offer”.
+If payments for kidneys were excessively large or even high
+enough to attract persons from all classes in society, the pay-
+ments likely would be judged overly powerful inducements for
+impoverished persons attracted to the payments. Alterna-
+tively, if the rate of pay were exceptionally low, kidney
+“donors” likely would be recruited entirely from the ranks of
+the unemployed and impoverished. The objective of a just
+payment scheme would be to strike a balance between
+irresistible inducement and underpayment. This goal may be
+achievable, but there is no a priori way to set an appropriate
+payment level, and discerning management of a market in
+kidneys would be demanding.
+This issue rests in part on difficulties in determining the
+threshold of irresistible offers. An offer that
+manipulates one person into acceptance may either fail to be
+irresistible to another or be a welcome offer. How an offer is perceived and whether it
+will be accepted depend on the subjective responses of the
+persons who receive the offer. On the one hand, a subjective
+standard for warranted offers would be very difficult to imple-
+ment as a policy governing a market in kidneys, because offi-
+cials would have to determine how each individual is affected
+by an offer. On the other hand, it would be morally perilous to
+use an objective standard based on the irresistibility of offers to
+the average, or ordinary, or reasonable person. This standard
+would fail to protect the most vulnerable of the vulnerable.
+Can kidney sales be justified?
+How powerful are the two arguments from exploitation that I
+have presented? These arguments raise profound questions
+about just markets and just offers, but I do not think that they
+are strong enough to uphold a ban on kidney sales under all
+circumstances. Other moral considerations must be consid-
+ered.
+Even if those who sell their kidneys are at risk of exploita-
+tion in the respects I have identified, it does not follow that a
+ban on the sale of kidneys is the best way to address these
+problems. Some volunteers will find the offers welcome, and
+the consents of many volunteers will be substantially autono-
+mous. They may see a kidney sale as their best option, all
+things considered. To protect them from an unjust system by
+banning the sale of their kidneys could make life worse for
+them, and render them more rather than less vulnerable.
+There are already many unfairnesses in our systems of
+health care that privilege the wealthy and effectively preclude
+benefits from flowing to the poor. We do not ban these privi-
+leges in the context of a free market economy; rather, we seek
+to improve the justice of the system. It is far from clear that
+kidney sales should be considered relevantly different, and we
+risk coherence in the attempt. A policy of banning sales may
+also cause us to neglect the deepest concern of justice that I
+have put forward, which is how to render the system of kidney
+procurement fair for all parties involved. The current system
+is, by all accounts, a shameful failure. A ban on sales could
+work as an excuse for neglect of the real injustices in our sys-
+tems of procurement and distribution.
+We ought not to assume that a fair system of incentives or
+payments for kidneys cannot be constructed. Perhaps we can
+devise a system of national committees and regulatory agen-
+cies that is capable of monitoring each sale or incentive struc-
+ture and that appropriately rewards those who respond to an
+incentive. At least some governments
+may be able to administer a market in which a fair and non-
+exploitative price is paid, while avoiding exploitative private
+markets and black markets. Even if the prospects are dim at
+the present time for a just system of procurement and distri-
+bution that includes incentives for kidneys, we should be
+working to decrease rather than increase the injustice of our
+policies. The current system seems to me to fail this test at vir-
+tually every level.

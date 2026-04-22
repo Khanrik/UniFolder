@@ -16,6 +16,7 @@ FPS = 60
 ROUND_TIME = 60  # 1 minut i sekunder
 BUTTON_WIDTH = 200
 BUTTON_HEIGHT = 60
+EXAMPLE_SONG_TITLES = ["7 Years - Lukas Graham", "7 Years - Lukas Graham"]
 
 # Farver
 WHITE = (255, 255, 255)
@@ -137,6 +138,8 @@ class MusikQuiz:
         self.was_playing_before_drag = False
         self.volume = 1.0
         self.is_dragging_volume = False
+        self.example_mode = False
+        self.example_song_queue: List[str] = []
 
         # Progress bar område
         self.progress_rect = pygame.Rect(
@@ -161,11 +164,19 @@ class MusikQuiz:
     
     def setup_buttons(self):
         """Setup alle knapper"""
+        start_button_y = SCREEN_HEIGHT // 2 - BUTTON_HEIGHT // 2
         self.start_button = Button(
             SCREEN_WIDTH // 2 - BUTTON_WIDTH // 2,
-            SCREEN_HEIGHT // 2 - BUTTON_HEIGHT // 2,
+            start_button_y,
             BUTTON_WIDTH, BUTTON_HEIGHT,
             "START"
+        )
+
+        self.example_start_button = Button(
+            SCREEN_WIDTH // 2 - BUTTON_WIDTH // 2,
+            start_button_y + BUTTON_HEIGHT + 20,
+            BUTTON_WIDTH, BUTTON_HEIGHT,
+            "EKSEMPEL"
         )
         
         self.play_button = Button(
@@ -204,10 +215,17 @@ class MusikQuiz:
         )
         
         self.ready_button = Button(
-            SCREEN_WIDTH // 2 - BUTTON_WIDTH // 2,
+            SCREEN_WIDTH // 2 + BUTTON_WIDTH // 2,
             SCREEN_HEIGHT // 2 + 100,
             BUTTON_WIDTH, BUTTON_HEIGHT,
             "KLAR"
+        )
+
+        self.menu_button = Button(
+            SCREEN_WIDTH // 2 - BUTTON_WIDTH - 50,
+            SCREEN_HEIGHT // 2 + 100,
+            BUTTON_WIDTH, BUTTON_HEIGHT,
+            "MAIN MENU"
         )
     
     def handle_events(self):
@@ -228,7 +246,11 @@ class MusikQuiz:
             if event.type == pygame.MOUSEBUTTONDOWN:
                 if self.game_state == GameState.START_SCREEN:
                     if self.start_button.is_clicked(mouse_pos):
+                        self.example_mode = False
+                        self.example_song_queue = []
                         self.start_new_round()
+                    elif self.example_start_button.is_clicked(mouse_pos):
+                        self.start_example_round()
                 
                 elif self.game_state == GameState.PLAYING:
                     if self.progress_rect.collidepoint(mouse_pos) and self.song_duration > 0:
@@ -263,6 +285,8 @@ class MusikQuiz:
                 elif self.game_state == GameState.ROUND_END:
                     if self.ready_button.is_clicked(mouse_pos):
                         self.start_new_round()
+                    elif self.menu_button.is_clicked(mouse_pos):
+                        self.go_to_start_screen()
 
             if event.type == pygame.MOUSEBUTTONUP:
                 if self.game_state == GameState.PLAYING and self.is_dragging_progress:
@@ -280,6 +304,7 @@ class MusikQuiz:
         """Update hover state for alle knapper"""
         if self.game_state == GameState.START_SCREEN:
             self.start_button.update(mouse_pos)
+            self.example_start_button.update(mouse_pos)
         elif self.game_state == GameState.PLAYING:
             self.play_button.update(mouse_pos)
             self.skip_button.update(mouse_pos)
@@ -288,6 +313,68 @@ class MusikQuiz:
             self.stop_button.update(mouse_pos)
         elif self.game_state == GameState.ROUND_END:
             self.ready_button.update(mouse_pos)
+            self.menu_button.update(mouse_pos)
+
+    def go_to_start_screen(self):
+        """Gå tilbage til startmenuen og reset rundetilstand."""
+        pygame.mixer.music.stop()
+        self.is_playing = False
+        self.is_dragging_progress = False
+        self.has_used_skip = False
+        self.song_history = []
+        self.song_history_index = 0
+        self.example_mode = False
+        self.example_song_queue = []
+        self.game_state = GameState.START_SCREEN
+
+    def get_example_songs(self) -> List[str]:
+        """Find sangtitler til eksempel-tilstand baseret på ønskede navne."""
+        matched_songs: List[str] = []
+        song_names = list(self.song_manager.all_songs.keys())
+
+        for wanted_title in EXAMPLE_SONG_TITLES:
+            wanted_lower = wanted_title.lower()
+
+            exact_match = next(
+                (name for name in song_names if name.lower() == wanted_lower),
+                None
+            )
+            if exact_match and exact_match not in matched_songs:
+                matched_songs.append(exact_match)
+                continue
+
+            contains_match = next(
+                (name for name in song_names if wanted_lower in name.lower()),
+                None
+            )
+            if contains_match and contains_match not in matched_songs:
+                matched_songs.append(contains_match)
+
+        return matched_songs
+
+    def get_next_song(self) -> Tuple[str, dict]:
+        """Hent næste sang ud fra aktiv spiltilstand."""
+        if self.example_mode:
+            if not self.example_song_queue:
+                self.example_song_queue = self.get_example_songs()
+
+            if self.example_song_queue:
+                song_name = self.example_song_queue.pop(0)
+                song_data = self.song_manager.all_songs[song_name]
+                self.song_manager.shown_songs.add(song_name)
+                self.song_manager.current_song_name = song_name
+                self.song_manager.current_song = song_data
+                return song_name, song_data
+
+            print("Advarsel: Kunne ikke finde eksempel-sangene. Bruger tilfældige sange i stedet.")
+
+        return self.song_manager.get_random_song()
+
+    def start_example_round(self):
+        """Start spil i eksempel-tilstand med faste sange."""
+        self.example_mode = True
+        self.example_song_queue = self.get_example_songs()
+        self.start_new_round()
 
     def load_song(self, song_name: str):
         """Loader billede, lyd og varighed for en bestemt sang"""
@@ -361,7 +448,7 @@ class MusikQuiz:
     def start_new_round(self):
         """Start en ny runde"""
         # Hent ny sang
-        song_name, song_data = self.song_manager.get_random_song()
+        song_name, song_data = self.get_next_song()
         self.song_history = [song_name]
         self.song_history_index = 0
         
@@ -379,7 +466,7 @@ class MusikQuiz:
         self.is_playing = False
         
         # Hent ny sang
-        song_name, song_data = self.song_manager.get_random_song()
+        song_name, song_data = self.get_next_song()
         self.song_history.append(song_name)
         self.song_history_index = 1
         self.load_song(song_name)
@@ -423,6 +510,7 @@ class MusikQuiz:
         self.screen.blit(title, title_rect)
         
         self.start_button.draw(self.screen, self.font_medium)
+        self.example_start_button.draw(self.screen, self.font_medium)
     
     def draw_playing_screen(self):
         """Tegn spil skærmen"""
@@ -540,6 +628,7 @@ class MusikQuiz:
             self.screen.blit(song_text, (SCREEN_WIDTH // 2 - 300, SCREEN_HEIGHT // 2 + i * 40))
         
         self.ready_button.draw(self.screen, self.font_medium)
+        self.menu_button.draw(self.screen, self.font_medium)
     
     def draw(self):
         """Tegn hele skærmen"""

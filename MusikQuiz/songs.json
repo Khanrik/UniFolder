@@ -1,16 +1,192 @@
 {
     "songs": {
-        "Bohemian Rhapsody": {
-            "url": "https://www.youtube.com/watch?v=fJ9rUzIMcZQ",
-            "txt_file": "bohemian_rhapsody.txt"
+        "7 Years - Lukas Graham": {
+            "audio_file": "songs/audio/7 Years - Lukas Graham.mp3",
+            "image_file": "songs/images/7 Years - Lukas Graham.png"
         },
-        "Imagine": {
-            "url": "https://www.youtube.com/watch?v=YkgkThdzX-8",
-            "txt_file": "imagine.txt"
+        "A Whole New World - Lea Salonga, Brad Kane, Disney": {
+            "audio_file": "songs/audio/A Whole New World - Lea Salonga, Brad Kane, Disney.mp3",
+            "image_file": "songs/images/A Whole New World - Lea Salonga, Brad Kane, Disney.png"
         },
-        "Hotel California": {
-            "url": "https://www.youtube.com/watch?v=09839DpTctU",
-            "txt_file": "hotel_california.txt"
+        "Baby - Justin Bieber, Ludacris": {
+            "audio_file": "songs/audio/Baby - Justin Bieber, Ludacris.mp3",
+            "image_file": "songs/images/Baby - Justin Bieber, Ludacris.png"
+        },
+        "Bad Romance - Lady Gaga": {
+            "audio_file": "songs/audio/Bad Romance - Lady Gaga.mp3",
+            "image_file": "songs/images/Bad Romance - Lady Gaga.png"
+        },
+        "Beauty And A Beat - Justin Bieber, Nicki Minaj": {
+            "audio_file": "songs/audio/Beauty And A Beat - Justin Bieber, Nicki Minaj.mp3",
+            "image_file": "songs/images/Beauty And A Beat - Justin Bieber, Nicki Minaj.png"
+        },
+        "Blinding Lights - The Weeknd": {
+            "audio_file": "songs/audio/Blinding Lights - The Weeknd.mp3",
+            "image_file": "songs/images/Blinding Lights - The Weeknd.png"
+        },
+        "Bohemian Rhapsody - Queen": {
+            "audio_file": "songs/audio/Bohemian Rhapsody - Queen.mp3",
+            "image_file": "songs/images/Bohemian Rhapsody - Queen.png"
+        },
+        "CANT STOP THE FEELING! - Justin Timberlake": {
+            "audio_file": "songs/audio/CANT STOP THE FEELING! - Justin Timberlake.mp3",
+            "image_file": "songs/images/CANT STOP THE FEELING! - Justin Timberlake.png"
+        },
+        "Cake By The Ocean - DNCE": {
+            "audio_file": "songs/audio/Cake By The Ocean - DNCE.mp3",
+            "image_file": "songs/images/Cake By The Ocean - DNCE.png"
+        },
+        "Call Me Maybe - Carly Rae Jepsen": {
+            "audio_file": "songs/audio/Call Me Maybe - Carly Rae Jepsen.mp3",
+            "image_file": "songs/images/Call Me Maybe - Carly Rae Jepsen.png"
+        },
+        "Can't Hold Us (feat. Ray Dalton) - Macklemore, Ryan Lewis, Macklemore & Ryan Lewis, Ray Dalton": {
+            "audio_file": "songs/audio/Can't Hold Us (feat. Ray Dalton) - Macklemore, Ryan Lewis, Macklemore & Ryan Lewis, Ray Dalton.mp3",
+            "image_file": "songs/images/Can't Hold Us (feat. Ray Dalton) - Macklemore, Ryan Lewis, Macklemore & Ryan Lewis, Ray Dalton.png"
+        },
+        "Dancing Queen - ABBA": {
+            "audio_file": "songs/audio/Dancing Queen - ABBA.mp3",
+            "image_file": "songs/images/Dancing Queen - ABBA.png"
+        },
+        "Der er et yndigt land - Hans Ernst Krøyer": {
+            "audio_file": "songs/audio/Der er et yndigt land - Hans Ernst Krøyer.mp3",
+            "image_file": "songs/images/Der er et yndigt land - Hans Ernst Krøyer.png"
+        },
+        "Die With A Smile - Lady Gaga, Bruno Mars": {
+            "audio_file": "songs/audio/Die With A Smile - Lady Gaga, Bruno Mars.mp3",
+            "image_file": "songs/images/Die With A Smile - Lady Gaga, Bruno Mars.png"
+        },
+        "Dynamite - Taio Cruz": {
+            "audio_file": "songs/audio/Dynamite - Taio Cruz.mp3",
+            "image_file": "songs/images/Dynamite - Taio Cruz.png"
+        },
+        "Espresso - Sabrina Carpenter": {
+            "audio_file": "songs/audio/Espresso - Sabrina Carpenter.mp3",
+            "image_file": "songs/images/Espresso - Sabrina Carpenter.png"
+        },
+        "Fly Me To The Moon - Frank Sinatra": {
+            "audio_file": "songs/audio/Fly Me To The Moon - Frank Sinatra.mp3",
+            "image_file": "songs/images/Fly Me To The Moon - Frank Sinatra.png"
+        },
+        "Gimme! Gimme! Gimme! (A Man After Midnight) - ABBA": {
+            "audio_file": "songs/audio/Gimme! Gimme! Gimme! (A Man After Midnight) - ABBA.mp3",
+            "image_file": "songs/images/Gimme! Gimme! Gimme! (A Man After Midnight) - ABBA.png"
+        },
+        "Gizpræsidenter - BasedBoys": {
+            "audio_file": "songs/audio/Gizpræsidenter - BasedBoys.mp3",
+            "image_file": "songs/images/Gizpræsidenter - BasedBoys.png"
+        },
+        "Golden - HUNTR-X, EJAE, AUDREY NUNA, REI AMI, KPop Demon Hunters Cast": {
+            "audio_file": "songs/audio/Golden - HUNTR-X, EJAE, AUDREY NUNA, REI AMI, KPop Demon Hunters Cast.mp3",
+            "image_file": "songs/images/Golden - HUNTR-X, EJAE, AUDREY NUNA, REI AMI, KPop Demon Hunters Cast.png"
+        },
+        "Grenade - Bruno Mars": {
+            "audio_file": "songs/audio/Grenade - Bruno Mars.mp3",
+            "image_file": "songs/images/Grenade - Bruno Mars.png"
+        },
+        "Heather - Conan Gray": {
+            "audio_file": "songs/audio/Heather - Conan Gray.mp3",
+            "image_file": "songs/images/Heather - Conan Gray.png"
+        },
+        "How Far I'll Go - Auli'i Cravalho, Disney": {
+            "audio_file": "songs/audio/How Far I'll Go - Auli'i Cravalho, Disney.mp3",
+            "image_file": "songs/images/How Far I'll Go - Auli'i Cravalho, Disney.png"
+        },
+        "I Gotta Feeling - Black Eyed Peas": {
+            "audio_file": "songs/audio/I Gotta Feeling - Black Eyed Peas.mp3",
+            "image_file": "songs/images/I Gotta Feeling - Black Eyed Peas.png"
+        },
+        "Jeg Vil Ha' Dig For Mig Selv - Burhan G": {
+            "audio_file": "songs/audio/Jeg Vil Ha' Dig For Mig Selv - Burhan G.mp3",
+            "image_file": "songs/images/Jeg Vil Ha' Dig For Mig Selv - Burhan G.png"
+        },
+        "Just the Two of Us (feat. Bill Withers) - Grover Washington, Jr., Bill Withers": {
+            "audio_file": "songs/audio/Just the Two of Us (feat. Bill Withers) - Grover Washington, Jr., Bill Withers.mp3",
+            "image_file": "songs/images/Just the Two of Us (feat. Bill Withers) - Grover Washington, Jr., Bill Withers.png"
+        },
+        "Jutlandia - 2011 - Remaster - Kim Larsen": {
+            "audio_file": "songs/audio/Jutlandia - 2011 - Remaster - Kim Larsen.mp3",
+            "image_file": "songs/images/Jutlandia - 2011 - Remaster - Kim Larsen.png"
+        },
+        "Let It Go (from Frozen) - Idina Menzel": {
+            "audio_file": "songs/audio/Let It Go (from Frozen) - Idina Menzel.mp3",
+            "image_file": "songs/images/Let It Go (from Frozen) - Idina Menzel.png"
+        },
+        "Let Me Love You - DJ Snake, Justin Bieber": {
+            "audio_file": "songs/audio/Let Me Love You - DJ Snake, Justin Bieber.mp3",
+            "image_file": "songs/images/Let Me Love You - DJ Snake, Justin Bieber.png"
+        },
+        "Love Yourself - Justin Bieber": {
+            "audio_file": "songs/audio/Love Yourself - Justin Bieber.mp3",
+            "image_file": "songs/images/Love Yourself - Justin Bieber.png"
+        },
+        "Mama Said - Lukas Graham": {
+            "audio_file": "songs/audio/Mama Said - Lukas Graham.mp3",
+            "image_file": "songs/images/Mama Said - Lukas Graham.png"
+        },
+        "Nede Mette - Blak": {
+            "audio_file": "songs/audio/Nede Mette - Blak.mp3",
+            "image_file": "songs/images/Nede Mette - Blak.png"
+        },
+        "Never Gonna Give You Up - Rick Astley": {
+            "audio_file": "songs/audio/Never Gonna Give You Up - Rick Astley.mp3",
+            "image_file": "songs/images/Never Gonna Give You Up - Rick Astley.png"
+        },
+        "Ordinary - Alex Warren": {
+            "audio_file": "songs/audio/Ordinary - Alex Warren.mp3",
+            "image_file": "songs/images/Ordinary - Alex Warren.png"
+        },
+        "Please Please Please - Sabrina Carpenter": {
+            "audio_file": "songs/audio/Please Please Please - Sabrina Carpenter.mp3",
+            "image_file": "songs/images/Please Please Please - Sabrina Carpenter.png"
+        },
+        "Replay - Iyaz": {
+            "audio_file": "songs/audio/Replay - Iyaz.mp3",
+            "image_file": "songs/images/Replay - Iyaz.png"
+        },
+        "STOR MAND (feat. Andreas Odbjerg) - Tobias Rahim, andreas odbjerg": {
+            "audio_file": "songs/audio/STOR MAND (feat. Andreas Odbjerg) - Tobias Rahim, andreas odbjerg.mp3",
+            "image_file": "songs/images/STOR MAND (feat. Andreas Odbjerg) - Tobias Rahim, andreas odbjerg.png"
+        },
+        "Se Mig Nu - Gulddreng": {
+            "audio_file": "songs/audio/Se Mig Nu - Gulddreng.mp3",
+            "image_file": "songs/images/Se Mig Nu - Gulddreng.png"
+        },
+        "Shake It Off - Taylor Swift": {
+            "audio_file": "songs/audio/Shake It Off - Taylor Swift.mp3",
+            "image_file": "songs/images/Shake It Off - Taylor Swift.png"
+        },
+        "Shut Up and Dance - WALK THE MOON": {
+            "audio_file": "songs/audio/Shut Up and Dance - WALK THE MOON.mp3",
+            "image_file": "songs/images/Shut Up and Dance - WALK THE MOON.png"
+        },
+        "Smukkest På En Søndag - Joey Moe": {
+            "audio_file": "songs/audio/Smukkest På En Søndag - Joey Moe.mp3",
+            "image_file": "songs/images/Smukkest På En Søndag - Joey Moe.png"
+        },
+        "Stay - The Kid LAROI, Justin Bieber": {
+            "audio_file": "songs/audio/Stay - The Kid LAROI, Justin Bieber.mp3",
+            "image_file": "songs/images/Stay - The Kid LAROI, Justin Bieber.png"
+        },
+        "Stressed Out - Twenty One Pilots": {
+            "audio_file": "songs/audio/Stressed Out - Twenty One Pilots.mp3",
+            "image_file": "songs/images/Stressed Out - Twenty One Pilots.png"
+        },
+        "Stronger (What Doesn't Kill You) - Kelly Clarkson": {
+            "audio_file": "songs/audio/Stronger (What Doesn't Kill You) - Kelly Clarkson.mp3",
+            "image_file": "songs/images/Stronger (What Doesn't Kill You) - Kelly Clarkson.png"
+        },
+        "Take Me to Church - Hozier": {
+            "audio_file": "songs/audio/Take Me to Church - Hozier.mp3",
+            "image_file": "songs/images/Take Me to Church - Hozier.png"
+        },
+        "Whistle - Flo Rida": {
+            "audio_file": "songs/audio/Whistle - Flo Rida.mp3",
+            "image_file": "songs/images/Whistle - Flo Rida.png"
+        },
+        "Wrecking Ball - Miley Cyrus": {
+            "audio_file": "songs/audio/Wrecking Ball - Miley Cyrus.mp3",
+            "image_file": "songs/images/Wrecking Ball - Miley Cyrus.png"
         }
     }
 }

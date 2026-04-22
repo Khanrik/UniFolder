@@ -1,212 +1,568 @@
-import tkinter as tk
-from tkinter import ttk, messagebox
+import pygame
 import json
-import webbrowser
+import random
 import os
-import subprocess
-import sys
+from enum import Enum
+from typing import Optional, List, Tuple
 
-class MusicQuizApp:
-    def __init__(self, root):
-        self.root = root
-        self.root.title("Music Quiz Launcher")
-        self.root.geometry("500x300")
-        
-        # Load data from JSON
-        self.load_data()
-        
-        # Create UI elements
-        self.create_widgets()
+# Initialisér pygame
+pygame.init()
+pygame.mixer.init()
+
+# Konstanter
+SCREEN_WIDTH = 1200
+SCREEN_HEIGHT = 700
+FPS = 60
+ROUND_TIME = 60  # 1 minut i sekunder
+BUTTON_WIDTH = 200
+BUTTON_HEIGHT = 60
+
+# Farver
+WHITE = (255, 255, 255)
+BLACK = (0, 0, 0)
+GRAY = (100, 100, 100)
+DARK_GRAY = (50, 50, 50)
+GREEN = (0, 200, 0)
+RED = (200, 0, 0)
+BLUE = (70, 130, 200)
+
+class GameState(Enum):
+    START_SCREEN = 1
+    PLAYING = 2
+    ROUND_END = 3
+    GAME_OVER = 4
+
+class SongManager:
+    """Håndterer songs.json og tilfældig sang-valg"""
     
-    def load_data(self):
-        """Load song data from JSON file"""
+    def __init__(self, songs_file: str):
+        with open(songs_file, 'r', encoding='utf-8') as f:
+            self.all_songs = json.load(f)['songs']
+        self.shown_songs = set()  # Songs der allerede er blevet vist
+        self.current_song = None
+        self.current_song_name = None
+    
+    def get_random_song(self) -> Tuple[str, dict]:
+        """Returnerer en tilfældig sang der ikke er blevet vist før"""
+        available_songs = [name for name in self.all_songs.keys() 
+                          if name not in self.shown_songs]
+        
+        if not available_songs:
+            # Hvis alle sange er vist, reset og start igen
+            self.shown_songs.clear()
+            available_songs = list(self.all_songs.keys())
+        
+        song_name = random.choice(available_songs)
+        self.shown_songs.add(song_name)
+        self.current_song_name = song_name
+        self.current_song = self.all_songs[song_name]
+        return song_name, self.current_song
+    
+    def load_audio(self, song_name: str):
+        """Loader audio fil for given sang"""
+        song_data = self.all_songs[song_name]
+        audio_path = song_data['audio_file']
+        if os.path.exists(audio_path):
+            pygame.mixer.music.load(audio_path)
+        else:
+            print(f"Advarsel: Lyd fil ikke fundet: {audio_path}")
+    
+    def load_image(self, song_name: str) -> Optional[pygame.Surface]:
+        """Loader billede for given sang"""
+        song_data = self.all_songs[song_name]
+        image_path = song_data['image_file']
+        if os.path.exists(image_path):
+            try:
+                img = pygame.image.load(image_path)
+                img = pygame.transform.scale(img, (444,320))
+                return img
+            except:
+                print(f"Advarsel: Kunne ikke loade billede: {image_path}")
+        else:
+            print(f"Advarsel: Billede fil ikke fundet: {image_path}")
+        return None
+
+class Button:
+    """Knap klasse"""
+    
+    def __init__(self, x: int, y: int, width: int, height: int, text: str):
+        self.rect = pygame.Rect(x, y, width, height)
+        self.text = text
+        self.hovered = False
+    
+    def draw(self, surface: pygame.Surface, font: pygame.font.Font):
+        """Tegner knappen"""
+        color = GREEN if self.hovered else GRAY
+        pygame.draw.rect(surface, color, self.rect)
+        pygame.draw.rect(surface, WHITE, self.rect, 2)
+        
+        text_surf = font.render(self.text, True, BLACK)
+        text_rect = text_surf.get_rect(center=self.rect.center)
+        surface.blit(text_surf, text_rect)
+    
+    def is_clicked(self, pos: Tuple[int, int]) -> bool:
+        """Check om knap blev klikket"""
+        return self.rect.collidepoint(pos)
+    
+    def update(self, mouse_pos: Tuple[int, int]):
+        """Update hover state"""
+        self.hovered = self.rect.collidepoint(mouse_pos)
+
+class MusikQuiz:
+    """Hovedklasse for musikquiz spillet"""
+    
+    def __init__(self):
+        self.screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
+        pygame.display.set_caption("Musik Quiz")
+        self.clock = pygame.time.Clock()
+        self.font_large = pygame.font.Font(None, 60)
+        self.font_medium = pygame.font.Font(None, 40)
+        self.font_small = pygame.font.Font(None, 30)
+        
+        self.game_state = GameState.START_SCREEN
+        self.song_manager = SongManager('songs.json')
+        
+        # Spil variabler
+        self.round_time_left = ROUND_TIME
+        self.current_song_image = None
+        self.current_song_name = None
+        self.has_used_skip = False
+        self.song_history = []  # Historie af sange i denne runde
+        self.song_history_index = 0
+        self.is_playing = False
+        self.song_position = 0  # Position i sekunder
+        self.song_duration = 0
+        self.song_start_offset = 0
+        self.is_dragging_progress = False
+        self.was_playing_before_drag = False
+        self.volume = 1.0
+        self.is_dragging_volume = False
+
+        # Progress bar område
+        self.progress_rect = pygame.Rect(
+            SCREEN_WIDTH // 2,
+            SCREEN_HEIGHT // 2 - 50,
+            500,
+            20
+        )
+
+        # Volume slider område
+        self.volume_rect = pygame.Rect(
+            SCREEN_WIDTH // 2,
+            SCREEN_HEIGHT // 2 + 20,
+            500,
+            20
+        )
+
+        pygame.mixer.music.set_volume(self.volume)
+        
+        # Knapper
+        self.setup_buttons()
+    
+    def setup_buttons(self):
+        """Setup alle knapper"""
+        self.start_button = Button(
+            SCREEN_WIDTH // 2 - BUTTON_WIDTH // 2,
+            SCREEN_HEIGHT // 2 - BUTTON_HEIGHT // 2,
+            BUTTON_WIDTH, BUTTON_HEIGHT,
+            "START"
+        )
+        
+        self.play_button = Button(
+            SCREEN_WIDTH // 4 - BUTTON_WIDTH // 2,
+            SCREEN_HEIGHT - 100,
+            BUTTON_WIDTH, BUTTON_HEIGHT,
+            "AFSPIL/PAUSE"
+        )
+        
+        self.skip_button = Button(
+            SCREEN_WIDTH // 2 - BUTTON_WIDTH // 2,
+            SCREEN_HEIGHT - 100,
+            BUTTON_WIDTH, BUTTON_HEIGHT,
+            "SKIP (1)"
+        )
+        
+        self.back_button = Button(
+            3 * SCREEN_WIDTH // 4 - BUTTON_WIDTH,
+            SCREEN_HEIGHT - 100,
+            BUTTON_WIDTH, BUTTON_HEIGHT,
+            "GÅ TILBAGE"
+        )
+
+        self.forward_button = Button(
+            3 * SCREEN_WIDTH // 4 - BUTTON_WIDTH,
+            SCREEN_HEIGHT - 100,
+            BUTTON_WIDTH, BUTTON_HEIGHT,
+            "GÅ FREM"
+        )
+        
+        self.stop_button = Button(
+            SCREEN_WIDTH - 220,
+            SCREEN_HEIGHT - 100,
+            BUTTON_WIDTH, BUTTON_HEIGHT,
+            "STOP RUNDE"
+        )
+        
+        self.ready_button = Button(
+            SCREEN_WIDTH // 2 - BUTTON_WIDTH // 2,
+            SCREEN_HEIGHT // 2 + 100,
+            BUTTON_WIDTH, BUTTON_HEIGHT,
+            "KLAR"
+        )
+    
+    def handle_events(self):
+        """Handle input events"""
+        mouse_pos = pygame.mouse.get_pos()
+        
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                return False
+            
+            if event.type == pygame.MOUSEMOTION:
+                if self.game_state == GameState.PLAYING and self.is_dragging_progress:
+                    self.song_position = self.get_song_position_from_x(mouse_pos[0])
+                if self.game_state == GameState.PLAYING and self.is_dragging_volume:
+                    self.set_volume_from_x(mouse_pos[0])
+                self.update_button_states(mouse_pos)
+            
+            if event.type == pygame.MOUSEBUTTONDOWN:
+                if self.game_state == GameState.START_SCREEN:
+                    if self.start_button.is_clicked(mouse_pos):
+                        self.start_new_round()
+                
+                elif self.game_state == GameState.PLAYING:
+                    if self.progress_rect.collidepoint(mouse_pos) and self.song_duration > 0:
+                        self.is_dragging_progress = True
+                        self.was_playing_before_drag = self.is_playing
+                        if self.is_playing:
+                            pygame.mixer.music.pause()
+                            self.is_playing = False
+                        self.song_position = self.get_song_position_from_x(mouse_pos[0])
+                    elif self.volume_rect.collidepoint(mouse_pos):
+                        self.is_dragging_volume = True
+                        self.set_volume_from_x(mouse_pos[0])
+                    elif self.play_button.is_clicked(mouse_pos):
+                        self.toggle_play()
+                    elif self.skip_button.is_clicked(mouse_pos) and not self.has_used_skip:
+                        self.skip_song()
+                    elif (
+                        self.back_button.is_clicked(mouse_pos)
+                        and self.has_used_skip
+                        and self.song_history_index > 0
+                    ):
+                        self.go_back()
+                    elif (
+                        self.forward_button.is_clicked(mouse_pos)
+                        and self.has_used_skip
+                        and self.song_history_index < len(self.song_history) - 1
+                    ):
+                        self.go_forward()
+                    elif self.stop_button.is_clicked(mouse_pos):
+                        self.end_round()
+                
+                elif self.game_state == GameState.ROUND_END:
+                    if self.ready_button.is_clicked(mouse_pos):
+                        self.start_new_round()
+
+            if event.type == pygame.MOUSEBUTTONUP:
+                if self.game_state == GameState.PLAYING and self.is_dragging_progress:
+                    self.song_position = self.get_song_position_from_x(mouse_pos[0])
+                    self.is_dragging_progress = False
+                    self.seek_to_position(self.song_position, self.was_playing_before_drag)
+                    self.was_playing_before_drag = False
+                if self.game_state == GameState.PLAYING and self.is_dragging_volume:
+                    self.set_volume_from_x(mouse_pos[0])
+                    self.is_dragging_volume = False
+        
+        return True
+    
+    def update_button_states(self, mouse_pos: Tuple[int, int]):
+        """Update hover state for alle knapper"""
+        if self.game_state == GameState.START_SCREEN:
+            self.start_button.update(mouse_pos)
+        elif self.game_state == GameState.PLAYING:
+            self.play_button.update(mouse_pos)
+            self.skip_button.update(mouse_pos)
+            self.back_button.update(mouse_pos)
+            self.forward_button.update(mouse_pos)
+            self.stop_button.update(mouse_pos)
+        elif self.game_state == GameState.ROUND_END:
+            self.ready_button.update(mouse_pos)
+
+    def load_song(self, song_name: str):
+        """Loader billede, lyd og varighed for en bestemt sang"""
+        song_data = self.song_manager.all_songs[song_name]
+        self.current_song_name = song_name
+        self.current_song_image = self.song_manager.load_image(song_name)
+        self.song_manager.load_audio(song_name)
+
         try:
-            with open('songs.json', 'r', encoding='utf-8') as f:
-                self.data = json.load(f)
-                self.songs = self.data.get('songs', {})
-        except FileNotFoundError:
-            # Create a sample JSON file if it doesn't exist
-            self.create_sample_json()
-            with open('songs.json', 'r', encoding='utf-8') as f:
-                self.data = json.load(f)
-                self.songs = self.data.get('songs', {})
-        except json.JSONDecodeError:
-            messagebox.showerror("Error", "Invalid JSON format in songs.json")
-            self.songs = {}
-    
-    def create_sample_json(self):
-        """Create a sample JSON file with song data"""
-        sample_data = {
-            "songs": {
-                "Bohemian Rhapsody": {
-                    "url": "https://www.youtube.com/watch?v=fJ9rUzIMcZQ",
-                    "txt_file": "bohemian_rhapsody.txt"
-                },
-                "Imagine": {
-                    "url": "https://www.youtube.com/watch?v=YkgkThdzX-8",
-                    "txt_file": "imagine.txt"
-                },
-                "Hotel California": {
-                    "url": "https://www.youtube.com/watch?v=09839DpTctU",
-                    "txt_file": "hotel_california.txt"
-                }
-            }
-        }
-        
-        with open('songs.json', 'w', encoding='utf-8') as f:
-            json.dump(sample_data, f, indent=4, ensure_ascii=False)
-        
-        # Create sample txt files
-        for song_title, song_data in sample_data['songs'].items():
-            txt_file = song_data['txt_file']
-            if not os.path.exists(txt_file):
-                with open(txt_file, 'w', encoding='utf-8') as f:
-                    f.write(f"Lyrics for {song_title}\n\n")
-                    f.write("Add your lyrics here...")
-    
-    def create_widgets(self):
-        """Create the UI widgets"""
-        # Title label
-        title_label = ttk.Label(
-            self.root, 
-            text="Music Quiz Launcher", 
-            font=("Arial", 16, "bold")
-        )
-        title_label.pack(pady=20)
-        
-        # Frame for input
-        input_frame = ttk.Frame(self.root)
-        input_frame.pack(pady=10, padx=20, fill='x')
-        
-        # Song title label
-        song_label = ttk.Label(input_frame, text="Song Title:", font=("Arial", 11))
-        song_label.pack(side='left', padx=(0, 10))
-        
-        # Combobox for song selection (with autocomplete)
-        self.song_var = tk.StringVar()
-        self.song_combo = ttk.Combobox(
-            input_frame, 
-            textvariable=self.song_var,
-            values=list(self.songs.keys()),
-            font=("Arial", 10),
-            width=30
-        )
-        self.song_combo.pack(side='left', fill='x', expand=True)
-        
-        # Button frame
-        button_frame = ttk.Frame(self.root)
-        button_frame.pack(pady=20)
-        
-        # Open URL button
-        self.url_button = ttk.Button(
-            button_frame,
-            text="Open Website",
-            command=self.open_url,
-            width=15
-        )
-        self.url_button.grid(row=0, column=0, padx=5, pady=5)
-        
-        # Open text file button
-        self.txt_button = ttk.Button(
-            button_frame,
-            text="Open Text File",
-            command=self.open_txt,
-            width=15
-        )
-        self.txt_button.grid(row=0, column=1, padx=5, pady=5)
-        
-        # Open both button
-        self.both_button = ttk.Button(
-            button_frame,
-            text="Open Both",
-            command=self.open_both,
-            width=15
-        )
-        self.both_button.grid(row=1, column=0, columnspan=2, padx=5, pady=5)
-        
-        # Status label
-        self.status_label = ttk.Label(
-            self.root, 
-            text="", 
-            font=("Arial", 9),
-            foreground="green"
-        )
-        self.status_label.pack(pady=10)
-        
-        # Info label
-        info_label = ttk.Label(
-            self.root,
-            text=f"Available songs: {len(self.songs)}",
-            font=("Arial", 9),
-            foreground="gray"
-        )
-        info_label.pack(pady=5)
-        
-        # Bind Enter key to open both
-        self.root.bind('<Return>', lambda e: self.open_both())
-    
-    def get_song_data(self):
-        """Get the data for the selected song"""
-        song_title = self.song_var.get().strip()
-        
-        if not song_title:
-            messagebox.showwarning("Warning", "Please enter a song title")
-            return None
-        
-        if song_title not in self.songs:
-            messagebox.showerror("Error", f"Song '{song_title}' not found in database")
-            return None
-        
-        return self.songs[song_title]
-    
-    def open_url(self):
-        """Open the URL for the selected song"""
-        song_data = self.get_song_data()
-        if not song_data:
-            return
-        
-        url = song_data.get('url')
-        if url:
-            webbrowser.open(url)
-            self.status_label.config(text=f"Opened URL for '{self.song_var.get()}'")
-        else:
-            messagebox.showerror("Error", "No URL found for this song")
-    
-    def open_txt(self):
-        """Open the text file for the selected song"""
-        song_data = self.get_song_data()
-        if not song_data:
-            return
-        
-        txt_file = song_data.get('txt_file')
-        if txt_file:
-            if os.path.exists(txt_file):
-                # Open with default text editor
-                if sys.platform == 'win32':
-                    os.startfile(txt_file)
-                elif sys.platform == 'darwin':  # macOS
-                    subprocess.run(['open', txt_file])
-                else:  # linux
-                    subprocess.run(['xdg-open', txt_file])
-                self.status_label.config(text=f"Opened text file for '{self.song_var.get()}'")
-            else:
-                messagebox.showerror("Error", f"Text file '{txt_file}' not found")
-        else:
-            messagebox.showerror("Error", "No text file found for this song")
-    
-    def open_both(self):
-        """Open both URL and text file"""
-        song_data = self.get_song_data()
-        if not song_data:
-            return
-        
-        self.open_url()
-        self.open_txt()
+            sound = pygame.mixer.Sound(song_data['audio_file'])
+            self.song_duration = sound.get_length()
+        except Exception:
+            self.song_duration = 0
 
-def main():
-    root = tk.Tk()
-    app = MusicQuizApp(root)
-    root.mainloop()
+        self.song_position = 0
+        self.song_start_offset = 0
+        self.is_dragging_progress = False
+        pygame.mixer.music.play()
+        self.is_playing = True
+
+    def get_song_position_from_x(self, mouse_x: int) -> float:
+        """Konverter musens x-position på progress bar til sang-position i sekunder"""
+        if self.song_duration <= 0:
+            return 0
+        relative_x = max(0, min(mouse_x - self.progress_rect.x, self.progress_rect.width))
+        ratio = relative_x / self.progress_rect.width
+        return ratio * self.song_duration
+
+    def seek_to_position(self, seconds: float, should_play: bool):
+        """Seek til en bestemt position i sangen"""
+        if self.song_duration <= 0:
+            return
+
+        target = max(0, min(seconds, self.song_duration))
+        self.song_position = target
+        self.song_start_offset = target
+
+        try:
+            pygame.mixer.music.play(start=target)
+            if should_play:
+                self.is_playing = True
+            else:
+                pygame.mixer.music.pause()
+                self.is_playing = False
+        except Exception:
+            # Fallback hvis formatet ikke understøtter præcis seek
+            self.is_playing = False
+
+    def set_volume_from_x(self, mouse_x: int):
+        """Sæt volume ud fra musens x-position på volume slider"""
+        relative_x = max(0, min(mouse_x - self.volume_rect.x, self.volume_rect.width))
+        self.volume = relative_x / self.volume_rect.width
+        pygame.mixer.music.set_volume(self.volume)
+    
+    def update(self):
+        """Update game state"""
+        if self.game_state == GameState.PLAYING:
+            self.round_time_left -= 1 / FPS
+            
+            # Update sang position
+            if pygame.mixer.music.get_busy() and self.is_playing and not self.is_dragging_progress:
+                elapsed = max(0, pygame.mixer.music.get_pos()) / 1000
+                self.song_position = self.song_start_offset + elapsed
+                if self.song_duration > 0:
+                    self.song_position = min(self.song_position, self.song_duration)
+            
+            # Tjek om tiden er løbet ud
+            if self.round_time_left <= 0:
+                self.end_round()
+    
+    def start_new_round(self):
+        """Start en ny runde"""
+        # Hent ny sang
+        song_name, song_data = self.song_manager.get_random_song()
+        self.song_history = [song_name]
+        self.song_history_index = 0
+        
+        # Reset variabler
+        self.round_time_left = ROUND_TIME
+        self.has_used_skip = False
+        self.game_state = GameState.PLAYING
+
+        self.load_song(song_name)
+    
+    def skip_song(self):
+        """Skip den aktuelle sang og load næste"""
+        self.has_used_skip = True
+        pygame.mixer.music.stop()
+        self.is_playing = False
+        
+        # Hent ny sang
+        song_name, song_data = self.song_manager.get_random_song()
+        self.song_history.append(song_name)
+        self.song_history_index = 1
+        self.load_song(song_name)
+    
+    def go_back(self):
+        """Gå tilbage til forrige sang"""
+        if self.has_used_skip and self.song_history_index > 0:
+            self.song_history_index = 0
+            pygame.mixer.music.stop()
+            self.load_song(self.song_history[self.song_history_index])
+
+    def go_forward(self):
+        """Gå frem til den skippede sang igen"""
+        if self.has_used_skip and self.song_history_index < len(self.song_history) - 1:
+            self.song_history_index = 1
+            pygame.mixer.music.stop()
+            self.load_song(self.song_history[self.song_history_index])
+    
+    def toggle_play(self):
+        """Pausér eller afspil sang"""
+        if self.is_playing:
+            pygame.mixer.music.pause()
+            self.is_playing = False
+        else:
+            pygame.mixer.music.unpause()
+            self.is_playing = True
+    
+    def end_round(self):
+        """Afslut nuværende runde"""
+        pygame.mixer.music.stop()
+        self.is_playing = False
+        self.is_dragging_progress = False
+        self.game_state = GameState.ROUND_END
+    
+    def draw_start_screen(self):
+        """Tegn startskærmen"""
+        self.screen.fill(DARK_GRAY)
+        
+        title = self.font_large.render("MUSIK QUIZ", True, WHITE)
+        title_rect = title.get_rect(center=(SCREEN_WIDTH // 2, SCREEN_HEIGHT // 3))
+        self.screen.blit(title, title_rect)
+        
+        self.start_button.draw(self.screen, self.font_medium)
+    
+    def draw_playing_screen(self):
+        """Tegn spil skærmen"""
+        self.screen.fill(DARK_GRAY)
+        
+        # Timer
+        timer_text = self.font_medium.render(
+            f"Tid: {max(0, int(self.round_time_left))}s",
+            True,
+            RED if self.round_time_left < 10 else WHITE
+        )
+        self.screen.blit(timer_text, (20, 20))
+        
+        # Billede
+        if self.current_song_image:
+            img_x = SCREEN_WIDTH // 4 - 225
+            img_y = SCREEN_HEIGHT // 2 - 150
+            self.screen.blit(self.current_song_image, (img_x, img_y))
+        
+        # Sang titel
+        title_text = self.font_medium.render(self.current_song_name, True, WHITE)
+        title_rect = title_text.get_rect(center=(3 * SCREEN_WIDTH // 4, 100))
+        self.screen.blit(title_text, title_rect)
+        
+        # Progress bar for sang
+        if self.song_duration > 0:
+            # Baggrund
+            pygame.draw.rect(self.screen, GRAY, self.progress_rect)
+
+            # Progress
+            filled_width = int((self.song_position / self.song_duration) * self.progress_rect.width)
+            filled_width = max(0, min(filled_width, self.progress_rect.width))
+            filled_rect = pygame.Rect(
+                self.progress_rect.x,
+                self.progress_rect.y,
+                filled_width,
+                self.progress_rect.height
+            )
+            pygame.draw.rect(self.screen, GREEN, filled_rect)
+
+            # Slider-håndtag
+            handle_x = self.progress_rect.x + filled_width
+            handle_x = max(self.progress_rect.x, min(handle_x, self.progress_rect.right))
+            handle_y = self.progress_rect.centery
+            pygame.draw.circle(self.screen, WHITE, (handle_x, handle_y), 10)
+
+            # Tid display (aktuel / total)
+            current_s = int(self.song_position)
+            total_s = int(self.song_duration)
+            time_text = self.font_small.render(
+                f"{current_s // 60:02d}:{current_s % 60:02d} / {total_s // 60:02d}:{total_s % 60:02d}",
+                True,
+                WHITE
+            )
+            self.screen.blit(time_text, (self.progress_rect.x, self.progress_rect.y + 30))
+
+        # Volume slider
+        pygame.draw.rect(self.screen, GRAY, self.volume_rect)
+
+        volume_fill_width = int(self.volume * self.volume_rect.width)
+        volume_fill_rect = pygame.Rect(
+            self.volume_rect.x,
+            self.volume_rect.y,
+            volume_fill_width,
+            self.volume_rect.height
+        )
+        pygame.draw.rect(self.screen, BLUE, volume_fill_rect)
+
+        volume_handle_x = self.volume_rect.x + volume_fill_width
+        volume_handle_x = max(self.volume_rect.x, min(volume_handle_x, self.volume_rect.right))
+        volume_handle_y = self.volume_rect.centery
+        pygame.draw.circle(self.screen, WHITE, (volume_handle_x, volume_handle_y), 10)
+
+        volume_text = self.font_small.render(
+            f"Volume: {int(self.volume * 100)}%",
+            True,
+            WHITE
+        )
+        self.screen.blit(volume_text, (self.volume_rect.x, self.volume_rect.y + 30))
+        
+        # Knapper
+        self.play_button.draw(self.screen, self.font_small)
+        
+        if not self.has_used_skip:
+            self.skip_button.draw(self.screen, self.font_small)
+        
+        if self.has_used_skip and self.song_history_index > 0:
+            self.back_button.draw(self.screen, self.font_small)
+
+        if self.has_used_skip and self.song_history_index < len(self.song_history) - 1:
+            self.forward_button.draw(self.screen, self.font_small)
+        
+        self.stop_button.draw(self.screen, self.font_small)
+        
+        # Afspil/Pausé status
+        status = "PAUSET" if not self.is_playing else "AFSPILLER"
+        status_text = self.font_small.render(status, True, GREEN if self.is_playing else RED)
+        self.screen.blit(status_text, (20, SCREEN_HEIGHT - 80))
+    
+    def draw_round_end_screen(self):
+        """Tegn end-of-round skærmen"""
+        self.screen.fill(DARK_GRAY)
+        
+        message = self.font_large.render("RUNDE SLUTTEDE", True, WHITE)
+        message_rect = message.get_rect(center=(SCREEN_WIDTH // 2, SCREEN_HEIGHT // 3))
+        self.screen.blit(message, message_rect)
+        
+        submessage = self.font_medium.render("Sangene var:", True, WHITE)
+        submessage_rect = submessage.get_rect(center=(SCREEN_WIDTH // 2, SCREEN_HEIGHT // 2 - 50))
+        self.screen.blit(submessage, submessage_rect)
+        
+        # Vis sange historik
+        for i, song in enumerate(self.song_history):
+            song_text = self.font_small.render(f"{i + 1}. {song}", True, WHITE)
+            self.screen.blit(song_text, (SCREEN_WIDTH // 2 - 300, SCREEN_HEIGHT // 2 + i * 40))
+        
+        self.ready_button.draw(self.screen, self.font_medium)
+    
+    def draw(self):
+        """Tegn hele skærmen"""
+        if self.game_state == GameState.START_SCREEN:
+            self.draw_start_screen()
+        elif self.game_state == GameState.PLAYING:
+            self.draw_playing_screen()
+        elif self.game_state == GameState.ROUND_END:
+            self.draw_round_end_screen()
+        
+        pygame.display.flip()
+    
+    def run(self):
+        """Main game loop"""
+        running = True
+        while running:
+            running = self.handle_events()
+            self.update()
+            self.draw()
+            self.clock.tick(FPS)
+        
+        pygame.quit()
 
 if __name__ == "__main__":
-    main()
+    quiz = MusikQuiz()
+    quiz.run()

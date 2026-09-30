@@ -16,7 +16,7 @@ FPS = 60
 ROUND_TIME = 60  # 1 minut i sekunder
 BUTTON_WIDTH = 200
 BUTTON_HEIGHT = 60
-EXAMPLE_SONG_TITLES = ["7 Years - Lukas Graham", "7 Years - Lukas Graham"]
+EXAMPLE_SONG_TITLES = ["Stronger (What Doesn't Kill You) - Kelly Clarkson", "Golden - HUNTR-X, EJAE, AUDREY NUNA, REI AMI, KPop Demon Hunters Cast"]
 
 # Farver
 WHITE = (255, 255, 255)

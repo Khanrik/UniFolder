@@ -1,14 +1,15 @@
 $$
-\Phi =
+a_{i3} = 
 \begin{bmatrix}
-1 & 0.5 & 0.5^{2} \\
-1 & 2.5 & 2.5^{2} \\
-1 & 4.5 & 4.5^{2}
+2 \\
+1 \\
+1
+\end{bmatrix}
+\begin{bmatrix}
+0.1 \\
+1 \\
+-2
 \end{bmatrix}
 =
-\begin{bmatrix}
-1 & 0.5 & 0.25 \\
-1 & 2.5 & 6.25 \\
-1 & 4.5 & 20.25
-\end{bmatrix}
+2 \cdot 0.1 + 1 \cdot 1 + 1 \cdot (-2) = -0.8
 $$

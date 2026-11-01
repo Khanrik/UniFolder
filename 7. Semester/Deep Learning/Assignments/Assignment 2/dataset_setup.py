@@ -101,4 +101,4 @@ plt.title('Test data:')
 
 plt.subplot(2,1,2)
 plt.plot(testy[:,0])
-plt.ylabel('y');
+plt.ylabel('y')
